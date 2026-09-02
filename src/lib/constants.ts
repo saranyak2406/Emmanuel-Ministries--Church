@@ -7,7 +7,7 @@ export const MINISTRY = {
   location: 'Hyderabad, Telangana, India',
   phone: '+91 98765 43210',
   whatsapp: '+91 98765 43210',
-  email: 'contact@emmanuelgospelministries.org',
+  email: 'EmmanuelGospelMinistries@gmail.com',
 } as const;
 
 // Simplified nav — Home, About, Ministries, Prayer, Give, Contact
