@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
-  Menu, X, Heart, LayoutGrid, ChevronRight,
+  Heart, LayoutGrid, ChevronRight,
   Home, BookOpen, Eye, Target, Users, Calendar,
   PlayCircle, Globe, Handshake, DollarSign,
   Phone, Star, MessageSquare,
@@ -53,7 +53,7 @@ const ALL_SECTIONS = [
 export default function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const [mobileOpen, setMobileOpen] = useState(false);
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -150,52 +150,13 @@ export default function Navbar() {
                 <LayoutGrid className="h-5 w-5" />
               </button>
 
-              {/* Mobile hamburger */}
-              <button
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className="lg:hidden p-2 rounded-md transition-colors text-charcoal-800 hover:bg-brand-50 hover:text-brand-700"
-                aria-label="Toggle mobile menu"
-              >
-                {mobileOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-              </button>
             </div>
+
           </div>
         </div>
 
-        {/* Mobile dropdown */}
-        <div
-          className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-            mobileOpen ? 'max-h-[80vh] opacity-100' : 'max-h-0 opacity-0'
-          }`}
-        >
-          <div className="bg-ivory-50 border-t border-brand-100">
-            <div className="container-max py-6">
-              <div className="grid grid-cols-2 gap-x-4 gap-y-1">
-                {NAV_LINKS.map((link) => (
-                  <button
-                    key={link.href}
-                    onClick={() => handleNavClick(link.href)}
-                    className={`text-left px-3 py-2.5 text-sm font-medium transition-colors border-b border-ivory-100 ${
-                      isActive(link.href)
-                        ? 'text-brand-700 font-semibold'
-                        : 'text-charcoal-700 hover:text-brand-700'
-                    }`}
-                  >
-                    {link.label}
-                  </button>
-                ))}
-              </div>
-              <button
-                onClick={() => handleNavClick('/prayer')}
-                className="btn-primary w-full mt-5"
-              >
-                <Heart className="h-4 w-4" />
-                Prayer Request
-              </button>
-            </div>
-          </div>
-        </div>
       </header>
+
 
       {/* ─── Sidebar backdrop ────────────────────────────────────────────── */}
       <div
