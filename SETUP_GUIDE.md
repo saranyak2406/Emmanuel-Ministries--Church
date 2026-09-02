@@ -96,7 +96,7 @@ export const MINISTRY = {
   location: 'Hyderabad, Telangana, India',
   phone: '+91-XXXXXXXXXX',
   whatsapp: '+91-XXXXXXXXXX',
-  email: 'info@emmanuelgospelministries.org',
+  email: 'info@emmanuel.email.com',
 }
 ```
 

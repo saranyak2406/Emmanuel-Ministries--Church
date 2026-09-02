@@ -147,7 +147,7 @@ export const MINISTRY = {
   leader: 'Evangelist Emmanuel Abraham',
   location: 'Hyderabad, Telangana, India',
   phone: '+91-XXXXXXXXXX',
-  email: 'info@emmanuelgospelministries.org',
+  email: 'info@emmanuel.email.com',
 }
 ```
 
