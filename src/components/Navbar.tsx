@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
-  Heart, LayoutGrid, ChevronRight,
+  Heart, LayoutGrid, ChevronRight, X,
   Home, BookOpen, Eye, Target, Users, Calendar,
   PlayCircle, Globe, Handshake, DollarSign,
   Phone, Star, MessageSquare,
@@ -66,7 +66,6 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = (href: string) => {
-    setMobileOpen(false);
     setSidebarOpen(false);
     navigate(href);
     // Scroll to top on page navigation
