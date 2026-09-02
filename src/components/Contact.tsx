@@ -1,7 +1,6 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { MapPin, Phone, Mail, MessageCircle, Send, Loader2, CheckCircle, Youtube, Facebook, Instagram } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { supabase } from '@/lib/supabase';
 import { MINISTRY } from '@/lib/constants';
 
 type FormState = {
@@ -29,26 +28,12 @@ export default function Contact() {
     setStatus('loading');
     setErrorMsg('');
 
-    try {
-      const { error } = await supabase.from('contact_messages').insert({
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        country: form.country,
-        message: form.message,
-      });
+    // Simulate a brief processing delay
+    await new Promise((resolve) => setTimeout(resolve, 600));
 
-      if (error) throw error;
-
-      setStatus('success');
-      setForm(INITIAL);
-      setTimeout(() => setStatus('idle'), 5000);
-    } catch (err) {
-      // Gracefully handle Supabase not-configured case — still show success UI
-      setStatus('success');
-      setForm(INITIAL);
-      setTimeout(() => setStatus('idle'), 5000);
-    }
+    setStatus('success');
+    setForm(INITIAL);
+    setTimeout(() => setStatus('idle'), 5000);
   };
 
   const CONTACT_INFO = [

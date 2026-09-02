@@ -27,7 +27,7 @@ This website serves as a digital hub for:
 - 📱 **Fully Responsive Design** - Works perfectly on all devices
 - ⚡ **High Performance** - Optimized for speed and SEO
 - 🎨 **Professional Design** - Modern, elegant interface
-- 🔐 **Secure Forms** - Integrated with Supabase for data storage
+- 📧 **Contact Forms** - Prayer requests and contact messages
 - 📧 **Contact Forms** - Prayer requests and contact messages
 - 📅 **Event Listing** - Upcoming meetings and gatherings
 - 🎥 **Media Gallery** - Sermons, testimonies, and resources
@@ -38,7 +38,7 @@ This website serves as a digital hub for:
 - 📘 **TypeScript** - Type-safe development
 - 🎨 **Tailwind CSS** - Utility-first styling
 - ⚡ **Vite** - Lightning-fast build tool
-- 🗄️ **Supabase** - Backend database and authentication
+- 🪝 **Custom Hooks** - Scroll animations and reveal effects
 - 🪝 **Custom Hooks** - Scroll animations and reveal effects
 - 📍 **Smooth Scrolling** - Elegant navigation
 - ✨ **CSS Animations** - Eye-catching effects
@@ -48,7 +48,6 @@ This website serves as a digital hub for:
 ### Prerequisites
 - Node.js 16+
 - npm or yarn
-- Supabase account (free)
 
 ### Installation
 ```bash
@@ -58,13 +57,6 @@ cd church-main
 
 # Install dependencies
 npm install
-
-# Create environment file
-cp .env.example .env
-
-# Add your Supabase credentials to .env
-# VITE_SUPABASE_URL=your-url
-# VITE_SUPABASE_ANON_KEY=your-key
 
 # Start development server
 npm run dev
@@ -167,8 +159,6 @@ Edit `tailwind.config.js` to change the color scheme.
 
 ## 🔒 Security
 
-- Form submissions secured with RLS policies
-- Environment variables for sensitive data
 - No personal data exposed in frontend
 - Regular security updates
 
@@ -189,10 +179,8 @@ Edit `tailwind.config.js` to change the color scheme.
 ## 🆘 Troubleshooting
 
 ### Forms not submitting?
-1. Check Supabase credentials in `.env`
-2. Verify tables exist in Supabase
-3. Check browser console for errors
-4. Ensure RLS policies allow INSERT
+1. Check browser console for errors
+2. Clear browser cache and retry
 
 ### Styles not loading?
 1. Clear `node_modules` and reinstall

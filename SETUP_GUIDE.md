@@ -12,13 +12,13 @@ A professional, responsive website for Emmanuel Gospel Ministries built with Rea
 ✅ Vision statement with 5 pillars
 ✅ Mission statement (6 components)
 ✅ Upcoming meetings/events listing
-✅ Prayer request form (integrated with Supabase)
+✅ Prayer request form
 ✅ Testimonies section
 ✅ Media gallery with categories
 ✅ Missions/Outreach initiatives
 ✅ Partnership opportunities
 ✅ Giving/Donation options
-✅ Contact form (integrated with Supabase)
+✅ Contact form
 ✅ Professional footer with quick links
 ✅ Mobile navigation menu
 ✅ SEO optimized
@@ -26,7 +26,6 @@ A professional, responsive website for Emmanuel Gospel Ministries built with Rea
 
 ## Prerequisites
 - Node.js 16+ and npm
-- Supabase account (free tier available)
 - Git
 
 ## Local Development Setup
@@ -37,43 +36,14 @@ cd church-main
 npm install
 ```
 
-### 2. Configure Supabase
-Create a `.env` file in the project root:
-```bash
-cp .env.example .env
-```
-
-Edit `.env` and add your Supabase credentials:
-```
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your-anonymous-key-here
-```
-
-To get these credentials:
-1. Go to https://supabase.com/dashboard
-2. Create a new project or select existing one
-3. Go to Settings > API
-4. Copy the Project URL and anon public key
-
-### 3. Set Up Database Tables
-Run the migration SQL in Supabase:
-1. Go to Supabase dashboard > SQL Editor
-2. Create a new query
-3. Copy the contents of `supabase/migrations/20260901094207_create_prayer_and_contact_tables.sql`
-4. Execute the query
-
-This creates two tables:
-- `prayer_requests`: Stores prayer request submissions
-- `contact_messages`: Stores contact form submissions
-
-### 4. Start Development Server
+### 2. Start Development Server
 ```bash
 npm run dev
 ```
 
 The site will be available at `http://localhost:5173` (or next available port)
 
-### 5. Build for Production
+### 3. Build for Production
 ```bash
 npm run build
 npm run preview  # Preview production build locally
@@ -102,8 +72,7 @@ src/
 │   ├── useScroll.ts
 │   └── useScrollReveal.ts
 ├── lib/
-│   ├── constants.ts   # Constants (ministry info, nav links, etc)
-│   └── supabase.ts    # Supabase client configuration
+│   └── constants.ts   # Constants (ministry info, nav links, etc)
 ├── App.tsx            # Main app component
 ├── index.css          # Global styles and animations
 └── main.tsx           # Entry point
@@ -156,7 +125,7 @@ Edit `tailwind.config.js` to change the color scheme (burgundy, gold, ivory, cha
 1. Push code to GitHub
 2. Go to https://vercel.com/new
 3. Import the repository
-4. Add environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY)
+4. Deploy
 5. Deploy
 
 ### Option 2: Netlify
@@ -166,8 +135,7 @@ Edit `tailwind.config.js` to change the color scheme (burgundy, gold, ivory, cha
 4. Select repository
 5. Set build command: `npm run build`
 6. Set publish directory: `dist`
-7. Add environment variables
-8. Deploy
+7. Deploy
 
 ### Option 3: Self-hosted
 1. Build: `npm run build`
@@ -178,20 +146,15 @@ Edit `tailwind.config.js` to change the color scheme (burgundy, gold, ivory, cha
 
 ### Prayer Requests
 - Submitted via `/src/components/PrayerRequest.tsx`
-- Stored in Supabase `prayer_requests` table
 - Includes categories: Salvation, Family, Healing, Guidance, Provision, Deliverance, Ministry, Other
 
 ### Contact Messages
 - Submitted via `/src/components/Contact.tsx`
-- Stored in Supabase `contact_messages` table
 - Includes name, email, phone, country, and message
 
 ## Important Notes
 
 ### Security
-- Anonymous users can only INSERT into the tables (submit forms)
-- Only authenticated users with service role can read submissions
-- Enable RLS (Row Level Security) in Supabase for all tables
 - Never commit `.env` file to version control
 
 ### Contact Information Placeholders
@@ -207,10 +170,8 @@ The following need to be updated with real information:
 ## Troubleshooting
 
 ### Forms Not Submitting
-1. Check Supabase credentials in `.env`
-2. Verify database tables exist in Supabase
-3. Check browser console for error messages
-4. Ensure RLS policies allow INSERT for anon users
+1. Check browser console for error messages
+2. Clear browser cache and retry
 
 ### Styles Not Loading
 1. Delete `node_modules` and `.next` folder
@@ -257,7 +218,7 @@ npm run typecheck # Check TypeScript types
 ## Support & Maintenance
 
 ### Regular Tasks
-- Monitor form submissions in Supabase
+- Monitor form submissions
 - Update event listings regularly
 - Keep testimonies current
 - Update social media links

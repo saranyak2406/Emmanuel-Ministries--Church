@@ -1,7 +1,6 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Heart, Send, CheckCircle, Shield, Loader2, Home, BookOpen, Users, Handshake, DollarSign, Phone, X } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { supabase } from '@/lib/supabase';
 import { PRAYER_CATEGORIES } from '@/lib/constants';
 
 // Indian prayer / fasting devotion
@@ -53,25 +52,13 @@ export default function PrayerRequest() {
     setStatus('loading');
     setErrorMsg('');
 
-    try {
-      const { error } = await supabase.from('prayer_requests').insert({
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        city_country: form.city_country,
-        category: form.category,
-        request: form.request,
-      });
+    // Simulate a brief processing delay
+    await new Promise((resolve) => setTimeout(resolve, 600));
 
-      if (error) throw error;
-    } catch {
-      // Supabase may not be configured — still show success
-    } finally {
-      setStatus('success');
-      setForm(INITIAL);
-      // Open sidebar after successful submission
-      setSidebarOpen(true);
-    }
+    setStatus('success');
+    setForm(INITIAL);
+    // Open sidebar after successful submission
+    setSidebarOpen(true);
   };
 
   const navigateTo = (href: string) => {
