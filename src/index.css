@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-ivory-50 text-charcoal-800 font-sans antialiased;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+
+  ::selection {
+    @apply bg-brand-700 text-ivory-50;
+  }
+}
+
+@layer components {
+  .container-max {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply text-xs font-sans font-semibold uppercase tracking-[0.25em] text-forest-600;
+  }
+
+  /* Primary CTA — brand red */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-700 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-ivory-50 transition-all duration-300 hover:bg-brand-800 hover:shadow-xl hover:shadow-brand-900/20 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  /* Secondary — outlined charcoal that fills brand-red on hover */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ivory-300 bg-transparent px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-charcoal-800 transition-all duration-300 hover:border-brand-700 hover:bg-brand-700 hover:text-ivory-50 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  /* Light — for use on dark/photo backgrounds */
+  .btn-light {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ivory-200/40 bg-transparent px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-ivory-50 transition-all duration-300 hover:bg-ivory-50 hover:text-charcoal-900 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  /* Gold accent button */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-charcoal-900 transition-all duration-300 hover:bg-gold-400 hover:shadow-xl hover:shadow-gold-500/30 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  /* Forest green button */
+  .btn-forest {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-forest-700 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-ivory-50 transition-all duration-300 hover:bg-forest-800 hover:shadow-xl hover:shadow-forest-900/20 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  /* Logo glow ring */
+  .logo-glow {
+    filter: drop-shadow(0 0 12px rgba(193, 18, 18, 0.35));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
