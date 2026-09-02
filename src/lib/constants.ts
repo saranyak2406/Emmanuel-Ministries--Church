@@ -7,24 +7,24 @@ export const MINISTRY = {
   location: 'Hyderabad, Telangana, India',
   phone: '+91 98765 43210',
   whatsapp: '+91 98765 43210',
-  email: 'EmmanuelGospelMinistries@gmail.com',
+  email: 'info@emmanuel.gmail.com',
 } as const;
 
 // Simplified nav — Home, About, Ministries, Prayer, Give, Contact
 export const NAV_LINKS = [
-  { label: 'Home',       href: '/'             },
-  { label: 'About',      href: '/about'        },
-  { label: 'Ministries', href: '/ministries'   },
-  { label: 'Prayer',     href: '/prayer'       },
-  { label: 'Give',       href: '/give'         },
-  { label: 'Contact',    href: '/contact'      },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Ministries', href: '/ministries' },
+  { label: 'Prayer', href: '/prayer' },
+  { label: 'Give', href: '/give' },
+  { label: 'Contact', href: '/contact' },
 ] as const;
 
 export const SOCIAL_LINKS = [
-  { label: 'YouTube',   href: '#', icon: 'youtube'   },
-  { label: 'Facebook',  href: '#', icon: 'facebook'  },
+  { label: 'YouTube', href: '#', icon: 'youtube' },
+  { label: 'Facebook', href: '#', icon: 'facebook' },
   { label: 'Instagram', href: '#', icon: 'instagram' },
-  { label: 'WhatsApp',  href: '#', icon: 'whatsapp'  },
+  { label: 'WhatsApp', href: '#', icon: 'whatsapp' },
 ] as const;
 
 export const PRAYER_CATEGORIES = [
