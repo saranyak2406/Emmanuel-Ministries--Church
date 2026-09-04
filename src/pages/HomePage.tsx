@@ -1,7 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Welcome from '@/components/Welcome';
-import Slideshow from '@/components/Slideshow';
 import Ministries from '@/components/Ministries';
 import Vision from '@/components/Vision';
 import Mission from '@/components/Mission';
@@ -28,7 +27,6 @@ export default function HomePage() {
         <Ministries />
         <Vision />
         <Mission />
-        <Slideshow />
         <Meetings />
         <PrayerRequest />
         <Compassion />
