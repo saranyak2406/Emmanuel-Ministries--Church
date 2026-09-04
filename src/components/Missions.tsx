@@ -1,46 +1,39 @@
 import { Megaphone, Home, Hand, Users, Heart, Handshake, ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useNavigate } from 'react-router-dom';
 
 const MISSION_CARDS = [
-  { icon: Megaphone, title: 'Gospel Evangelism',    desc: 'Sharing the message of Jesus Christ in cities, towns, villages and communities across India and beyond.' },
-  { icon: Home,      title: 'Village Outreach',      desc: 'Reaching rural communities with the Gospel and prayer — carrying the hope of Christ to those who need it most.' },
-  { icon: Hand,      title: 'Prayer Missions',       desc: 'Standing in prayer for communities and nations through dedicated seasons of intercession and fasting.' },
-  { icon: Users,     title: 'Gospel Meetings',       desc: 'Organizing and participating in evangelistic gatherings for worship, the Word and responding to the Gospel.' },
-  { icon: Heart,     title: 'Community Outreach',    desc: 'Serving people with compassion and practical support, demonstrating the love of Christ in action.' },
-  { icon: Handshake, title: 'Mission Partnerships',  desc: 'Working together with believers and ministries to advance the Gospel and strengthen Kingdom work.' },
+  { icon: Megaphone, title: 'Gospel Evangelism',    href: '/mission/gospel-evangelism',   desc: 'Sharing the message of Jesus Christ in cities, towns, villages and communities across India and beyond.' },
+  { icon: Home,      title: 'Village Outreach',      href: '/mission/village-outreach',    desc: 'Reaching rural communities with the Gospel and prayer — carrying the hope of Christ to those who need it most.' },
+  { icon: Hand,      title: 'Prayer Missions',       href: '/mission/prayer-missions',     desc: 'Standing in prayer for communities and nations through dedicated seasons of intercession and fasting.' },
+  { icon: Users,     title: 'Gospel Meetings',       href: '/mission/gospel-meetings',     desc: 'Organizing and participating in evangelistic gatherings for worship, the Word and responding to the Gospel.' },
+  { icon: Heart,     title: 'Community Outreach',    href: '/mission/community-outreach',  desc: 'Serving people with compassion and practical support, demonstrating the love of Christ in action.' },
+  { icon: Handshake, title: 'Mission Partnerships',  href: '/mission/mission-partnerships',desc: 'Working together with believers and ministries to advance the Gospel and strengthen Kingdom work.' },
 ];
 
-// Indian village/rural outreach image
-const MISSIONS_BG =
-  'https://images.pexels.com/photos/3280130/pexels-photo-3280130.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop';
+// Local slideshow image for missions backdrop
+const MISSIONS_BG = '/images/slideshow/img1.jpg';
 
 export default function Missions() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+  const navigate = useNavigate();
 
   return (
     <section id="missions" className="relative section-padding overflow-hidden">
-      {/* Background with strong overlay for readability */}
+      {/* Background image without heavy dark overlay */}
       <div className="absolute inset-0">
         <img src={MISSIONS_BG} alt="" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-charcoal-950/92" />
-        {/* Subtle dot pattern */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 50% 50%, #d9a347 1px, transparent 1px)',
-            backgroundSize: '32px 32px',
-          }}
-        />
+        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px]" />
       </div>
 
       <div ref={ref} className="container-max relative z-10">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className={`eyebrow text-gold-300 mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>
+          <p className={`eyebrow text-brand-800 mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>
             Missions
           </p>
           <h2
-            className={`text-display font-serif font-bold text-ivory-50 reveal reveal-delay-1 ${
+            className={`text-display font-serif font-bold text-charcoal-950 reveal reveal-delay-1 ${
               isVisible ? 'is-visible' : ''
             }`}
           >
@@ -49,18 +42,18 @@ export default function Missions() {
 
           {/* Matthew 28:19 quote */}
           <div
-            className={`mt-6 inline-block border-l-2 border-gold-400 pl-5 text-left reveal reveal-delay-2 ${
+            className={`mt-6 inline-block border-l-4 border-brand-700 pl-5 text-left reveal reveal-delay-2 ${
               isVisible ? 'is-visible' : ''
             }`}
           >
-            <p className="font-serif italic text-lg text-ivory-200">
+            <p className="font-serif italic text-lg text-charcoal-900 font-medium">
               &ldquo;Go ye therefore, and teach all nations…&rdquo;
             </p>
-            <p className="mt-1 text-sm text-gold-300 font-medium">— Matthew 28:19</p>
+            <p className="mt-1 text-sm text-brand-800 font-bold uppercase tracking-wider">— Matthew 28:19</p>
           </div>
 
           <p
-            className={`mt-6 text-base md:text-lg text-ivory-300 leading-relaxed reveal reveal-delay-3 ${
+            className={`mt-6 text-base md:text-lg text-charcoal-800 font-medium leading-relaxed reveal reveal-delay-3 ${
               isVisible ? 'is-visible' : ''
             }`}
           >
@@ -76,9 +69,10 @@ export default function Missions() {
             return (
               <div
                 key={card.title}
+                onClick={() => navigate(card.href)}
                 className={`reveal reveal-delay-${(i % 3) + 1} ${
                   isVisible ? 'is-visible' : ''
-                } group rounded-2xl bg-charcoal-800 border border-charcoal-700 p-7 transition-all duration-300 hover:bg-charcoal-700 hover:border-gold-400/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-charcoal-950/50`}
+                } group rounded-2xl bg-charcoal-800 border border-charcoal-700 p-7 transition-all duration-300 hover:bg-charcoal-700 hover:border-gold-400/50 hover:-translate-y-1 hover:shadow-2xl hover:shadow-charcoal-950/50 cursor-pointer`}
               >
                 {/* Icon badge */}
                 <div className="w-12 h-12 rounded-xl bg-gold-500/15 border border-gold-400/20 flex items-center justify-center mb-5 transition-all duration-300 group-hover:bg-gold-500/30 group-hover:border-gold-400/50">
@@ -102,9 +96,7 @@ export default function Missions() {
         >
           <button
             className="btn-gold"
-            onClick={() =>
-              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
-            }
+            onClick={() => navigate('/partnership')}
           >
             Partner With Us in Missions
             <ArrowRight className="h-4 w-4" />

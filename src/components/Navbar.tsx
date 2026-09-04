@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
-  Heart, LayoutGrid, ChevronRight, X,
+  LayoutGrid, ChevronRight, X,
   Home, BookOpen, Eye, Target, Users, Calendar,
   PlayCircle, Globe, Handshake, DollarSign,
-  Phone, Star, MessageSquare,
+  Phone, Star, MessageSquare, Heart,
 } from 'lucide-react';
 import { NAV_LINKS } from '@/lib/constants';
+import PrayingHandsIcon from '@/components/PrayingHandsIcon';
 
 // ── All page sections for the sidebar (full site map) ─────────────────────
 const ALL_SECTIONS = [
@@ -28,21 +29,26 @@ const ALL_SECTIONS = [
   {
     group: 'Events & Prayer',
     items: [
-      { label: 'Meetings',     href: '/meetings',    icon: Calendar      },
+      { label: 'Events',       href: '/meetings',    icon: Calendar      },
       { label: 'Prayer',       href: '/prayer',      icon: MessageSquare },
-      { label: 'Testimonies',  href: '/media',       icon: Star          },
     ],
   },
   {
-    group: 'Media',
+    group: 'Testimonies & Media',
     items: [
+      { label: 'Testimonials', href: '/testimonials', icon: Star         },
       { label: 'Media',        href: '/media',       icon: PlayCircle    },
-      { label: 'Vision',       href: '/about',       icon: Eye           },
-      { label: 'Mission',      href: '/about',       icon: Target        },
     ],
   },
   {
-    group: 'Partner & Support',
+    group: 'About Us',
+    items: [
+      { label: 'Vision',       href: '/about',       icon: Eye           },
+      { label: 'Core Values',  href: '/core-values/christ', icon: Heart  },
+    ],
+  },
+  {
+    group: 'Support',
     items: [
       { label: 'Give',         href: '/give',        icon: DollarSign    },
       { label: 'Contact',      href: '/contact',     icon: Phone         },
@@ -86,7 +92,7 @@ export default function Navbar() {
           boxShadow: isScrolled
             ? '0 2px 12px 0 rgba(0, 0, 0, 0.10)'
             : 'none',
-          borderBottom: isScrolled ? '1px solid rgba(193,18,18,0.08)' : 'none',
+          borderBottom: isScrolled ? '1px solid rgba(26,75,140,0.08)' : 'none',
         }}
       >
         <div className="container-max">
@@ -106,7 +112,7 @@ export default function Navbar() {
                 <span className="font-serif text-lg md:text-xl font-bold leading-none tracking-wide text-brand-800">
                   EMMANUEL
                 </span>
-                <span className="font-sans text-[0.52rem] md:text-[0.58rem] font-semibold uppercase tracking-[0.18em] mt-0.5 text-forest-700">
+                <span className="font-sans text-[0.52rem] md:text-[0.58rem] font-semibold uppercase tracking-[0.18em] mt-0.5 text-royal-700">
                   Gospel Ministries
                 </span>
               </div>
@@ -135,7 +141,7 @@ export default function Navbar() {
                 onClick={() => handleNavClick('/prayer')}
                 className="hidden sm:inline-flex btn-primary !py-2.5 !px-5 !text-xs"
               >
-                <Heart className="h-3.5 w-3.5" />
+                <PrayingHandsIcon className="h-4 w-4" />
                 Prayer Request
               </button>
 
@@ -174,7 +180,7 @@ export default function Navbar() {
         aria-label="Full navigation sidebar"
       >
         {/* Header */}
-        <div className="bg-gradient-to-br from-forest-800 to-charcoal-900 px-6 py-5 flex items-center justify-between shrink-0">
+        <div className="bg-gradient-to-br from-royal-800 to-charcoal-900 px-6 py-5 flex items-center justify-between shrink-0">
           <button onClick={() => handleNavClick('/')} className="text-left flex items-center gap-3">
             <img
               src="/logo.jpg"
@@ -185,7 +191,7 @@ export default function Navbar() {
               <span className="font-serif text-xl font-bold text-ivory-50 block leading-none">
                 EMMANUEL
               </span>
-              <span className="text-[0.52rem] font-semibold uppercase tracking-[0.18em] text-olive-300 mt-0.5 block">
+              <span className="text-[0.52rem] font-semibold uppercase tracking-[0.18em] text-royal-300 mt-0.5 block">
                 Gospel Ministries
               </span>
               <p className="text-[0.58rem] text-ivory-300/60 mt-0.5">All Sections</p>
@@ -253,11 +259,11 @@ export default function Navbar() {
             onClick={() => handleNavClick('/prayer')}
             className="btn-primary w-full !text-xs !py-2.5"
           >
-            <Heart className="h-3.5 w-3.5" />
+            <PrayingHandsIcon className="h-3.5 w-3.5" />
             Request Prayer
           </button>
           <p className="text-[0.6rem] text-charcoal-400 text-center mt-2 leading-relaxed">
-            Proclaiming Christ • Reaching Souls • Advancing God's Kingdom
+            Preaching Christ \u2022 Transforming Lives \u2022 Reaching the World
           </p>
         </div>
       </aside>

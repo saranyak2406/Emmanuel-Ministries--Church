@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MapPin, Phone, Mail, MessageCircle, Send, Loader2, CheckCircle, Youtube, Facebook, Instagram } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { MINISTRY } from '@/lib/constants';
+import { MINISTRY, SOCIAL_LINKS } from '@/lib/constants';
 
 type FormState = {
   name: string;
@@ -12,6 +12,23 @@ type FormState = {
 };
 
 const INITIAL: FormState = { name: '', email: '', phone: '', country: '', message: '' };
+
+// Telegram SVG icon
+function TelegramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+    </svg>
+  );
+}
+
+function getSocialIcon(label: string) {
+  if (label.toLowerCase().includes('youtube')) return Youtube;
+  if (label.toLowerCase().includes('facebook')) return Facebook;
+  if (label.toLowerCase().includes('instagram')) return Instagram;
+  if (label.toLowerCase().includes('whatsapp')) return MessageCircle;
+  return Send;
+}
 
 export default function Contact() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
@@ -39,21 +56,21 @@ export default function Contact() {
   const CONTACT_INFO = [
     {
       icon: MapPin,
-      label: 'Location',
-      value: MINISTRY.location,
+      label: 'Address',
+      value: MINISTRY.fullAddress,
       href: null,
     },
     {
       icon: Phone,
       label: 'Phone',
-      value: MINISTRY.phone,
-      href: `tel:${MINISTRY.phone}`,
+      value: `${MINISTRY.phone}\n${MINISTRY.phone2}`,
+      href: `tel:${MINISTRY.phone.replace(/\s+/g, '')}`,
     },
     {
-      icon: MessageCircle,
-      label: 'WhatsApp',
-      value: MINISTRY.whatsapp,
-      href: `https://wa.me/${MINISTRY.whatsapp.replace(/\s+/g, '')}`,
+      icon: Send,
+      label: 'Telegram',
+      value: MINISTRY.telegram,
+      href: `https://t.me/${MINISTRY.telegram.replace(/[+\s]/g, '')}`,
     },
     {
       icon: Mail,
@@ -64,7 +81,7 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="section-padding bg-ivory-100">
+    <section id="contact" className="section-padding bg-ivory-50/85 backdrop-blur-md">
       <div ref={ref} className="container-max">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Contact</p>
@@ -91,7 +108,7 @@ export default function Contact() {
                       href={href}
                       target={href.startsWith('http') ? '_blank' : undefined}
                       rel="noopener noreferrer"
-                      className="text-base font-medium text-brand-700 hover:text-brand-900 transition-colors"
+                      className="text-base font-medium text-brand-700 hover:text-brand-900 transition-colors whitespace-pre-line"
                     >
                       {value}
                     </a>
@@ -103,16 +120,28 @@ export default function Contact() {
             ))}
 
             {/* Social */}
-            <div className="flex items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <span className="text-sm font-medium text-charcoal-600">Follow us:</span>
-              {[Youtube, Facebook, Instagram].map((Icon, i) => (
-                <button
-                  key={i}
-                  className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-ivory-50 border border-ivory-300 text-charcoal-700 transition-all duration-300 hover:bg-brand-700 hover:text-ivory-50 hover:border-brand-700 hover:-translate-y-0.5"
-                >
-                  <Icon className="h-4 w-4" />
-                </button>
-              ))}
+              {SOCIAL_LINKS.map((social) => {
+                const isTelegram = social.icon === 'telegram';
+                const Icon = isTelegram ? null : getSocialIcon(social.label);
+                return (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={social.label}
+                    className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-ivory-50 border border-ivory-300 text-charcoal-700 transition-all duration-300 hover:bg-brand-700 hover:text-ivory-50 hover:border-brand-700 hover:-translate-y-0.5"
+                  >
+                    {isTelegram ? (
+                      <TelegramIcon className="h-4 w-4" />
+                    ) : Icon ? (
+                      <Icon className="h-4 w-4" />
+                    ) : null}
+                  </a>
+                );
+              })}
             </div>
           </div>
 

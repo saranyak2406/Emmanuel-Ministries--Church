@@ -1,4 +1,4 @@
-﻿import { Heart, HandHeart, Globe, Calendar, DollarSign, ArrowRight } from 'lucide-react';
+import { Heart, HandHeart, Globe, Calendar, DollarSign, ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const PARTNERSHIPS = [
@@ -33,7 +33,7 @@ export default function Partnership() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section id="partnership" className="section-padding bg-ivory-100">
+    <section id="partnership" className="section-padding bg-ivory-50/85 backdrop-blur-md">
       <div ref={ref} className="container-max">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Partnership</p>

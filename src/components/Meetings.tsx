@@ -86,6 +86,28 @@ function EventCard({
   isVisible: boolean;
   onYoutubeClick: (url: string) => void;
 }) {
+  const handleDirections = () => {
+    window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`, '_blank');
+  };
+
+  const handleShare = async () => {
+    const shareData = {
+      title: event.name,
+      text: `Join us for ${event.name} on ${event.date} at ${event.time}. Location: ${event.location}`,
+      url: window.location.href,
+    };
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+      } catch (err) {
+        console.error('Error sharing:', err);
+      }
+    } else {
+      navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+      alert('Event details copied to clipboard!');
+    }
+  };
+
   return (
     <div
       className={`reveal reveal-delay-${(index % 3) + 1} ${isVisible ? 'is-visible' : ''} ${
@@ -121,7 +143,7 @@ function EventCard({
               <InfoRow icon={Building2}  label="Host"     value={event.host}     />
             </div>
             <div className="flex flex-wrap gap-3">
-              <button className="btn-gold !py-2.5 !px-5 !text-xs">
+              <button onClick={handleDirections} className="btn-gold !py-2.5 !px-5 !text-xs">
                 <Navigation className="h-3.5 w-3.5" />
                 Get Directions
               </button>
@@ -129,7 +151,7 @@ function EventCard({
                 <Info className="h-3.5 w-3.5" />
                 Event Details
               </button>
-              <button className="btn-light !py-2.5 !px-5 !text-xs border-ivory-200/30">
+              <button onClick={handleShare} className="btn-light !py-2.5 !px-5 !text-xs border-ivory-200/30">
                 <Share2 className="h-3.5 w-3.5" />
                 Share Event
               </button>
@@ -152,11 +174,11 @@ function EventCard({
             <SmallInfoRow icon={User}   value={event.speaker}  />
           </div>
           <div className="flex flex-wrap gap-2">
-            <button className="btn-secondary !py-2 !px-4 !text-xs">
+            <button onClick={handleDirections} className="btn-secondary !py-2 !px-4 !text-xs">
               <Navigation className="h-3 w-3" />
               Directions
             </button>
-            <button className="btn-secondary !py-2 !px-4 !text-xs">
+            <button onClick={handleShare} className="btn-secondary !py-2 !px-4 !text-xs">
               <Share2 className="h-3 w-3" />
               Share
             </button>
@@ -204,7 +226,7 @@ export default function Meetings() {
   const [youtubeModal, setYoutubeModal] = useState<string | null>(null);
 
   return (
-    <section id="meetings" className="section-padding bg-ivory-100">
+    <section id="meetings" className="section-padding bg-ivory-50/85 backdrop-blur-md">
       <div ref={ref} className="container-max">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Upcoming Meetings</p>

@@ -9,10 +9,10 @@ export default function Welcome() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section id="about" className="section-padding bg-white relative overflow-hidden">
+    <section id="about" className="section-padding bg-white/85 backdrop-blur-md relative overflow-hidden">
 
       {/* Subtle background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-forest-50/60 rounded-full blur-3xl -z-0 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-royal-50/60 rounded-full blur-3xl -z-0 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-50/40 rounded-full blur-3xl -z-0 pointer-events-none" />
 
       <div ref={ref} className="container-max relative z-10">
@@ -48,7 +48,7 @@ export default function Welcome() {
             </div>
 
             {/* Logo — floating card */}
-            <div className="absolute -bottom-6 -right-6 z-10 bg-white rounded-2xl shadow-xl p-3 border border-forest-100">
+            <div className="absolute -bottom-6 -right-6 z-10 bg-white rounded-2xl shadow-xl p-3 border border-royal-100">
               <img
                 src={LOGO_IMG}
                 alt="Emmanuel Gospel Ministries logo"
@@ -57,7 +57,7 @@ export default function Welcome() {
             </div>
 
             {/* Decorative frames */}
-            <div className="absolute -bottom-4 -left-4 w-28 h-28 border-2 border-forest-400/30 rounded-2xl -z-10" />
+            <div className="absolute -bottom-4 -left-4 w-28 h-28 border-2 border-royal-400/30 rounded-2xl -z-10" />
             <div className="absolute -top-4 -right-4 w-20 h-20 border-2 border-brand-700/20 rounded-2xl -z-10" />
           </div>
 
@@ -94,7 +94,7 @@ export default function Welcome() {
 
             {/* Leader */}
             <div className="mt-8 flex items-start gap-4">
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-forest-700 to-charcoal-900 flex items-center justify-center shrink-0">
+              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-royal-700 to-charcoal-900 flex items-center justify-center shrink-0">
                 <span className="font-serif text-xl font-bold text-gold-400">EA</span>
               </div>
               <div>

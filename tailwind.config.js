@@ -16,7 +16,7 @@ export default {
           800: '#745e40',
           900: '#564530',
         },
-        // Primary brand red (from logo cross/figure)
+        // Primary brand red (from logo cross)
         brand: {
           50:  '#fff1f1',
           100: '#ffe0e0',
@@ -30,19 +30,19 @@ export default {
           900: '#841616',
           950: '#480707',
         },
-        // Accent green (from logo background)
-        forest: {
-          50:  '#f2fbf2',
-          100: '#e1f6e1',
-          200: '#c4ecc4',
-          300: '#96da97',
-          400: '#60bf61',
-          500: '#3da33e',
-          600: '#2c842e',
-          700: '#256927',
-          800: '#215423',
-          900: '#1c441e',
-          950: '#0a250c',
+        // Royal blue accent (from logo globe)
+        royal: {
+          50:  '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6',
+          600: '#2563eb',
+          700: '#1a4b8c',
+          800: '#1e3a6e',
+          900: '#1a3258',
+          950: '#0f1f3a',
         },
         // Olive-lime accent (subtle tones from logo border)
         olive: {
@@ -115,11 +115,11 @@ export default {
         pulseSoft: { '0%, 100%': { opacity: '0.8' }, '50%': { opacity: '1' } },
       },
       backgroundImage: {
-        'hero-overlay': 'linear-gradient(180deg, rgba(12,20,12,0.72) 0%, rgba(12,20,12,0.45) 40%, rgba(12,20,12,0.88) 100%)',
-        'dark-overlay': 'linear-gradient(180deg, rgba(12,20,12,0.82) 0%, rgba(12,20,12,0.62) 100%)',
+        'hero-overlay': 'linear-gradient(180deg, rgba(15,31,58,0.72) 0%, rgba(15,31,58,0.45) 40%, rgba(15,31,58,0.88) 100%)',
+        'dark-overlay': 'linear-gradient(180deg, rgba(15,31,58,0.82) 0%, rgba(15,31,58,0.62) 100%)',
         'brand-gradient': 'linear-gradient(135deg, #c11212 0%, #841616 100%)',
-        'forest-gradient':'linear-gradient(135deg, #256927 0%, #1c441e 100%)',
-        'hero-gradient':  'linear-gradient(135deg, #0a250c 0%, #1c441e 50%, #256927 100%)',
+        'royal-gradient':'linear-gradient(135deg, #1a4b8c 0%, #1a3258 100%)',
+        'hero-gradient':  'linear-gradient(135deg, #0f1f3a 0%, #1a3258 50%, #1a4b8c 100%)',
       },
     },
   },

@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Heart, Send, CheckCircle, Shield, Loader2, Home, BookOpen, Users, Handshake, DollarSign, Phone, X } from 'lucide-react';
+import { Send, CheckCircle, Shield, Loader2, Home, BookOpen, Users, Handshake, DollarSign, Phone, X } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { PRAYER_CATEGORIES } from '@/lib/constants';
+import PrayingHandsIcon from '@/components/PrayingHandsIcon';
 
 // Indian prayer / fasting devotion
 const PRAYER_BG =
@@ -70,7 +71,7 @@ export default function PrayerRequest() {
 
   return (
     <>
-      <section id="prayer" className="section-padding relative overflow-hidden">
+      <section id="prayer" className="section-padding bg-ivory-50/85 backdrop-blur-md relative overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0">
           <img src={PRAYER_BG} alt="" className="h-full w-full object-cover" />
@@ -82,23 +83,23 @@ export default function PrayerRequest() {
             {/* Left: text */}
             <div className={`reveal ${isVisible ? 'is-visible' : ''}`}>
               <div className="w-14 h-14 rounded-2xl bg-gold-500/15 flex items-center justify-center mb-6">
-                <Heart className="h-7 w-7 text-gold-400" />
+                <PrayingHandsIcon className="h-7 w-7 text-gold-400" />
               </div>
               <p className="eyebrow text-gold-300 mb-4">Prayer Request</p>
               <h2 className="text-display font-serif font-bold text-ivory-50 mb-6 text-balance">
                 We Want to Pray for You
               </h2>
               <p className="text-lg text-ivory-200 leading-relaxed mb-6">
-                You don't have to face your challenges alone. Share your prayer request with us,
+                You don&rsquo;t have to face your challenges alone. Share your prayer request with us,
                 and our prayer team will stand with you in prayer.
               </p>
 
               {/* Bible verse */}
               <div className="mb-8 border-l-2 border-gold-400/60 pl-5">
                 <p className="font-serif italic text-ivory-200">
-                  &ldquo;Call unto me, and I will answer thee…&rdquo;
+                  &ldquo;Call unto me, and I will answer thee&hellip;&rdquo;
                 </p>
-                <p className="mt-1 text-sm text-gold-300 font-medium">— Jeremiah 33:3</p>
+                <p className="mt-1 text-sm text-gold-300 font-medium">&mdash; Jeremiah 33:3</p>
               </div>
 
               <div className="flex items-start gap-3 p-5 rounded-xl bg-ivory-50/5 border border-ivory-200/10">
@@ -321,7 +322,7 @@ export default function PrayerRequest() {
         {/* Footer */}
         <div className="absolute bottom-0 left-0 right-0 p-4 border-t border-ivory-200 bg-ivory-50">
           <p className="text-xs text-charcoal-500 text-center leading-relaxed">
-            Proclaiming Christ • Reaching Souls • Advancing God's Kingdom
+            Preaching Christ &bull; Transforming Lives &bull; Reaching the World
           </p>
         </div>
       </aside>

@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { Building2, Smartphone, Globe, Shield, X, CreditCard, ArrowRight } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
@@ -49,7 +49,7 @@ export default function Give() {
   };
 
   return (
-    <section id="give" className="section-padding bg-ivory-50 relative overflow-hidden">
+    <section id="give" className="section-padding bg-ivory-50/85 backdrop-blur-md relative overflow-hidden">
       <div ref={ref} className="container-max">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
           {/* Image */}
@@ -102,44 +102,12 @@ export default function Give() {
           </div>
         </div>
 
-        {/* Payment method cards */}
-        <div className="mb-12">
-          <p className={`text-center text-sm font-semibold uppercase tracking-wider text-gold-600 mb-8 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
-            Choose Your Giving Method
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {METHODS.map((m, i) => {
-              const Icon = m.icon;
-              return (
-                <div
-                  key={m.title}
-                  className={`reveal reveal-delay-${i + 1} ${isVisible ? 'is-visible' : ''} group bg-gradient-to-br from-ivory-50 to-ivory-100 rounded-2xl p-7 border-2 border-ivory-200 transition-all duration-300 hover:border-brand-700 hover:shadow-xl hover:-translate-y-1 cursor-pointer`}
-                  onClick={() => openModal(m)}
-                >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-brand-600 to-brand-800 flex items-center justify-center mb-5 transition-all duration-300 group-hover:shadow-lg group-hover:scale-110">
-                    <Icon className="h-7 w-7 text-ivory-50" />
-                  </div>
-                  <h3 className="text-lg font-serif font-bold text-charcoal-900 mb-2">{m.title}</h3>
-                  <p className="text-sm text-charcoal-600 mb-4 leading-relaxed">{m.desc}</p>
-                  <button
-                    className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700 hover:text-brand-900 transition-colors group/btn"
-                    onClick={(e) => { e.stopPropagation(); openModal(m); }}
-                  >
-                    View Details
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />
-                  </button>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
         {/* Trust & Transparency */}
         <div className={`mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
           <div className="p-6 rounded-xl bg-brand-50 border border-brand-100">
             <h4 className="font-serif font-bold text-brand-900 mb-2">100% Transparency</h4>
             <p className="text-sm text-charcoal-700 leading-relaxed">
-              Every donation is used faithfully to advance God's Kingdom. We maintain complete accountability and transparency in all financial matters.
+              Every donation is used faithfully to advance God&rsquo;s Kingdom. We maintain complete accountability and transparency in all financial matters.
             </p>
           </div>
           <div className="p-6 rounded-xl bg-brand-50 border border-brand-100">
@@ -217,10 +185,10 @@ export default function Give() {
                     ))}
                   </div>
                   <button
-                    className="w-full text-sm text-charcoal-500 hover:text-brand-700 transition-colors text-center"
+                    className="w-full text-sm text-charcoal-500 hover:text-brand-700 transition-colors text-center mt-2"
                     onClick={() => setSelectedMethod(null)}
                   >
-                    ← View all payment options
+                    &larr; View all payment options
                   </button>
                 </>
               ) : (

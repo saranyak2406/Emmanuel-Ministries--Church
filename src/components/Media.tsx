@@ -1,106 +1,170 @@
-﻿import { Play, ImageIcon, ArrowRight, Youtube, Facebook, Instagram, MessageCircle } from 'lucide-react';
+import { useState } from 'react';
+import { Play, X, Youtube, Facebook, Instagram, MessageCircle, Send, ExternalLink } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { SOCIAL_LINKS } from '@/lib/constants';
 
-const CATEGORIES = [
-  { label: 'Sermons', icon: Play },
-  { label: 'Bible Teachings', icon: Play },
-  { label: 'Prayer', icon: Play },
-  { label: 'Revival Meetings', icon: Play },
-  { label: 'Short Messages', icon: Play },
-  { label: 'Photos', icon: ImageIcon },
+// Telegram SVG icon
+function TelegramIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+    </svg>
+  );
+}
+
+function getSocialIcon(label: string) {
+  if (label.toLowerCase().includes('youtube')) return Youtube;
+  if (label.toLowerCase().includes('facebook')) return Facebook;
+  if (label.toLowerCase().includes('instagram')) return Instagram;
+  if (label.toLowerCase().includes('whatsapp')) return MessageCircle;
+  return null;
+}
+
+// Featured sermon videos
+const VIDEOS = [
+  {
+    title: 'Gospel Outreach Meeting',
+    thumbnail: 'https://img.youtube.com/vi/tVpTGkB7KV8/hqdefault.jpg',
+    desc: 'Evangelist Emmanuel Abraham proclaims the Gospel at a powerful outreach meeting.',
+    duration: '25:14',
+    youtubeUrl: 'https://youtu.be/tVpTGkB7KV8?si=y33gglqbeBld52dc',
+  },
+  {
+    title: 'Prayer & Revival Meeting',
+    thumbnail: 'https://img.youtube.com/vi/fuhGTqbKoLw/hqdefault.jpg',
+    desc: 'A special gathering of believers for prayer, worship and the Word of God.',
+    duration: '32:05',
+    youtubeUrl: 'https://youtu.be/fuhGTqbKoLw?si=jwQXq04-Hi2VIAzM',
+  },
+  {
+    title: 'Village Gospel Outreach',
+    thumbnail: 'https://img.youtube.com/vi/Ur6lXrM4RyU/hqdefault.jpg',
+    desc: 'Taking the Gospel to villages and unreached communities in India.',
+    duration: '18:47',
+    youtubeUrl: 'https://youtu.be/Ur6lXrM4RyU?si=iLxv4qKAYw9oJE8X',
+  },
 ];
 
-// Indian worship / ministry gathering thumbnails
-const THUMBNAILS = [
-  'https://images.pexels.com/photos/3280130/pexels-photo-3280130.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-  'https://images.pexels.com/photos/6994992/pexels-photo-6994992.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-  'https://images.pexels.com/photos/8164742/pexels-photo-8164742.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-  'https://images.pexels.com/photos/6646918/pexels-photo-6646918.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-];
+function YoutubeModal({ url, onClose }: { url: string; onClose: () => void }) {
+  const embedUrl = url.includes('watch?v=')
+    ? url.replace('watch?v=', 'embed/')
+    : url.includes('youtu.be/')
+    ? url.replace('youtu.be/', 'www.youtube.com/embed/')
+    : url;
 
-const SOCIALS = [
-  { label: 'YouTube', icon: Youtube, color: 'hover:bg-red-600 hover:text-white' },
-  { label: 'Facebook', icon: Facebook, color: 'hover:bg-blue-600 hover:text-white' },
-  { label: 'Instagram', icon: Instagram, color: 'hover:bg-gradient-to-tr hover:from-purple-600 hover:to-pink-500 hover:text-white' },
-  { label: 'WhatsApp', icon: MessageCircle, color: 'hover:bg-green-600 hover:text-white' },
-];
+  return (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal-950/80 backdrop-blur-sm p-4"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-2xl bg-charcoal-900"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-charcoal-900/80 flex items-center justify-center text-ivory-50 hover:bg-brand-700 transition-colors"
+        >
+          <X className="h-4 w-4" />
+        </button>
+        <iframe
+          src={embedUrl}
+          title="Ministry Video"
+          className="w-full h-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    </div>
+  );
+}
 
 export default function Media() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+  const [videoModal, setVideoModal] = useState<string | null>(null);
 
   return (
-    <section id="media" className="section-padding bg-ivory-50">
+    <section id="media" className="section-padding bg-charcoal-900/85 backdrop-blur-md">
       <div ref={ref} className="container-max">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Media</p>
-          <h2 className={`text-display font-serif font-bold text-charcoal-900 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
-            Watch &bull; Listen &bull; Learn &bull; Share
+          <p className={`eyebrow text-gold-400 mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Media</p>
+          <h2 className={`text-display font-serif font-bold text-ivory-50 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
+            Watch &amp; Be Encouraged
           </h2>
+          <p className={`mt-4 text-lg text-ivory-300 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
+            Watch sermons, testimonies, and Gospel meetings from Emmanuel Gospel Ministries.
+          </p>
         </div>
 
-        {/* Category pills */}
-        <div className={`flex flex-wrap justify-center gap-3 mb-10 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
-          {CATEGORIES.map((cat) => {
-            const Icon = cat.icon;
-            return (
-              <button
-                key={cat.label}
-                className="inline-flex items-center gap-2 rounded-full border border-ivory-300 bg-ivory-100 px-5 py-2.5 text-sm font-medium text-charcoal-700 transition-all duration-300 hover:border-brand-600 hover:bg-brand-700 hover:text-ivory-50 hover:-translate-y-0.5"
-              >
-                <Icon className="h-4 w-4" />
-                {cat.label}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Media grid */}
-        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12 reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
-          {THUMBNAILS.map((thumb, i) => (
+        {/* Video grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          {VIDEOS.map((v, i) => (
             <div
               key={i}
-              className="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-md"
+              className={`reveal reveal-delay-${i + 1} ${isVisible ? 'is-visible' : ''} group cursor-pointer`}
+              onClick={() => setVideoModal(v.youtubeUrl)}
             >
-              <img
-                src={thumb}
-                alt={`Media ${i + 1}`}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/20 to-transparent" />
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                <div className="w-12 h-12 rounded-full bg-ivory-50/90 flex items-center justify-center">
-                  <Play className="h-5 w-5 text-brand-700 ml-0.5" fill="currentColor" />
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-lg mb-4">
+                <img
+                  src={v.thumbnail}
+                  alt={v.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full bg-brand-700/90 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-600">
+                    <Play className="h-6 w-6 text-ivory-50 ml-1" fill="currentColor" />
+                  </div>
+                </div>
+                <div className="absolute bottom-3 right-3 bg-charcoal-900/80 rounded-md px-2 py-1">
+                  <span className="text-xs text-ivory-50 font-medium">{v.duration}</span>
                 </div>
               </div>
-              <div className="absolute bottom-0 left-0 right-0 p-3">
-                <p className="text-xs font-medium text-ivory-50">Media Item {i + 1}</p>
-              </div>
+              <h3 className="font-serif text-lg font-semibold text-ivory-50 mb-2 group-hover:text-gold-400 transition-colors">{v.title}</h3>
+              <p className="text-sm text-ivory-400 leading-relaxed">{v.desc}</p>
             </div>
           ))}
         </div>
 
-        {/* Social links */}
-        <div className={`flex flex-col items-center gap-6 reveal reveal-delay-4 ${isVisible ? 'is-visible' : ''}`}>
-          <div className="flex items-center gap-3">
-            {SOCIALS.map((s) => {
-              const Icon = s.icon;
+        {/* Social Links */}
+        <div className={`reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''} text-center`}>
+          <p className="text-sm font-semibold uppercase tracking-wider text-ivory-400 mb-6">
+            Follow Us on Social Media
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            {SOCIAL_LINKS.map((social) => {
+              const isTelegram = social.icon === 'telegram';
+              const Icon = isTelegram ? null : getSocialIcon(social.label);
               return (
-                <button
-                  key={s.label}
-                  className={`inline-flex items-center justify-center w-11 h-11 rounded-full bg-ivory-100 border border-ivory-300 text-charcoal-700 transition-all duration-300 hover:-translate-y-1 ${s.color}`}
-                  aria-label={s.label}
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center gap-3 bg-charcoal-800 border border-charcoal-700 rounded-xl px-5 py-3 transition-all duration-300 hover:border-gold-400/40 hover:bg-charcoal-800/50 hover:-translate-y-0.5"
                 >
-                  <Icon className="h-5 w-5" />
-                </button>
+                  <span className="w-9 h-9 rounded-lg bg-charcoal-700 flex items-center justify-center transition-all duration-300 group-hover:bg-brand-700">
+                    {isTelegram ? (
+                      <TelegramIcon className="h-4 w-4 text-ivory-300 group-hover:text-ivory-50" />
+                    ) : Icon ? (
+                      <Icon className="h-4 w-4 text-ivory-300 group-hover:text-ivory-50 transition-colors" />
+                    ) : (
+                      <Send className="h-4 w-4 text-ivory-300 group-hover:text-ivory-50 transition-colors" />
+                    )}
+                  </span>
+                  <div>
+                    <p className="text-sm font-medium text-ivory-50">{social.label}</p>
+                    <p className="text-[0.6rem] text-ivory-400">Follow &amp; Subscribe</p>
+                  </div>
+                  <ExternalLink className="h-3 w-3 text-ivory-500 ml-1" />
+                </a>
               );
             })}
           </div>
-          <button className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand-700 hover:text-brand-900 transition-colors group">
-            Explore Media
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
         </div>
       </div>
+
+      {videoModal && <YoutubeModal url={videoModal} onClose={() => setVideoModal(null)} />}
     </section>
   );
 }

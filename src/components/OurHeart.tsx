@@ -1,4 +1,7 @@
-﻿import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { useNavigate } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { CORE_VALUES } from '@/lib/constants';
 
 const STEPS = [
   { num: '01', title: 'Preach Christ', desc: 'We begin with the Gospel — proclaiming Jesus Christ crucified, risen, and coming again.' },
@@ -7,19 +10,9 @@ const STEPS = [
   { num: '04', title: 'Strengthen the Church', desc: 'We partner with churches and believers to build up the body of Christ for lasting impact.' },
 ];
 
-const CORE_VALUES = [
-  { title: 'Christ', desc: 'Jesus Christ is at the center of everything we do.' },
-  { title: 'Gospel', desc: 'The Gospel is our message and mission.' },
-  { title: 'Prayer', desc: 'We depend upon God through prayer and intercession.' },
-  { title: 'Soul Winning', desc: 'We carry a burden to see people come to Christ.' },
-  { title: 'Compassion', desc: 'We demonstrate the love of Christ by serving people.' },
-  { title: 'Integrity', desc: 'We seek to serve God and people with honesty, humility and accountability.' },
-  { title: 'Unity', desc: 'We believe in working together with churches and ministries for the advancement of God\'s Kingdom.' },
-  { title: 'Service', desc: 'We serve God by serving people.' },
-];
-
 export default function OurHeart() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+  const navigate = useNavigate();
 
   return (
     <section className="section-padding bg-gradient-to-b from-ivory-50 to-ivory-100">
@@ -84,11 +77,11 @@ export default function OurHeart() {
             <p className="font-serif italic text-xl text-charcoal-700">
               &ldquo;Let us not love in word, neither in tongue; but in deed and in truth.&rdquo;
             </p>
-            <p className="mt-2 text-sm text-gold-600 font-medium">— 1 John 3:18</p>
+            <p className="mt-2 text-sm text-gold-600 font-medium">&mdash; 1 John 3:18</p>
           </div>
         </div>
 
-        {/* Core Values */}
+        {/* Core Values — Clickable */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Our Core Values</p>
           <h2 className={`text-section font-serif font-bold text-charcoal-900 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
@@ -98,9 +91,10 @@ export default function OurHeart() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
           {CORE_VALUES.map((val, i) => (
-            <div
+            <button
               key={val.title}
-              className={`reveal reveal-delay-${(i % 4) + 1} ${isVisible ? 'is-visible' : ''} group bg-white rounded-2xl p-6 border border-ivory-200 hover:shadow-lg hover:border-gold-400/40 hover:-translate-y-1 transition-all duration-300`}
+              onClick={() => { navigate(`/core-values/${val.slug}`); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className={`reveal reveal-delay-${(i % 4) + 1} ${isVisible ? 'is-visible' : ''} group bg-white rounded-2xl p-6 border border-ivory-200 hover:shadow-lg hover:border-gold-400/40 hover:-translate-y-1 transition-all duration-300 text-left relative`}
             >
               <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center mb-4 group-hover:bg-brand-700 transition-colors duration-300">
                 <span className="font-serif text-sm font-bold text-brand-700 group-hover:text-ivory-50 transition-colors duration-300">
@@ -109,7 +103,11 @@ export default function OurHeart() {
               </div>
               <h3 className="text-base font-serif font-bold text-charcoal-900 mb-2 uppercase tracking-wide">{val.title}</h3>
               <p className="text-sm text-charcoal-600 leading-relaxed">{val.desc}</p>
-            </div>
+              {/* Click indicator */}
+              <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <ArrowRight className="h-4 w-4 text-brand-600" />
+              </div>
+            </button>
           ))}
         </div>
 
@@ -133,7 +131,7 @@ export default function OurHeart() {
               <p className="font-serif italic text-ivory-300">
                 &ldquo;For of him, and through him, and to him, are all things: to whom be glory for ever. Amen.&rdquo;
               </p>
-              <p className="mt-2 text-sm text-gold-400 font-medium">— Romans 11:36</p>
+              <p className="mt-2 text-sm text-gold-400 font-medium">&mdash; Romans 11:36</p>
             </div>
           </div>
         </div>
