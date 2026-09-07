@@ -1,5 +1,5 @@
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { ArrowRight, ArrowLeft } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Music, Video } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { MINISTRY_DETAILS } from '@/lib/ministryDetails';
 import Navbar from '@/components/Navbar';
@@ -69,7 +69,7 @@ export default function MinistryDetailPage() {
               </div>
 
               {/* Aspects Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
                 {detail.aspects.map((aspect, i) => {
                   const Icon = aspect.icon;
                   return (
@@ -89,6 +89,54 @@ export default function MinistryDetailPage() {
                     </div>
                   );
                 })}
+              </div>
+
+              {/* Online Sermons / Media Section */}
+              <div className={`mb-24 reveal ${isVisible ? 'is-visible' : ''}`}>
+                <div className="text-center mb-12">
+                  <h2 className="text-display font-serif font-bold text-charcoal-900 mb-4">
+                    Online Sermons
+                  </h2>
+                  <p className="text-charcoal-600">
+                    Couldn't attend a service? Watch or listen anytime.
+                  </p>
+                </div>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {[
+                    { id: 1, title: "Living with Purpose: God's Plan for Your Life", date: 'March 24, 11:55 AM', img: '/images/slideshow/img1.jpg' },
+                    { id: 2, title: "Living with Purpose: God's Plan for Your Life", date: 'March 24, 11:55 AM', img: '/images/slideshow/image2.jpg' },
+                    { id: 3, title: 'The Power of Prayer: Connecting with God', date: 'March 24, 11:55 AM', img: '/images/slideshow/1001500386.jpg' },
+                    { id: 4, title: 'Walking in Faith in Uncertain Times', date: 'March 24, 11:55 AM', img: '/images/slideshow/1001500423.jpg' },
+                  ].map((sermon) => (
+                    <div key={sermon.id} className="bg-white rounded-md overflow-hidden shadow-sm border border-charcoal-100 group cursor-pointer hover:shadow-lg transition-all duration-300">
+                      <div className="relative aspect-[4/5] overflow-hidden">
+                        <img 
+                          src={sermon.img} 
+                          alt={sermon.title} 
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        />
+                        {/* Audio / Video Icons Overlay */}
+                        <div className="absolute top-3 right-3 flex flex-col gap-2">
+                          <button className="w-8 h-8 rounded-full bg-brand-800/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-700 transition-colors">
+                            <Music className="w-4 h-4" />
+                          </button>
+                          <button className="w-8 h-8 rounded-full bg-brand-800/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-700 transition-colors">
+                            <Video className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                      <div className="p-5">
+                        <h3 className="font-serif font-medium text-lg leading-snug text-charcoal-900 mb-6 group-hover:text-brand-700 transition-colors">
+                          {sermon.title}
+                        </h3>
+                        <p className="text-xs text-charcoal-400 font-medium tracking-wide">
+                          {sermon.date}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Call to Action */}

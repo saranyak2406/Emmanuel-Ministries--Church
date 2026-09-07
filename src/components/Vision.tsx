@@ -29,7 +29,7 @@ export default function Vision() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section id="vision" className="section-padding bg-charcoal-900/85 backdrop-blur-md text-ivory-50 relative overflow-hidden">
+    <section id="vision" className="section-padding bg-charcoal-900 text-ivory-50 relative overflow-hidden">
       {/* Subtle texture */}
       <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #d9a347 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
 

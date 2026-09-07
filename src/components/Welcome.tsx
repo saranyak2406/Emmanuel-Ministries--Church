@@ -9,7 +9,7 @@ export default function Welcome() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
 
   return (
-    <section id="about" className="section-padding bg-white/85 backdrop-blur-md relative overflow-hidden">
+    <section id="about" className="section-padding bg-white relative overflow-hidden">
 
       {/* Subtle background decoration */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-royal-50/60 rounded-full blur-3xl -z-0 pointer-events-none" />

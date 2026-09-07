@@ -1,18 +1,29 @@
 import { useState } from 'react';
 import { Calendar, MapPin, Clock, User, Building2, Navigation, Info, Share2, Star, Youtube, X } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import CoverflowCarousel from '@/components/CoverflowCarousel';
 
 const EVENTS = [
   {
-    name: 'Three Days Special Fasting & Prayer Meetings',
-    location: 'Sarpavaram, Kakinada, Andhra Pradesh',
+    name: 'Three Days Special Fasting & Prayer',
+    location: 'Sarpavaram, Kakinada, AP',
     date: 'September 8–10, 2026',
     time: '6:00 PM – 9:00 PM',
     speaker: 'Evangelist Emmanuel Abraham',
     host: 'Emmanuel Gospel Ministries',
     desc: 'Come together in fasting and prayer as we seek God\'s presence, direction and breakthrough.',
-    featured: true,
     youtubeUrl: null,
+    images: [
+      '/images/meetings/e08d799f-0da3-413e-b2f7-794224c57e52.jpg',
+      '/images/meetings/fasting-prayer/3c3ea491-66fa-4aec-bb2d-8f9c297a4cf3.jpg',
+      '/images/meetings/fasting-prayer/WhatsApp Image 2026-09-04 at 2.03.07 PM (1).jpeg',
+      '/images/meetings/fasting-prayer/WhatsApp Image 2026-09-04 at 2.03.07 PM.jpeg',
+      '/images/meetings/fasting-prayer/WhatsApp Image 2026-09-04 at 2.03.08 PM (2).jpeg',
+      '/images/meetings/fasting-prayer/WhatsApp Image 2026-09-04 at 2.03.08 PM.jpeg',
+      '/images/meetings/fasting-prayer/WhatsApp Image 2026-09-04 at 2.08.24 PM.jpeg',
+      '/images/meetings/fasting-prayer/WhatsApp Image 2026-09-04 at 2.22.47 PM.jpeg',
+      '/images/meetings/fasting-prayer/WhatsApp Image 2026-09-04 at 2.22.59 PM.jpeg'
+    ]
   },
   {
     name: 'Gospel Revival Meeting',
@@ -22,8 +33,8 @@ const EVENTS = [
     speaker: 'Evangelist Emmanuel Abraham',
     host: 'Local Church Partner',
     desc: 'An evening of worship, Word, and prayer for spiritual renewal.',
-    featured: false,
-    youtubeUrl: 'https://www.youtube.com/@emmanuelgospelministries', // placeholder — replace with actual URL
+    youtubeUrl: 'https://www.youtube.com/@emmanuelgospelministries', 
+    images: []
   },
   {
     name: 'Healing & Restoration Service',
@@ -33,14 +44,13 @@ const EVENTS = [
     speaker: 'Evangelist Emmanuel Abraham',
     host: 'Emmanuel Gospel Ministries',
     desc: 'Ministering God\'s Word and praying for healing and restoration.',
-    featured: false,
     youtubeUrl: null,
+    images: []
   },
 ];
 
 // ── YouTube Modal ───────────────────────────────────────────────
 function YoutubeModal({ url, onClose }: { url: string; onClose: () => void }) {
-  // Convert watch URL to embed URL if needed
   const embedUrl = url.includes('watch?v=')
     ? url.replace('watch?v=', 'embed/')
     : url.includes('youtu.be/')
@@ -53,12 +63,12 @@ function YoutubeModal({ url, onClose }: { url: string; onClose: () => void }) {
       onClick={onClose}
     >
       <div
-        className="relative w-full max-w-3xl aspect-video rounded-2xl overflow-hidden shadow-2xl bg-charcoal-900"
+        className="relative w-full max-w-3xl aspect-video rounded-sm overflow-hidden shadow-2xl bg-charcoal-900"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-charcoal-900/80 flex items-center justify-center text-ivory-50 hover:bg-brand-700 transition-colors"
+          className="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-charcoal-900/80 flex items-center justify-center text-ivory-50 hover:bg-brand-500 transition-colors"
         >
           <X className="h-4 w-4" />
         </button>
@@ -74,148 +84,144 @@ function YoutubeModal({ url, onClose }: { url: string; onClose: () => void }) {
   );
 }
 
-// ── Event Card ──────────────────────────────────────────────────
-function EventCard({
-  event,
-  index,
-  isVisible,
-  onYoutubeClick,
-}: {
-  event: (typeof EVENTS)[0];
-  index: number;
-  isVisible: boolean;
-  onYoutubeClick: (url: string) => void;
-}) {
+// ── Event Details Modal ──────────────────────────────────────────
+function EventDetailsModal({ event, onClose }: { event: (typeof EVENTS)[0]; onClose: () => void }) {
   const handleDirections = () => {
     window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`, '_blank');
   };
 
-  const handleShare = async () => {
-    const shareData = {
-      title: event.name,
-      text: `Join us for ${event.name} on ${event.date} at ${event.time}. Location: ${event.location}`,
-      url: window.location.href,
-    };
-    if (navigator.share) {
-      try {
-        await navigator.share(shareData);
-      } catch (err) {
-        console.error('Error sharing:', err);
-      }
-    } else {
-      navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
-      alert('Event details copied to clipboard!');
-    }
-  };
-
   return (
     <div
-      className={`reveal reveal-delay-${(index % 3) + 1} ${isVisible ? 'is-visible' : ''} ${
-        event.featured
-          ? 'lg:col-span-3 bg-gradient-to-br from-brand-800 to-brand-950 text-ivory-50'
-          : 'bg-ivory-50 border border-ivory-200'
-      } rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-1`}
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-charcoal-950/80 backdrop-blur-sm p-4 sm:p-6"
+      onClick={onClose}
     >
-      {event.featured ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-          {/* Left: congregation photo */}
-          <div className="relative h-72 lg:h-auto overflow-hidden">
-            <img
-              src="/meeting-congregation.jpg"
-              alt="Congregation gathered at Emmanuel Gospel Ministries meeting"
-              className="absolute inset-0 h-full w-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-brand-950/50 to-brand-950/20" />
-            <div className="absolute top-5 left-5 flex items-center gap-2 rounded-full bg-gold-500 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-charcoal-900">
-              <Star className="h-3 w-3 fill-current" />
-              Featured Event
+      <div
+        className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-md shadow-2xl bg-white flex flex-col"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-charcoal-900/50 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-500 transition-colors"
+        >
+          <X className="h-5 w-5" />
+        </button>
+        
+        <div className="p-8 md:p-12 overflow-x-hidden">
+          <h2 className="text-4xl md:text-5xl font-serif font-medium text-charcoal-900 mb-4">{event.name}</h2>
+          <p className="text-xl md:text-2xl text-charcoal-600 mb-6">{event.desc}</p>
+          
+          <div className="flex flex-col sm:flex-row gap-6 mb-0 pb-2 border-b border-charcoal-100">
+            <div className="flex-1 space-y-5">
+               <div className="flex items-center gap-4 text-base font-medium text-charcoal-800">
+                 <Calendar className="h-6 w-6 text-brand-500 shrink-0" />
+                 {event.date} @ {event.time}
+               </div>
+               <div className="flex items-center gap-4 text-base font-medium text-charcoal-800">
+                 <User className="h-6 w-6 text-brand-500 shrink-0" />
+                 {event.speaker}
+               </div>
+            </div>
+            
+            <div className="flex-1 space-y-5">
+               <div className="flex items-center gap-4 text-base font-medium text-charcoal-800">
+                 <MapPin className="h-6 w-6 text-brand-500 shrink-0" />
+                 {event.location}
+               </div>
+               {event.host && (
+                 <div className="flex items-center gap-4 text-base font-medium text-charcoal-800">
+                   <Building2 className="h-6 w-6 text-brand-500 shrink-0" />
+                   {event.host}
+                 </div>
+               )}
             </div>
           </div>
-          {/* Right: content */}
-          <div className="p-8 lg:p-10 flex flex-col justify-center">
-            <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 text-balance">{event.name}</h3>
-            <p className="text-ivory-200 mb-6 leading-relaxed">{event.desc}</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
-              <InfoRow icon={MapPin}     label="Location" value={event.location} />
-              <InfoRow icon={Calendar}   label="Date"     value={event.date}     />
-              <InfoRow icon={Clock}      label="Time"     value={event.time}     />
-              <InfoRow icon={User}       label="Speaker"  value={event.speaker}  />
-              <InfoRow icon={Building2}  label="Host"     value={event.host}     />
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <button onClick={handleDirections} className="btn-gold !py-2.5 !px-5 !text-xs">
-                <Navigation className="h-3.5 w-3.5" />
-                Get Directions
-              </button>
-              <button className="btn-light !py-2.5 !px-5 !text-xs border-ivory-200/30">
-                <Info className="h-3.5 w-3.5" />
-                Event Details
-              </button>
-              <button onClick={handleShare} className="btn-light !py-2.5 !px-5 !text-xs border-ivory-200/30">
-                <Share2 className="h-3.5 w-3.5" />
-                Share Event
-              </button>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div className="p-7">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-50">
-              <Calendar className="h-5 w-5 text-brand-700" />
-            </span>
-            <span className="text-xs font-semibold uppercase tracking-wider text-gold-600">{event.date}</span>
-          </div>
-          <h3 className="text-xl font-serif font-semibold text-charcoal-900 mb-3">{event.name}</h3>
-          <p className="text-sm text-charcoal-600 mb-5 leading-relaxed">{event.desc}</p>
-          <div className="space-y-2 mb-5">
-            <SmallInfoRow icon={MapPin} value={event.location} />
-            <SmallInfoRow icon={Clock}  value={event.time}     />
-            <SmallInfoRow icon={User}   value={event.speaker}  />
-          </div>
-          <div className="flex flex-wrap gap-2">
-            <button onClick={handleDirections} className="btn-secondary !py-2 !px-4 !text-xs">
-              <Navigation className="h-3 w-3" />
-              Directions
-            </button>
-            <button onClick={handleShare} className="btn-secondary !py-2 !px-4 !text-xs">
-              <Share2 className="h-3 w-3" />
-              Share
-            </button>
-            {/* YouTube button — shown only when a URL is provided */}
-            {event.youtubeUrl && (
-              <button
-                onClick={() => onYoutubeClick(event.youtubeUrl!)}
-                className="inline-flex items-center gap-1.5 rounded-full bg-red-600 hover:bg-red-700 text-white !py-2 px-4 text-xs font-semibold uppercase tracking-wider transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-red-600/30"
-              >
-                <Youtube className="h-3.5 w-3.5" />
-                Watch Live
-              </button>
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
 
-function InfoRow({ icon: Icon, label, value }: { icon: typeof MapPin; label: string; value: string }) {
-  return (
-    <div className="flex items-start gap-2.5">
-      <Icon className="h-4 w-4 text-gold-400 mt-0.5 shrink-0" />
-      <div>
-        <p className="text-[0.65rem] uppercase tracking-widest text-ivory-300">{label}</p>
-        <p className="text-sm font-medium text-ivory-50">{value}</p>
+          {/* Event Images Gallery (3D Coverflow) */}
+          {event.images && event.images.length > 1 && (
+            <div className="w-full -mt-2">
+              <CoverflowCarousel
+                items={event.images.map((img, idx) => ({
+                  id: idx,
+                  image: img
+                }))}
+              />
+            </div>
+          )}
+
+          {/* Action Button */}
+          <div className="mt-10 flex justify-center">
+            <a 
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 text-white rounded-full font-medium hover:bg-brand-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+            >
+              <MapPin className="h-5 w-5" />
+              Get Directions
+            </a>
+          </div>
+
+
+        </div>
       </div>
     </div>
   );
 }
 
-function SmallInfoRow({ icon: Icon, value }: { icon: typeof MapPin; value: string }) {
+// ── Event Card (Horizontal Theme) ──────────────────────────────────
+function EventCard({
+  event,
+  index,
+  isVisible,
+  onYoutubeClick,
+  onDetailsClick,
+}: {
+  event: (typeof EVENTS)[0];
+  index: number;
+  isVisible: boolean;
+  onYoutubeClick: (url: string) => void;
+  onDetailsClick: (event: (typeof EVENTS)[0]) => void;
+}) {
+  const imgUrl = (event.images && event.images.length > 0) 
+    ? event.images[0] 
+    : null;
+
   return (
-    <div className="flex items-center gap-2 text-sm text-charcoal-600">
-      <Icon className="h-4 w-4 text-brand-600 shrink-0" />
-      {value}
+    <div
+      className={`reveal reveal-delay-${(index % 3) + 1} ${isVisible ? 'is-visible' : ''} bg-white rounded-md overflow-hidden flex flex-col md:flex-row shadow-sm border border-charcoal-100 transition-all duration-300 hover:shadow-md`}
+    >
+      {/* Left Image */}
+      <div className="w-full md:w-1/3 lg:w-[30%] h-56 md:h-auto shrink-0 relative border-r border-charcoal-100/50 bg-charcoal-50 flex items-center justify-center">
+        {imgUrl ? (
+          <img
+            src={imgUrl}
+            alt={event.name}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        ) : (
+          <Calendar className="w-16 h-16 text-charcoal-200" />
+        )}
+      </div>
+      
+      {/* Content Area */}
+      <div className="p-6 md:p-8 flex-1 flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="flex-1">
+          <h3 className="text-2xl md:text-[1.75rem] font-serif font-medium text-charcoal-900 mb-3">{event.name}</h3>
+          <p className="text-sm text-charcoal-600 mb-6 max-w-xl leading-relaxed">{event.desc}</p>
+          <p className="text-xs font-medium text-charcoal-400 tracking-wide">
+            {event.date} @ {event.time}
+          </p>
+        </div>
+        
+        <div className="shrink-0 flex items-center justify-end">
+          <button 
+            onClick={event.youtubeUrl ? () => onYoutubeClick(event.youtubeUrl!) : () => onDetailsClick(event)} 
+            className="px-8 py-3 bg-[#BFA582] hover:bg-[#A88E6A] text-white text-[0.7rem] font-bold uppercase tracking-[0.2em] rounded-sm transition-colors shadow-sm"
+          >
+            {event.youtubeUrl ? 'Watch Live' : 'View Details'}
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
@@ -224,35 +230,27 @@ function SmallInfoRow({ icon: Icon, value }: { icon: typeof MapPin; value: strin
 export default function Meetings() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
   const [youtubeModal, setYoutubeModal] = useState<string | null>(null);
+  const [detailsModal, setDetailsModal] = useState<(typeof EVENTS)[0] | null>(null);
 
   return (
-    <section id="meetings" className="section-padding bg-ivory-50/85 backdrop-blur-md">
+    <section id="meetings" className="section-padding bg-ivory-50">
       <div ref={ref} className="container-max">
-        <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Upcoming Meetings</p>
-          <h2 className={`text-display font-serif font-bold text-charcoal-900 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
-            Upcoming Gospel &amp; Revival Meetings
+        
+        {/* Header Theme */}
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <p className={`text-xs font-bold uppercase tracking-[0.2em] text-charcoal-400 mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>
+            JOIN US
+          </p>
+          <h2 className={`text-display md:text-5xl font-serif font-medium text-charcoal-900 mb-4 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
+            Upcoming Events & Meetings
           </h2>
-          <p className={`mt-4 text-lg text-charcoal-600 font-serif italic reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
-            Experience God. Hear His Word. Pray Together.
+          <p className={`text-charcoal-500 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
+            Discover what's happening at Emmanuel Gospel Ministries.
           </p>
         </div>
 
-        {/* Congregation photo strip */}
-        <div className={`reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''} mb-10 rounded-2xl overflow-hidden shadow-xl relative`}>
-          <img
-            src="/meeting-congregation.jpg"
-            alt="Congregation gathered at Emmanuel Gospel Ministries"
-            className="w-full h-56 md:h-72 object-cover object-top"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/60 via-transparent to-transparent" />
-          <div className="absolute bottom-5 left-6">
-            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gold-400 mb-1">Emmanuel Gospel Ministries</p>
-            <p className="font-serif text-xl font-bold text-ivory-50">Our Congregation — Gathered in His Name</p>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        {/* Horizontal List */}
+        <div className="flex flex-col gap-6 max-w-5xl mx-auto">
           {EVENTS.map((event, i) => (
             <EventCard
               key={event.name}
@@ -260,14 +258,18 @@ export default function Meetings() {
               index={i}
               isVisible={isVisible}
               onYoutubeClick={(url) => setYoutubeModal(url)}
+              onDetailsClick={(ev) => setDetailsModal(ev)}
             />
           ))}
         </div>
       </div>
 
-      {/* YouTube Modal */}
+      {/* Modals */}
       {youtubeModal && (
         <YoutubeModal url={youtubeModal} onClose={() => setYoutubeModal(null)} />
+      )}
+      {detailsModal && (
+        <EventDetailsModal event={detailsModal} onClose={() => setDetailsModal(null)} />
       )}
     </section>
   );

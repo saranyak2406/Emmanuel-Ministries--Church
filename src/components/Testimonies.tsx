@@ -31,7 +31,7 @@ export default function Testimonies() {
   };
 
   return (
-    <section id="testimonies" className="section-padding bg-ivory-50/85 backdrop-blur-md">
+    <section id="testimonies" className="section-padding bg-ivory-50">
       <div ref={ref} className="container-max">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Testimonies</p>

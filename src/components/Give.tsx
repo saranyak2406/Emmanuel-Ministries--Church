@@ -49,7 +49,7 @@ export default function Give() {
   };
 
   return (
-    <section id="give" className="section-padding bg-ivory-50/85 backdrop-blur-md relative overflow-hidden">
+    <section id="give" className="section-padding bg-ivory-50 relative overflow-hidden">
       <div ref={ref} className="container-max">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
           {/* Image */}

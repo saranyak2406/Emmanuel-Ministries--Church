@@ -12,13 +12,8 @@
   }
 
   body {
-    @apply text-charcoal-800 font-sans antialiased;
+    @apply bg-ivory-50 text-charcoal-800 font-sans antialiased;
     line-height: 1.6;
-    background-image: url('/church-building.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -39,24 +34,19 @@
     @apply text-xs font-sans font-semibold uppercase tracking-[0.25em] text-royal-700;
   }
 
-  /* Primary CTA — brand red */
+  /* Primary CTA — Parish Theme Gold */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-700 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-ivory-50 transition-all duration-300 hover:bg-brand-800 hover:shadow-xl hover:shadow-brand-900/20 hover:-translate-y-0.5 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-sm bg-brand-500 px-7 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:bg-brand-600 hover:-translate-y-0.5 active:translate-y-0;
   }
 
-  /* Secondary — outlined charcoal that fills brand-red on hover */
+  /* Secondary — Outline */
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ivory-300 bg-transparent px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-charcoal-800 transition-all duration-300 hover:border-brand-700 hover:bg-brand-700 hover:text-ivory-50 hover:-translate-y-0.5 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-charcoal-800 bg-transparent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-charcoal-800 transition-all duration-300 hover:bg-charcoal-800 hover:text-white hover:-translate-y-0.5 active:translate-y-0;
   }
 
   /* Light — for use on dark/photo backgrounds */
   .btn-light {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ivory-200/40 bg-transparent px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-ivory-50 transition-all duration-300 hover:bg-ivory-50 hover:text-charcoal-900 hover:-translate-y-0.5 active:translate-y-0;
-  }
-
-  /* Gold accent button */
-  .btn-gold {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-500 px-7 py-3.5 text-sm font-semibold uppercase tracking-wider text-charcoal-900 transition-all duration-300 hover:bg-gold-400 hover:shadow-xl hover:shadow-gold-500/30 hover:-translate-y-0.5 active:translate-y-0;
+    @apply inline-flex items-center justify-center gap-2 rounded-sm border-2 border-white/80 bg-transparent px-7 py-3.5 text-sm font-bold uppercase tracking-[0.15em] text-white transition-all duration-300 hover:bg-white hover:text-charcoal-900 hover:-translate-y-0.5 active:translate-y-0;
   }
 
   /* Royal blue button */

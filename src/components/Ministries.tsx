@@ -1,126 +1,142 @@
 import { useState, useEffect } from 'react';
-import { Megaphone, Heart, Flame, HeartPulse, BookOpen, Globe, Users, Sparkles, BookText, ArrowRight } from 'lucide-react';
-import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useNavigate } from 'react-router-dom';
+import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
-const SLIDES = [
-  '/images/ministries/img1.jpg',
-];
-
-const MINISTRIES = [
-  { icon: Megaphone, title: 'Gospel & Evangelism',     href: '/ministry/gospel-evangelism',   desc: 'Proclaiming the good news of Jesus Christ and reaching people with the message of salvation.' },
-  { icon: Heart,     title: 'Prayer & Intercession',   href: '/ministry/prayer-intercession', desc: 'Standing before God in prayer for individuals, families, churches, communities and nations.' },
-  { icon: Flame,     title: 'Revival Meetings',         href: '/ministry/revival-meetings',    desc: 'Gathering believers and seekers together to worship God, hear His Word and seek spiritual renewal.' },
-  { icon: HeartPulse,title: 'Healing & Restoration',   href: '/ministry/healing-restoration', desc: 'Ministering God\u2019s Word and praying with people who need healing, restoration, hope and encouragement.' },
-  { icon: BookOpen,  title: 'Discipleship & Teaching', href: '/ministry/discipleship-teaching', desc: 'Helping believers grow in faith and develop a deeper relationship with Jesus Christ through God\u2019s Word.' },
-  { icon: Globe,     title: 'Missions & Outreach',     href: '/ministry/missions-outreach',   desc: 'Taking the Gospel beyond familiar places and serving communities with the love of Christ.' },
-  { icon: Users,     title: 'Family Ministry',         href: '/ministry/family-ministry',     desc: 'Strengthening families and helping them build their lives on biblical principles.' },
-  { icon: Sparkles,  title: 'Youth Ministry',          href: '/ministry/youth-ministry',      desc: 'Guiding young people to know Christ, grow in faith, and live out God\u2019s purpose.' },
-  { icon: BookText,  title: 'Bible Teaching',          href: '/ministry/bible-teaching',      desc: 'Teaching God\u2019s Word faithfully to equip believers for life and ministry.' },
+const MINISTRIES_DATA = [
+  { id: 'gospel-evangelism',   title: 'Gospel & Evangelism',     image: '/images/slideshow/img1.jpg', desc: 'Proclaiming the good news of Jesus Christ to all people.' },
+  { id: 'prayer-intercession', title: 'Prayer & Intercession',   image: '/images/slideshow/1001500386.jpg', desc: 'Standing before God in prayer for individuals and nations.' },
+  { id: 'revival-meetings',    title: 'Revival Meetings',        image: '/images/slideshow/image 3.jpg', desc: 'Gathering believers and seekers together to worship God.' },
+  { id: 'healing-restoration', title: 'Healing & Restoration',   image: '/images/ministries/healing-ministry.png', desc: 'Ministering God\'s Word and praying for healing and restoration.' },
+  { id: 'discipleship-teaching',title: 'Discipleship',           image: '/images/slideshow/img1.jpg', desc: 'Helping believers grow in faith and relationship with Christ.' },
+  { id: 'missions-outreach',   title: 'Missions & Outreach',     image: '/images/slideshow/1001500423.jpg', desc: 'Taking the Gospel beyond familiar places.' },
+  { id: 'family-ministry',     title: 'Family Ministry',         image: '/images/slideshow/image2.jpg', desc: 'Strengthening families on biblical principles.' },
+  { id: 'youth-ministry',      title: 'Youth Ministry',          image: '/images/slideshow/img1.jpg', desc: 'Guiding young people to know Christ and grow in faith.' },
 ];
 
 export default function Ministries() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
   const navigate = useNavigate();
-  const [currentSlide, setCurrentSlide] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(3);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (SLIDES.length <= 1) return; // Only cycle if more than 1 image
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-    }, 5000);
-    return () => clearInterval(timer);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  const next = () => {
+    setActiveIndex((prev) => (prev < MINISTRIES_DATA.length - 1 ? prev + 1 : prev));
+  };
+
+  const prev = () => {
+    setActiveIndex((prev) => (prev > 0 ? prev - 1 : 0));
+  };
+
   return (
-    <section id="ministries" className="bg-ivory-50/85 backdrop-blur-md">
-
-      {/* ── Banner image (Slideshow Design without cropping - Fit Screen) ── */}
-      <div className="relative w-full min-h-screen overflow-hidden bg-charcoal-950 flex flex-col justify-center py-20">
+    <section id="ministries" className="bg-[#f8f9fa] relative overflow-hidden py-24">
+      <div ref={ref} className={`container-max reveal ${isVisible ? 'is-visible' : ''}`}>
         
-        {/* Blurred Fullscreen Background */}
-        <div className="absolute inset-0 overflow-hidden opacity-30">
-          {SLIDES.map((slide, index) => (
-            <img
-              key={slide}
-              src={slide}
-              alt=""
-              className={`absolute inset-0 h-full w-full object-cover blur-3xl scale-125 transition-opacity duration-1000 ${
-                index === currentSlide ? 'opacity-100' : 'opacity-0'
-              }`}
-            />
-          ))}
+        {/* Header matching the Dribbble design */}
+        <div className="mb-12 text-left pl-4 md:pl-10">
+          <p className="text-xs font-bold tracking-[0.15em] text-charcoal-500 uppercase mb-4">
+            Our Ministries
+          </p>
+          <h2 className="text-3xl md:text-4xl font-medium text-charcoal-900 max-w-2xl">
+            Explore the different areas of our church where you can connect, serve, and grow.
+          </h2>
         </div>
-        
-        {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-charcoal-950 via-charcoal-950/80 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/50 via-transparent to-transparent" />
 
-        <div className="container-max relative z-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            
-            {/* Text Column */}
-            <div className="lg:col-span-5 order-2 lg:order-1">
-              <p className="eyebrow !text-gold-400 mb-4">Our Ministries</p>
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-ivory-50 leading-tight mb-4 text-balance">
-                A Ministry Built Around Christ
-              </h2>
-              <p className="text-ivory-300 text-lg leading-relaxed max-w-lg">
-                Every ministry area exists to proclaim Jesus Christ, serve people, and strengthen the Church.
-              </p>
-            </div>
+        {/* Accordion Carousel Container */}
+        <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center px-4 md:px-10">
+          
+          {/* Navigation Arrows */}
+          <button 
+            onClick={prev}
+            disabled={activeIndex === 0}
+            className="absolute left-2 md:left-4 z-20 p-3 rounded-full bg-charcoal-900/30 text-white backdrop-blur-md hover:bg-charcoal-900/60 transition-all disabled:opacity-0"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          
+          <button 
+            onClick={next}
+            disabled={activeIndex === MINISTRIES_DATA.length - 1}
+            className="absolute right-2 md:right-4 z-20 p-3 rounded-full bg-charcoal-900/30 text-white backdrop-blur-md hover:bg-charcoal-900/60 transition-all disabled:opacity-0"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
 
-            {/* Uncropped Image in Glass Frame */}
-            <div className="lg:col-span-7 order-1 lg:order-2">
-              <div className="relative w-full aspect-square md:aspect-video lg:aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center p-2 lg:p-4 border border-white/10 bg-charcoal-900/40 backdrop-blur-xl">
-                {SLIDES.map((slide, index) => (
+          {/* Cards Flex Container */}
+          <div className="flex w-full h-full gap-2 md:gap-4 justify-center">
+            {MINISTRIES_DATA.map((ministry, index) => {
+              const isActive = index === activeIndex;
+              
+              // On mobile, hide cards that are far away from active index
+              if (isMobile && Math.abs(index - activeIndex) > 1 && !isActive) return null;
+
+              return (
+                <div
+                  key={ministry.id}
+                  onClick={() => setActiveIndex(index)}
+                  className={`relative h-full rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex-shrink-0 ${
+                    isActive 
+                      ? 'w-[280px] md:w-[450px] lg:w-[600px] shadow-2xl' 
+                      : 'w-[60px] md:w-[80px] lg:w-[100px] opacity-80 hover:opacity-100 shadow-md'
+                  }`}
+                >
                   <img
-                    key={slide}
-                    src={slide}
-                    alt={`Ministry Slide ${index + 1}`}
-                    className={`absolute max-w-[95%] max-h-[95%] w-auto h-auto rounded-lg object-contain transition-all duration-700 ease-in-out ${
-                      index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'
-                    }`}
+                    src={ministry.image}
+                    alt={ministry.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out"
+                    style={{ transform: isActive ? 'scale(1.05)' : 'scale(1)' }}
                   />
-                ))}
-              </div>
-            </div>
-            
+
+                  {/* Gradient Overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-60'}`} />
+
+                  {/* Content for Inactive Cards (Rotated Text) */}
+                  <div 
+                    className={`absolute inset-0 flex items-end justify-center pb-12 transition-opacity duration-300 delay-100 ${
+                      isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'
+                    }`}
+                  >
+                    <h3 className="text-white font-medium text-lg whitespace-nowrap transform -rotate-90 origin-bottom tracking-wider">
+                      {ministry.title}
+                    </h3>
+                  </div>
+
+                  {/* Content for Active Card */}
+                  <div 
+                    className={`absolute inset-x-0 bottom-0 p-8 md:p-12 flex flex-col items-center text-center transition-all duration-700 delay-200 transform ${
+                      isActive ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0 pointer-events-none'
+                    }`}
+                  >
+                    <h3 className="text-white text-3xl md:text-4xl font-serif font-bold mb-3">
+                      {ministry.title}
+                    </h3>
+                    <p className="text-gray-200 text-sm md:text-base mb-6 max-w-sm line-clamp-2">
+                      {ministry.desc}
+                    </p>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/ministry/${ministry.id}`);
+                      }}
+                      className="px-6 py-2.5 rounded-full border border-white/50 text-white font-medium text-sm hover:bg-white hover:text-charcoal-900 transition-colors backdrop-blur-sm"
+                    >
+                      Explore Ministry
+                    </button>
+                  </div>
+
+                </div>
+              );
+            })}
           </div>
         </div>
-      </div>
 
-      {/* ── Cards section ── */}
-      <div ref={ref} className="container-max section-padding">
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {MINISTRIES.map((m, i) => {
-            const Icon = m.icon;
-            return (
-              <div
-                key={m.title}
-                onClick={() => navigate(m.href)}
-                className={`reveal reveal-delay-${(i % 3) + 1} ${isVisible ? 'is-visible' : ''} group bg-ivory-50 rounded-2xl p-8 border border-ivory-200 transition-all duration-300 hover:shadow-xl hover:shadow-charcoal-900/5 hover:border-gold-400/40 hover:-translate-y-1 cursor-pointer`}
-              >
-                <div className="w-14 h-14 rounded-xl bg-brand-50 flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-brand-700">
-                  <Icon className="h-7 w-7 text-brand-700 transition-colors duration-300 group-hover:text-ivory-50" />
-                </div>
-                <h3 className="text-xl font-serif font-semibold text-charcoal-900 mb-3">{m.title}</h3>
-                <p className="text-sm text-charcoal-600 leading-relaxed">{m.desc}</p>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className={`text-center mt-12 reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
-          <button
-            onClick={() => navigate('/ministries')}
-            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-brand-700 hover:text-brand-900 transition-colors group"
-          >
-            Explore All Ministries
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </button>
-        </div>
       </div>
     </section>
   );

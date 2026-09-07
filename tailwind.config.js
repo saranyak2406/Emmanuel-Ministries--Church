@@ -3,6 +3,11 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        mono: ['Roboto Mono', 'monospace'],
+        serif: ['"Playfair Display"', 'serif'],
+      },
       colors: {
         ivory: {
           50: '#fdfcf9',
@@ -16,19 +21,18 @@ export default {
           800: '#745e40',
           900: '#564530',
         },
-        // Primary brand red (from logo cross)
         brand: {
-          50:  '#fff1f1',
-          100: '#ffe0e0',
-          200: '#ffc7c7',
-          300: '#ffa0a0',
-          400: '#ff6b6b',
-          500: '#f83a3a',
-          600: '#e51c1c',
-          700: '#c11212',
-          800: '#a01212',
-          900: '#841616',
-          950: '#480707',
+          50: '#fcfaf6',
+          100: '#f7f2e8',
+          200: '#efe3cf',
+          300: '#e5cdac',
+          400: '#d9a347',
+          500: '#d4af37', // Classic gold
+          600: '#b89228',
+          700: '#9b7622',
+          800: '#806021',
+          900: '#694f1f',
+          950: '#3c2b0e',
         },
         // Royal blue accent (from logo globe)
         royal: {

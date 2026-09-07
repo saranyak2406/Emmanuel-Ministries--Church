@@ -15,11 +15,13 @@ import CoreValuePage  from '@/pages/CoreValuePage';
 import MissionDetailPage from '@/pages/MissionDetailPage';
 import MinistryDetailPage from '@/pages/MinistryDetailPage';
 import ScrollToTop from '@/components/ScrollToTop';
+import FloatingSidebar from '@/components/FloatingSidebar';
 
 export default function App() {
   return (
     <>
       <ScrollToTop />
+      <FloatingSidebar />
       <Routes>
         <Route path="/"               element={<HomePage />}        />
         <Route path="/about"          element={<AboutPage />}       />

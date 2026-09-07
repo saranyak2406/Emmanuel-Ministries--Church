@@ -132,7 +132,7 @@ export default function Mission() {
   const navigate = useNavigate();
 
   return (
-    <section id="mission" className="section-padding bg-ivory-50/85 backdrop-blur-md">
+    <section id="mission" className="section-padding bg-white">
       <div ref={ref} className="container-max">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Our Mission</p>

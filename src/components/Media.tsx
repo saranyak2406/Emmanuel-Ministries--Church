@@ -84,7 +84,7 @@ export default function Media() {
   const [videoModal, setVideoModal] = useState<string | null>(null);
 
   return (
-    <section id="media" className="section-padding bg-charcoal-900/85 backdrop-blur-md">
+    <section id="media" className="section-padding bg-charcoal-900">
       <div ref={ref} className="container-max">
         <div className="text-center max-w-3xl mx-auto mb-14">
           <p className={`eyebrow text-gold-400 mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Media</p>

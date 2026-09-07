@@ -119,15 +119,15 @@ export default function Navbar() {
             </button>
 
             {/* Desktop nav links */}
-            <nav className="hidden lg:flex items-center gap-1">
+            <nav className="hidden lg:flex items-center gap-4">
               {NAV_LINKS.map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
-                  className={`px-3 py-2 text-[0.8rem] font-medium transition-all duration-200 rounded-md ${
+                  className={`px-2 py-2 text-[0.7rem] uppercase tracking-[0.15em] font-bold transition-all duration-200 border-b-2 ${
                     isActive(link.href)
-                      ? 'text-brand-700 bg-brand-50 font-semibold'
-                      : 'text-charcoal-700 hover:text-brand-700 hover:bg-brand-50'
+                      ? 'text-brand-500 border-brand-500'
+                      : 'text-charcoal-800 border-transparent hover:text-brand-500 hover:border-brand-500/30'
                   }`}
                 >
                   {link.label}
