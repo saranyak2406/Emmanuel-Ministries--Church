@@ -28,12 +28,11 @@ export default function Hero() {
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
 
   return (
-    <section id="home" className="relative min-h-screen w-full overflow-hidden flex bg-ivory-50">
+    <section id="home" className="relative min-h-screen w-full flex flex-col lg:block bg-brand-900 lg:bg-ivory-50 pt-[64px] lg:pt-0 overflow-hidden">
       
-      {/* Right Side - Image Slideshow (Fills the right half perfectly) */}
-      <div className="absolute right-0 bottom-0 top-[60vh] lg:top-0 w-full lg:w-[50%] z-0 bg-charcoal-950">
+      {/* Right Side - Image Slideshow (Top on mobile, Right on desktop) */}
+      <div className="relative w-full h-[45vh] shrink-0 lg:absolute lg:right-0 lg:bottom-0 lg:top-[80px] lg:w-[50%] lg:h-auto z-0 bg-charcoal-950">
         
-        {/* Crisp Image Layer (Fills area, aligned to top so heads aren't cut off) */}
         {SLIDES.map((slide, index) => (
           <img
             key={slide}
@@ -47,32 +46,32 @@ export default function Hero() {
 
       </div>
 
-      {/* Slideshow Controls (Left and Right Edges) */}
-      <div className="absolute inset-x-0 top-[80%] lg:top-1/2 -translate-y-1/2 flex justify-between px-4 md:px-8 z-50 pointer-events-none">
+      {/* Slideshow Controls (Centered on image vertically for mobile, centered on screen for desktop) */}
+      <div className="absolute inset-x-0 top-[calc(64px+22.5vh)] lg:top-[calc(50%+40px)] -translate-y-1/2 flex justify-between px-2 md:px-8 z-50 pointer-events-none">
         <button 
           onClick={prevSlide}
-          className="p-3 rounded-full bg-charcoal-950/70 text-white hover:bg-gold-400 hover:text-charcoal-950 transition-colors backdrop-blur-sm border border-ivory-200/20 shadow-lg pointer-events-auto"
+          className="p-2 md:p-3 rounded-full bg-charcoal-950/70 text-white hover:bg-gold-400 hover:text-charcoal-950 transition-colors backdrop-blur-sm border border-ivory-200/20 shadow-lg pointer-events-auto"
         >
-          <ChevronLeft className="w-6 h-6 md:w-8 md:h-8" />
+          <ChevronLeft className="w-5 h-5 md:w-8 md:h-8" />
         </button>
         <button 
           onClick={nextSlide}
-          className="p-3 rounded-full bg-charcoal-950/70 text-white hover:bg-gold-400 hover:text-charcoal-950 transition-colors backdrop-blur-sm border border-ivory-200/20 shadow-lg pointer-events-auto"
+          className="p-2 md:p-3 rounded-full bg-charcoal-950/70 text-white hover:bg-gold-400 hover:text-charcoal-950 transition-colors backdrop-blur-sm border border-ivory-200/20 shadow-lg pointer-events-auto"
         >
-          <ChevronRight className="w-6 h-6 md:w-8 md:h-8" />
+          <ChevronRight className="w-5 h-5 md:w-8 md:h-8" />
         </button>
       </div>
 
-      {/* Left Chevron Overlay (Gold Border) */}
+      {/* Left Chevron Overlay (Gold Border) - Desktop Only */}
       <div 
-        className="absolute top-0 left-0 w-full lg:w-[56%] h-[60vh] lg:h-full bg-gold-400 z-10 transition-all duration-500 lg:[clip-path:polygon(0_0,90%_0,100%_50%,90%_100%,0_100%)] pointer-events-none"
+        className="hidden lg:block absolute top-[80px] left-0 w-[56%] h-[calc(100vh-80px)] bg-gold-400 z-10 transition-all duration-500 [clip-path:polygon(0_0,90%_0,100%_50%,90%_100%,0_100%)] pointer-events-none"
       />
 
-      {/* Left Chevron Overlay (Deep Blue Background with Content) */}
+      {/* Text Content (Bottom on mobile, Left Chevron on desktop) */}
       <div 
-        className="absolute top-0 left-0 w-full lg:w-[55%] h-[59vh] lg:h-full bg-brand-900 z-20 flex flex-col justify-center px-6 sm:px-12 md:px-16 lg:px-20 transition-all duration-500 lg:[clip-path:polygon(0_0,90%_0,100%_50%,90%_100%,0_100%)] pb-10 lg:pb-0"
+        className="relative w-full flex-1 bg-brand-900 border-t-[6px] border-gold-400 lg:border-t-0 lg:absolute lg:top-[80px] lg:left-0 lg:w-[55%] lg:h-[calc(100vh-80px)] z-20 flex flex-col justify-start lg:justify-center px-6 py-12 sm:px-12 md:px-16 lg:px-20 transition-all duration-500 lg:[clip-path:polygon(0_0,90%_0,100%_50%,90%_100%,0_100%)] lg:pb-0"
       >
-        <div className="max-w-xl animate-fade-in text-left pointer-events-auto pt-16 sm:pt-20 lg:pt-0">
+        <div className="max-w-xl animate-fade-in text-left pointer-events-auto">
           <p className="eyebrow !text-gold-400 mb-3 lg:mb-6" style={{ animationDelay: '0.05s' }}>
             Hyderabad, Telangana, India
           </p>
@@ -101,7 +100,7 @@ export default function Hero() {
           </p>
 
           <div
-            className="mt-5 lg:mt-10 flex flex-col sm:flex-row gap-3 lg:gap-4 animate-fade-up"
+            className="mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 lg:gap-4 animate-fade-up"
             style={{ animationDelay: '0.7s' }}
           >
             <button
