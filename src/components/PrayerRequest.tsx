@@ -12,6 +12,8 @@ type FormState = {
   name: string;
   phone: string;
   email: string;
+  city: string;
+  category: string;
   request: string;
 };
 
@@ -19,6 +21,8 @@ const INITIAL: FormState = {
   name: '',
   phone: '',
   email: '',
+  city: '',
+  category: PRAYER_CATEGORIES[0],
   request: '',
 };
 
@@ -39,7 +43,7 @@ export default function PrayerRequest() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -77,11 +81,11 @@ export default function PrayerRequest() {
           <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
         </div>
 
-        <div ref={ref} className="container-max relative z-10 w-full max-w-lg mx-auto px-4">
+        <div ref={ref} className="container-max relative z-10 w-full px-4">
           <div className={`transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             
             {status === 'success' ? (
-              <div className="text-center py-20 px-6 rounded-3xl bg-white/50 backdrop-blur-md border border-white/40 shadow-xl">
+              <div className="max-w-2xl mx-auto text-center py-20 px-6 rounded-3xl bg-white/50 backdrop-blur-md border border-white/40 shadow-xl">
                 <h2 
                   className="text-4xl md:text-5xl font-bold mb-8 uppercase leading-tight tracking-wider"
                   style={{
@@ -111,125 +115,151 @@ export default function PrayerRequest() {
                 </div>
               </div>
             ) : (
-              <div className="w-full">
-                <div className="text-center mb-12">
-                  <h2 className="text-3xl md:text-4xl font-bold text-charcoal-900 mb-4 leading-tight">
-                    Send Us Your Prayer Request
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                {/* Left Column: Text & Information */}
+                <div className="text-center lg:text-left">
+                  <h2 className="text-4xl md:text-5xl font-serif font-bold text-charcoal-900 mb-6 leading-tight">
+                    We Want to Pray for You
                   </h2>
-                  <p className="text-xl text-brand-700 font-bold mb-6">
-                    We believe in the power of prayer. How can we pray for you?
+                  <p className="text-2xl text-brand-700 font-bold mb-6 leading-relaxed">
+                    You Can Share Your Prayer Request
                   </p>
-                  <p className="text-base text-charcoal-700 leading-relaxed max-w-2xl mx-auto mb-8">
-                    If you are facing sickness, difficulties, family problems or any challenges, please share your request with us. Our prayer team will stand with you in faith and pray for God's intervention in your life.
+                  <p className="text-lg text-charcoal-700 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">
+                    Whatever you are facing, you can bring it before God in prayer. “Call unto me, and I will answer thee...”
+                    <br />
+                    <span className="font-bold text-brand-700 mt-2 block">— Jeremiah 33:3</span>
                   </p>
-                  <div className="bg-white/50 backdrop-blur-md rounded-xl p-6 border border-brand-200">
-                    <p className="font-serif italic text-lg text-charcoal-800 mb-2">
-                      “Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not.”
-                    </p>
-                    <p className="text-sm font-bold tracking-widest uppercase text-brand-700">
-                      — Jeremiah 33:3
-                    </p>
-                  </div>
                 </div>
 
-                <form onSubmit={handleSubmit} className="space-y-8">
-                  <div>
-                    <label className="block text-xl font-bold text-charcoal-800 mb-2">
-                      Full Name
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your name"
-                      className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-lg px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm"
-                    />
-                  </div>
+                {/* Right Column: Form */}
+                <div className="bg-white/70 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/60 shadow-xl">
+                  <h3 className="text-2xl font-serif font-bold text-charcoal-900 mb-8 uppercase tracking-wider text-center">PRAYER FORM</h3>
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <div>
+                      <label className="block text-lg font-bold text-charcoal-800 mb-2">
+                        Your Name
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                        required
+                        placeholder="Enter your name"
+                        className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-xl px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm transition-all"
+                      />
+                    </div>
 
-                  <div>
-                    <label className="block text-xl font-bold text-charcoal-800 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your phone number"
-                      className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-lg px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm"
-                    />
-                  </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-lg font-bold text-charcoal-800 mb-2">
+                          Email Address
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          value={form.email}
+                          onChange={handleChange}
+                          required
+                          placeholder="Enter your email"
+                          className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-xl px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-lg font-bold text-charcoal-800 mb-2">
+                          Phone Number
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={form.phone}
+                          onChange={handleChange}
+                          required
+                          placeholder="Enter your phone number"
+                          className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-xl px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm transition-all"
+                        />
+                      </div>
+                    </div>
 
-                  <div>
-                    <label className="block text-xl font-bold text-charcoal-800 mb-2">
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="Enter your email"
-                      className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-lg px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm"
-                    />
-                  </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-lg font-bold text-charcoal-800 mb-2">
+                          City / Country
+                        </label>
+                        <input
+                          type="text"
+                          name="city"
+                          value={form.city}
+                          onChange={handleChange}
+                          required
+                          placeholder="Your city and country"
+                          className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-xl px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm transition-all"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-lg font-bold text-charcoal-800 mb-2">
+                          Prayer Category
+                        </label>
+                        <select
+                          name="category"
+                          value={form.category}
+                          onChange={handleChange}
+                          className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-xl px-5 py-4 text-charcoal-900 font-medium focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm transition-all"
+                        >
+                          {PRAYER_CATEGORIES.map(c => (
+                            <option key={c} value={c}>{c}</option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
 
-                  <div>
-                    <label className="block text-xl font-bold text-charcoal-800 mb-2">
-                      Prayer Request
-                    </label>
-                    <textarea
-                      name="request"
-                      value={form.request}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      placeholder="Enter your prayer request"
-                      className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-lg px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm resize-none"
-                    />
-                  </div>
+                    <div>
+                      <label className="block text-lg font-bold text-charcoal-800 mb-2">
+                        Your Prayer Request
+                      </label>
+                      <textarea
+                        name="request"
+                        value={form.request}
+                        onChange={handleChange}
+                        required
+                        rows={4}
+                        placeholder="Enter your prayer request"
+                        className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-xl px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm resize-none transition-all"
+                      />
+                    </div>
 
-                  {status === 'error' && (
-                    <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 font-bold text-center">
-                      {errorMsg}
+                    {status === 'error' && (
+                      <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 font-bold text-center">
+                        {errorMsg}
+                      </p>
+                    )}
+
+                    <div className="pt-2">
+                      <button
+                        type="submit"
+                        disabled={status === 'loading'}
+                        className="w-full btn-primary bg-brand-700 text-white font-bold text-lg tracking-widest py-4 uppercase shadow-lg hover:bg-brand-800 transition-all disabled:opacity-50 flex items-center justify-center gap-3 rounded-xl border-none transform hover:-translate-y-1"
+                      >
+                        {status === 'loading' ? (
+                          <>
+                            <Loader2 className="h-6 w-6 animate-spin" />
+                            Submitting...
+                          </>
+                        ) : (
+                          'SUBMIT PRAYER REQUEST'
+                        )}
+                      </button>
+                    </div>
+                  </form>
+
+                  <div className="mt-8 pt-6 border-t border-charcoal-200/50">
+                    <p className="text-brand-700 font-bold text-sm tracking-wide mb-2 uppercase">
+                      PRIVACY NOTICE
                     </p>
-                  )}
-
-                  <div className="pt-4">
-                    <button
-                      type="submit"
-                      disabled={status === 'loading'}
-                      className="w-full btn-primary bg-brand-700 text-white font-bold text-xl tracking-widest py-4 uppercase shadow-lg hover:bg-brand-800 transition-all disabled:opacity-50 flex items-center justify-center gap-3 rounded-lg border-none"
-                    >
-                      {status === 'loading' ? (
-                        <>
-                          <Loader2 className="h-6 w-6 animate-spin" />
-                          Submitting...
-                        </>
-                      ) : (
-                        'SUBMIT PRAYER REQUEST'
-                      )}
-                    </button>
+                    <p className="text-charcoal-600 text-sm leading-relaxed font-medium">
+                      Your prayer request will be treated with care and confidentiality. Please do not submit highly sensitive personal information through the form.
+                    </p>
                   </div>
-                </form>
-
-                <div className="mt-16 text-center">
-                  <p className="text-charcoal-600 font-bold text-lg tracking-wide">
-                    DON'T HAVE AN ACCOUNT?
-                  </p>
-                  <button onClick={() => {
-                    const event = new MouseEvent('click', { bubbles: true });
-                    const a = document.createElement('a');
-                    a.href = '/signup';
-                    a.dispatchEvent(event);
-                    window.location.href = '/signup';
-                  }} className="text-brand-700 font-extrabold text-xl underline underline-offset-4 decoration-2 hover:text-brand-900 transition-colors bg-transparent border-none cursor-pointer">
-                    SIGN UP HERE
-                  </button>
                 </div>
               </div>
             )}

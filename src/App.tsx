@@ -1,4 +1,5 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import HomePage       from '@/pages/HomePage';
 import AboutPage      from '@/pages/AboutPage';
 import VisionPage     from '@/pages/VisionPage';
@@ -14,7 +15,6 @@ import PartnershipPage from '@/pages/PartnershipPage';
 import PreachPage     from '@/pages/PreachPage';
 import TestimonialsPage from '@/pages/TestimonialsPage';
 import CoreValuePage  from '@/pages/CoreValuePage';
-import SignUpPage     from '@/pages/SignUpPage';
 import MissionDetailPage from '@/pages/MissionDetailPage';
 import MinistryDetailPage from '@/pages/MinistryDetailPage';
 import ScrollToTop from '@/components/ScrollToTop';
@@ -41,7 +41,6 @@ export default function App() {
         <Route path="/partnership"    element={<PartnershipPage />} />
         <Route path="/preach"         element={<PreachPage />}      />
         <Route path="/testimonials"   element={<TestimonialsPage />}/>
-        <Route path="/signup"         element={<SignUpPage />}      />
         <Route path="/core-values/:slug" element={<CoreValuePage />}/>
         <Route path="/mission/:slug"  element={<MissionDetailPage />}/>
         <Route path="/ministry/:slug" element={<MinistryDetailPage />}/>

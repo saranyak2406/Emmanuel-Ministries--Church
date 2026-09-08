@@ -1,9 +1,8 @@
 import { Handshake, Heart } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
-// Indian worship / praise gathering
-const CTA_BG =
-  'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080&fit=crop';
+// Use the actual church building image instead of the AI placeholder
+const CTA_BG = '/church-building.jpg';
 
 export default function FinalCTA() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
@@ -14,7 +13,7 @@ export default function FinalCTA() {
       <div className="absolute inset-0">
         <img
           src={CTA_BG}
-          alt="People in prayer"
+          alt="Emmanuel Gospel Ministries"
           className="h-full w-full object-cover animate-slow-zoom"
         />
         <div className="absolute inset-0 bg-charcoal-900/75" />

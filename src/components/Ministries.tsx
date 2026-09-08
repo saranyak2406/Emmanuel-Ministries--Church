@@ -1,23 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
 const MINISTRIES_DATA = [
   { id: 'gospel-evangelism',   title: 'Gospel & Evangelism',     image: '/images/slideshow/img1.jpg', desc: 'We proclaim Jesus Christ and invite people to respond to the Gospel.' },
-  { id: 'prayer-intercession', title: 'Prayer & Intercession',   image: '/images/slideshow/1001500386.jpg', desc: 'Prayer is central to our ministry. We pray for salvation, families, churches, communities and nations.' },
+  { id: 'prayer-intercession', title: 'Prayer & Intercession',   image: '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.57 PM.jpeg', desc: 'Prayer is central to our ministry. We pray for salvation, families, churches, communities and nations.' },
   { id: 'revival-meetings',    title: 'Revival Meetings',        image: '/images/slideshow/image 3.jpg', desc: 'Special meetings focused on worship, prayer, God\'s Word and spiritual renewal.' },
-  { id: 'healing-restoration', title: 'Healing & Restoration',   image: '/images/slideshow/e2659171-d689-4189-9460-01d204a70954.jpg', desc: 'We pray with people who are seeking God\'s intervention, comfort, strength and restoration.' },
-  { id: 'family-ministry',     title: 'Family Ministry',         image: '/images/slideshow/image2.jpg', desc: 'Encouraging families to build their relationships upon Christ and biblical principles.' },
-  { id: 'youth-ministry',      title: 'Youth Ministry',          image: '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.56 PM.jpeg', desc: 'Encouraging young people to know Christ, discover God\'s purpose and live faithfully for Him.' },
-  { id: 'missions-outreach',   title: 'Missions & Outreach',     image: '/images/slideshow/1001500423.jpg', desc: 'Taking the Gospel beyond our regular gatherings and serving people in different communities and locations.' },
-  { id: 'bible-teaching',      title: 'Bible Teaching',          image: '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.57 PM.jpeg', desc: 'Helping believers understand God\'s Word and apply biblical truth to everyday life.' },
+  { id: 'healing-restoration', title: 'Healing & Restoration',   image: '/images/slideshow/1001500423.jpg', desc: 'We pray with people who are seeking God\'s intervention, comfort, strength and restoration.' },
+  { id: 'family-ministry',     title: 'Family Ministry',         image: '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.56 PM.jpeg', desc: 'Encouraging families to build their relationships upon Christ and biblical principles.' },
 ];
 
 export default function Ministries() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
   const navigate = useNavigate();
-  const [activeIndex, setActiveIndex] = useState(3);
+  const [activeIndex, setActiveIndex] = useState(2);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -36,12 +33,12 @@ export default function Ministries() {
   };
 
   return (
-    <section id="ministries" className="bg-[#f8f9fa] relative overflow-hidden py-24">
+    <section id="ministries" className="bg-ivory-50 relative py-24">
       <div ref={ref} className={`container-max reveal ${isVisible ? 'is-visible' : ''}`}>
         
-        {/* Header matching the Dribbble design */}
+        {/* Header */}
         <div className="mb-12 text-left pl-4 md:pl-10">
-          <p className="text-xs font-bold tracking-[0.15em] text-charcoal-500 uppercase mb-4">
+          <p className="text-xs font-bold tracking-[0.15em] text-brand-700 uppercase mb-4">
             Our Ministries
           </p>
           <h2 className="text-3xl md:text-4xl font-medium text-charcoal-900 max-w-2xl">
@@ -50,7 +47,7 @@ export default function Ministries() {
         </div>
 
         {/* Accordion Carousel Container */}
-        <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center px-4 md:px-10">
+        <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center px-4 md:px-10 mb-20">
           
           {/* Navigation Arrows */}
           <button 
@@ -79,7 +76,7 @@ export default function Ministries() {
 
               return (
                 <div
-                  key={ministry.id}
+                  key={`slide-${ministry.id}`}
                   onClick={() => setActiveIndex(index)}
                   className={`relative h-full rounded-[2rem] overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] flex-shrink-0 ${
                     isActive 
@@ -119,7 +116,6 @@ export default function Ministries() {
                       Explore Ministry
                     </button>
                   </div>
-
                 </div>
               );
             })}

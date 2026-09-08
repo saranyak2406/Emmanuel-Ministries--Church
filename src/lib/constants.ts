@@ -4,12 +4,11 @@ export const MINISTRY = {
   tagline: 'Preaching Christ \u2022 Transforming Lives \u2022 Reaching the World',
   heroMessage: 'Proclaiming Jesus Christ. Reaching Souls. Raising Disciples. Advancing God\u2019s Kingdom',
   leader: 'Evangelist Emmanuel Abraham',
-  location: 'Sarpavaram, Kakinada, Andhra Pradesh, India',
-  fullAddress: 'Sarpavaram, Kakinada, Andhra Pradesh, India.',
-  phone: '+91 9876543210',
-  phone2: '+1 234 567 8900',
-  whatsapp: '+91 9876543210',
-  telegram: '+91 9876543210',
+  location: 'Hyderabad, Telangana, India',
+  fullAddress: '# 15 - 66, Amrutha colony, 3rd street, Swaroop Nagar, uppal, Hyderabad, Telangana, India - 500039.',
+  phone: '+91 9700577712 / +91 9063049808',
+  whatsapp: '+91 9700577712',
+  telegram: '+91 9700577712',
   email: 'contact@emmanuelgospelministries.org',
   workingHours: 'Monday – Saturday, 9:00 AM to 5:00 PM (IST)',
 } as const;
@@ -24,10 +23,9 @@ export const NAV_LINKS = [
 ] as const;
 
 export const SOCIAL_LINKS = [
-  { label: 'YouTube', href: 'https://youtube.com/@evangelistemmanuelabraham', icon: 'youtube' },
-  { label: 'Facebook', href: 'https://www.facebook.com/share/16EB61V6wvX/', icon: 'facebook' },
-  { label: 'Facebook Page', href: 'https://www.facebook.com/share/1HtSqsGZUk/', icon: 'facebook' },
-  { label: 'Instagram', href: 'https://www.instagram.com/mariya.dass3/', icon: 'instagram' },
+  { label: 'YouTube', href: 'https://youtube.com/@evangelistemmanuelabraham?si=LxICF6iC7paZajYr', icon: 'youtube' },
+  { label: 'Facebook', href: 'https://www.facebook.com/share/1HtSqsGZUk/', icon: 'facebook' },
+  { label: 'Instagram', href: 'https://www.instagram.com/mariya.dass3?utm_source=qr&igsi=MWtzcTNtOXdtNDNlNQ==', icon: 'instagram' },
   { label: 'Telegram', href: 'https://t.me/+919700577712', icon: 'telegram' },
 ] as const;
 

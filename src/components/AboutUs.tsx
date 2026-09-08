@@ -14,7 +14,7 @@ export default function AboutUs() {
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand-50/40 rounded-full blur-3xl -z-0 pointer-events-none" />
 
       <div ref={ref} className="container-max relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
 
           {/* ── Images column ─────────────────────────── */}
           <div className={`reveal ${isVisible ? 'is-visible' : ''} relative`}>
@@ -78,38 +78,38 @@ export default function AboutUs() {
                 We believe that the Gospel of Jesus Christ is the good news that every person needs to hear. Our desire is to take this message to cities, villages, communities and nations and to serve wherever God opens a door.
               </p>
             </div>
+          </div>
+        </div>
 
-            {/* Leader */}
-            <div className="mt-10 border-t border-ivory-200 pt-8">
-              <p className="eyebrow text-gold-500 mb-4">OUR LEADER</p>
-              <div className="flex items-start gap-4">
-                <div className="w-14 h-14 rounded-full bg-gradient-to-br from-brand-700 to-charcoal-900 flex items-center justify-center shrink-0 shadow-lg">
-                  <span className="font-serif text-xl font-bold text-gold-400">EA</span>
-                </div>
+        {/* ── Leader (Full Width) ────────────────────────── */}
+        <div className={`mt-16 lg:mt-24 pt-12 border-t border-ivory-200 reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
+          <p className="eyebrow text-gold-500 mb-6 text-center">OUR LEADER</p>
+          <div className="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-4xl mx-auto">
+            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-brand-700 to-charcoal-900 flex items-center justify-center shrink-0 shadow-lg">
+              <span className="font-serif text-2xl md:text-3xl font-bold text-gold-400">EA</span>
+            </div>
+            <div className="text-center md:text-left">
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-charcoal-900">
+                Evangelist Emmanuel Abraham
+              </h3>
+              <div className="mt-4 space-y-4 text-base md:text-lg text-charcoal-600 leading-relaxed max-w-3xl">
+                <p>
+                  Evangelist Emmanuel Abraham serves in Gospel ministry with a passion for proclaiming Jesus Christ, praying for people, encouraging believers and reaching communities with the message of the Gospel.
+                </p>
+                <p>
+                  Through Gospel meetings, prayer gatherings, evangelistic outreaches and ministry events, the desire is to point people to Jesus Christ and encourage them to walk according to God's Word.
+                </p>
+              </div>
+              
+              <div className="mt-8 flex flex-col md:flex-row items-center md:items-start gap-4 bg-ivory-50 p-6 rounded-xl border border-ivory-200 text-left max-w-2xl mx-auto md:mx-0">
+                <Quote className="h-6 w-6 text-gold-500 shrink-0" />
                 <div>
-                  <h3 className="font-serif text-2xl font-bold text-charcoal-900">
-                    Evangelist Emmanuel Abraham
-                  </h3>
-                  <div className="mt-3 space-y-3 text-sm md:text-base text-charcoal-600 leading-relaxed">
-                    <p>
-                      Evangelist Emmanuel Abraham serves in Gospel ministry with a passion for proclaiming Jesus Christ, praying for people, encouraging believers and reaching communities with the message of the Gospel.
-                    </p>
-                    <p>
-                      Through Gospel meetings, prayer gatherings, evangelistic outreaches and ministry events, the desire is to point people to Jesus Christ and encourage them to walk according to God's Word.
-                    </p>
-                  </div>
-                  
-                  <div className="mt-6 flex items-start gap-3 bg-ivory-50 p-4 rounded-lg border border-ivory-200">
-                    <Quote className="h-5 w-5 text-gold-500 shrink-0" />
-                    <div>
-                      <p className="font-serif italic text-base text-charcoal-800">
-                        "For we preach not ourselves, but Christ Jesus the Lord..."
-                      </p>
-                      <p className="text-sm font-bold tracking-widest uppercase text-brand-700 mt-2">
-                        — 2 Corinthians 4:5
-                      </p>
-                    </div>
-                  </div>
+                  <p className="font-serif italic text-lg text-charcoal-800">
+                    "For we preach not ourselves, but Christ Jesus the Lord..."
+                  </p>
+                  <p className="text-sm font-bold tracking-widest uppercase text-brand-700 mt-3">
+                    — 2 Corinthians 4:5
+                  </p>
                 </div>
               </div>
             </div>

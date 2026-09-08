@@ -24,29 +24,7 @@ const EVENTS = [
       '/images/meetings/fasting-prayer/WhatsApp Image 2026-09-04 at 2.22.47 PM.jpeg',
       '/images/meetings/fasting-prayer/WhatsApp Image 2026-09-04 at 2.22.59 PM.jpeg'
     ]
-  },
-  {
-    name: 'Gospel Revival Meeting',
-    location: 'Hyderabad, Telangana',
-    date: 'October 15, 2026',
-    time: '6:30 PM – 8:30 PM',
-    speaker: 'Evangelist Emmanuel Abraham',
-    host: 'Local Church Partner',
-    desc: 'An evening of worship, Word, and prayer for spiritual renewal.',
-    youtubeUrl: 'https://www.youtube.com/@emmanuelgospelministries', 
-    images: []
-  },
-  {
-    name: 'Healing & Restoration Service',
-    location: 'To Be Announced',
-    date: 'November 2026',
-    time: '7:00 PM – 9:00 PM',
-    speaker: 'Evangelist Emmanuel Abraham',
-    host: 'Emmanuel Gospel Ministries',
-    desc: 'Ministering God\'s Word and praying for healing and restoration.',
-    youtubeUrl: null,
-    images: []
-  },
+  }
 ];
 
 // ── YouTube Modal ───────────────────────────────────────────────
@@ -110,7 +88,7 @@ function EventDetailsModal({ event, onClose }: { event: (typeof EVENTS)[0]; onCl
           <h2 className="text-4xl md:text-5xl font-serif font-medium text-charcoal-900 mb-4">{event.name}</h2>
           <p className="text-xl md:text-2xl text-charcoal-600 mb-6">{event.desc}</p>
           
-          <div className="flex flex-col sm:flex-row gap-6 mb-0 pb-2 border-b border-charcoal-100">
+          <div className="flex flex-col sm:flex-row gap-6 mb-8 pb-8 border-b border-charcoal-100">
             <div className="flex-1 space-y-5">
                <div className="flex items-center gap-4 text-base font-medium text-charcoal-800">
                  <Calendar className="h-6 w-6 text-brand-500 shrink-0" />
@@ -138,7 +116,7 @@ function EventDetailsModal({ event, onClose }: { event: (typeof EVENTS)[0]; onCl
 
           {/* Event Images Gallery (3D Coverflow) */}
           {event.images && event.images.length > 1 && (
-            <div className="w-full -mt-2">
+            <div className="w-full mt-4">
               <CoverflowCarousel
                 items={event.images.map((img, idx) => ({
                   id: idx,

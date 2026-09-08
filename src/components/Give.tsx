@@ -23,7 +23,7 @@ const METHODS = [
     title: 'UPI PAYMENTS (FOR INDIA)',
     desc: 'Give quickly and securely via UPI on any payment app.',
     details: [
-      { label: 'Google Pay / PhonePe', value: '9876543210' },
+      { label: 'Google Pay / PhonePe', value: '9700577712' },
       { label: 'UPI ID',               value: 'emmanuelgospel@upi' },
     ],
   },
@@ -48,7 +48,7 @@ export default function Give() {
   };
 
   return (
-    <section id="give" className="section-padding bg-ivory-50 relative overflow-hidden">
+    <section id="give" className="pt-20 md:pt-28 pb-12 md:pb-16 bg-ivory-50 relative overflow-hidden">
       <div ref={ref} className="container-max">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
           {/* Image */}
