@@ -25,23 +25,16 @@ export default function FinalCTA() {
           Let's Advance the Gospel Together
         </p>
         <h2 className={`text-hero font-serif font-bold text-ivory-50 mb-8 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''} text-balance`}>
-          Pray. Believe. Go.<br />
-          <span className="text-gold-300">Proclaim Christ.</span>
+          Pray Believe Go<br />
+          <span className="text-gold-300">Proclaim Christ</span>
         </h2>
         <div className={`flex flex-col sm:flex-row justify-center gap-4 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
           <button
-            onClick={() => document.querySelector('#partnership')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => { window.location.href = '/partnership'; }}
             className="btn-gold"
           >
             <Handshake className="h-4 w-4" />
             Partner with Us
-          </button>
-          <button
-            onClick={() => document.querySelector('#prayer')?.scrollIntoView({ behavior: 'smooth' })}
-            className="btn-light"
-          >
-            <Heart className="h-4 w-4" />
-            Request Prayer
           </button>
         </div>
       </div>

@@ -8,22 +8,6 @@ const PILLARS = [
   { num: '05', title: 'Advance the Kingdom', desc: 'To work together with churches, ministries and believers in taking the Gospel forward.' },
 ];
 
-const VISION_LIST = [
-  'People come to know Jesus Christ',
-  'Souls won for Christ',
-  'The Gospel reach unreached places',
-  'Believers grow in God\u2019s Word',
-  'Churches built and strengthened',
-  'Pastors and ministries encouraged',
-  'Families strengthened',
-  'Poor and needy people helped',
-  'Widows supported',
-  'Orphans and vulnerable children cared for',
-  'Elderly people supported with dignity and compassion',
-  'Education opportunities provided for children from poor families',
-  'Gospel ministries and missionaries supported',
-  'Communities impacted by the love of Christ',
-];
 
 export default function Vision() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
@@ -47,18 +31,18 @@ export default function Vision() {
 
         {/* Five pillars journey */}
         <div className="relative mb-20">
-          {/* Connecting line */}
-          <div className="hidden lg:block absolute top-16 left-[10%] right-[10%] h-px bg-gradient-to-r from-gold-400/0 via-gold-400/40 to-gold-400/0" />
+          {/* Connecting line (from center of circle 1 to center of circle 5) */}
+          <div className="hidden lg:block absolute top-8 left-8 right-[calc(20%-2rem)] h-[1px] bg-gold-400/30 z-0" />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-4">
             {PILLARS.map((p, i) => (
               <div
                 key={p.num}
-                className={`reveal reveal-delay-${i + 1} ${isVisible ? 'is-visible' : ''} relative text-center lg:text-left`}
+                className={`reveal reveal-delay-${i + 1} ${isVisible ? 'is-visible' : ''} relative text-center lg:text-left z-10`}
               >
                 {/* Number circle */}
                 <div className="flex justify-center lg:justify-start mb-5">
-                  <div className="relative w-16 h-16 rounded-full bg-charcoal-800 border border-gold-400/30 flex items-center justify-center transition-all duration-300 hover:border-gold-400 hover:scale-110">
+                  <div className="relative w-16 h-16 rounded-full bg-charcoal-900 border border-gold-400/30 flex items-center justify-center transition-all duration-300 hover:border-gold-400 hover:scale-110 shadow-[0_0_15px_rgba(26,24,22,1)]">
                     <span className="font-serif text-xl font-bold text-gold-400">{p.num}</span>
                   </div>
                 </div>
@@ -69,27 +53,6 @@ export default function Vision() {
           </div>
         </div>
 
-        {/* Full Vision List */}
-        <div className={`reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
-          <div className="max-w-3xl mx-auto">
-            <p className="text-center text-sm font-semibold uppercase tracking-wider text-gold-400 mb-8">
-              We Desire to See
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {VISION_LIST.map((item, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-3 p-4 rounded-xl bg-charcoal-800/50 border border-ivory-200/5 hover:border-gold-400/20 transition-colors duration-200"
-                >
-                  <span className="w-5 h-5 rounded-full bg-gold-500/20 border border-gold-400/40 flex items-center justify-center shrink-0 mt-0.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold-400" />
-                  </span>
-                  <span className="text-sm text-ivory-200 leading-relaxed">{item}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

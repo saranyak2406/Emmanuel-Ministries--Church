@@ -3,12 +3,9 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { useNavigate } from 'react-router-dom';
 
 const MISSION_CARDS = [
-  { icon: Megaphone, title: 'Gospel Evangelism',    href: '/mission/gospel-evangelism',   desc: 'Sharing the message of Jesus Christ in cities, towns, villages and communities across India and beyond.' },
-  { icon: Home,      title: 'Village Outreach',      href: '/mission/village-outreach',    desc: 'Reaching rural communities with the Gospel and prayer — carrying the hope of Christ to those who need it most.' },
-  { icon: Hand,      title: 'Prayer Missions',       href: '/mission/prayer-missions',     desc: 'Standing in prayer for communities and nations through dedicated seasons of intercession and fasting.' },
-  { icon: Users,     title: 'Gospel Meetings',       href: '/mission/gospel-meetings',     desc: 'Organizing and participating in evangelistic gatherings for worship, the Word and responding to the Gospel.' },
-  { icon: Heart,     title: 'Community Outreach',    href: '/mission/community-outreach',  desc: 'Serving people with compassion and practical support, demonstrating the love of Christ in action.' },
-  { icon: Handshake, title: 'Mission Partnerships',  href: '/mission/mission-partnerships',desc: 'Working together with believers and ministries to advance the Gospel and strengthen Kingdom work.' },
+  { icon: Home,      title: 'Village Outreach',             href: '/mission/village-outreach',    desc: 'Many villages are still waiting to hear the Gospel. We travel to these places, preach the Word, pray for the sick and distribute Christian literature.' },
+  { icon: Megaphone, title: 'Gospel Tract Distribution',    href: '/mission/gospel-tracts',       desc: 'We distribute Gospel tracts in public places, markets and during special outreaches to share the message of salvation.' },
+  { icon: Heart,     title: 'Compassion Ministry',          href: '/mission/compassion',          desc: 'As God provides, we support poor families, widows, orphans and those in need with basic necessities, demonstrating the love of Christ in action.' },
 ];
 
 // Local slideshow image for missions backdrop
@@ -27,38 +24,24 @@ export default function Missions() {
       </div>
 
       <div ref={ref} className="container-max relative z-10">
-        {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <p className={`eyebrow text-brand-800 mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>
-            Missions
+            MISSIONS
           </p>
           <h2
             className={`text-display font-serif font-bold text-charcoal-950 reveal reveal-delay-1 ${
               isVisible ? 'is-visible' : ''
             }`}
           >
-            Taking the Gospel to the Nations
+            Reaching the Unreached
           </h2>
 
-          {/* Matthew 28:19 quote */}
-          <div
-            className={`mt-6 inline-block border-l-4 border-brand-700 pl-5 text-left reveal reveal-delay-2 ${
-              isVisible ? 'is-visible' : ''
-            }`}
-          >
-            <p className="font-serif italic text-lg text-charcoal-900 font-medium">
-              &ldquo;Go ye therefore, and teach all nations…&rdquo;
-            </p>
-            <p className="mt-1 text-sm text-brand-800 font-bold uppercase tracking-wider">— Matthew 28:19</p>
-          </div>
-
           <p
-            className={`mt-6 text-base md:text-lg text-charcoal-800 font-medium leading-relaxed reveal reveal-delay-3 ${
+            className={`mt-6 text-base md:text-lg text-charcoal-800 font-bold leading-relaxed reveal reveal-delay-2 ${
               isVisible ? 'is-visible' : ''
             }`}
           >
-            Emmanuel Gospel Ministries has a heart to carry the Gospel beyond the walls of the local
-            church and reach people in different communities and nations.
+            Taking the Gospel to villages, communities and places that need Jesus Christ.
           </p>
         </div>
 

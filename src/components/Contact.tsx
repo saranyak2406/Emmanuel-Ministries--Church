@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, MessageCircle, Send, Loader2, CheckCircle, Youtube, Facebook, Instagram } from 'lucide-react';
+import { MapPin, Phone, Mail, MessageCircle, Send, Loader2, CheckCircle, Youtube, Facebook, Instagram, Clock } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { MINISTRY, SOCIAL_LINKS } from '@/lib/constants';
 
@@ -7,11 +7,11 @@ type FormState = {
   name: string;
   email: string;
   phone: string;
-  country: string;
+  subject: string;
   message: string;
 };
 
-const INITIAL: FormState = { name: '', email: '', phone: '', country: '', message: '' };
+const INITIAL: FormState = { name: '', email: '', phone: '', subject: '', message: '' };
 
 // Telegram SVG icon
 function TelegramIcon({ className }: { className?: string }) {
@@ -72,18 +72,24 @@ export default function Contact() {
       value: MINISTRY.email,
       href: `mailto:${MINISTRY.email}`,
     },
+    {
+      icon: Clock,
+      label: 'Working Hours',
+      value: MINISTRY.workingHours || 'Monday – Saturday, 9:00 AM to 5:00 PM (IST)',
+      href: null,
+    },
   ];
 
   return (
-    <section id="contact" className="pt-8 pb-20 bg-[#eef2f9]">
+    <section id="contact" className="pt-8 pb-20 bg-ivory-50">
       <div ref={ref} className="container-max">
         
         {/* Main White Card Container */}
-        <div className={`bg-white rounded-[2.5rem] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] overflow-hidden reveal ${isVisible ? 'is-visible' : ''}`}>
+        <div className={`bg-white rounded-[2.5rem] shadow-2xl border border-ivory-200 overflow-hidden reveal ${isVisible ? 'is-visible' : ''}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2">
             
             {/* Left Column: Illustration & Info */}
-            <div className="p-10 md:p-16 flex flex-col justify-center items-center bg-[#f8fafe] border-r border-[#eef2f9]">
+            <div className="p-10 md:p-16 flex flex-col justify-center items-center bg-brand-50 border-r border-ivory-200">
               {/* Custom Illustration matching the theme */}
               <div className="w-full max-w-md mb-12 transform hover:scale-105 transition-transform duration-500">
                 <img 
@@ -97,8 +103,8 @@ export default function Contact() {
               <div className="w-full max-w-md space-y-6">
                 {CONTACT_INFO.map(({ icon: Icon, label, value, href }) => (
                   <div key={label} className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 border border-[#eef2f9]">
-                      <Icon className="h-5 w-5 text-[#8b75b6]" />
+                    <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 border border-ivory-200">
+                      <Icon className="h-5 w-5 text-brand-700" />
                     </div>
                     <div>
                       {href ? (
@@ -106,19 +112,19 @@ export default function Contact() {
                           href={href}
                           target={href.startsWith('http') ? '_blank' : undefined}
                           rel="noopener noreferrer"
-                          className="text-base font-medium text-[#2d3748] hover:text-[#8b75b6] transition-colors"
+                          className="text-base font-medium text-charcoal-900 hover:text-brand-700 transition-colors"
                         >
                           {value}
                         </a>
                       ) : (
-                        <p className="text-base font-medium text-[#2d3748]">{value}</p>
+                        <p className="text-base font-medium text-charcoal-900">{value}</p>
                       )}
                     </div>
                   </div>
                 ))}
 
                 {/* Social Links */}
-                <div className="flex items-center gap-3 pt-6 border-t border-[#eef2f9]">
+                <div className="flex items-center gap-3 pt-6 border-t border-ivory-200">
                   {SOCIAL_LINKS.map((social) => {
                     const isTelegram = social.icon === 'telegram';
                     const Icon = isTelegram ? null : getSocialIcon(social.label);
@@ -129,7 +135,7 @@ export default function Contact() {
                         target="_blank"
                         rel="noopener noreferrer"
                         title={social.label}
-                        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-[#eef2f9] shadow-sm text-[#8b75b6] transition-all duration-300 hover:bg-[#8b75b6] hover:text-white hover:-translate-y-1"
+                        className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-ivory-200 shadow-sm text-brand-700 transition-all duration-300 hover:bg-brand-700 hover:text-white hover:-translate-y-1"
                       >
                         {isTelegram ? (
                           <TelegramIcon className="h-4 w-4" />
@@ -147,24 +153,27 @@ export default function Contact() {
             <div className="p-10 md:p-16 lg:p-20 flex flex-col justify-center">
               
               <div className="mb-10">
-                <h2 className="text-5xl md:text-6xl font-black text-[#1e293b] tracking-tight mb-2 uppercase">
-                  Contact Us
-                </h2>
-                <p className="text-xl md:text-2xl text-[#64748b] font-medium tracking-wider uppercase mb-6">
-                  Get In Touch
+                <p className="text-xl md:text-2xl text-charcoal-600 font-medium tracking-wider uppercase mb-2">
+                  CONTACT US
                 </p>
-                <p className="text-[#64748b] leading-relaxed max-w-md">
-                  We would love to hear from you. Please fill out the form below with your inquiry, prayer request, or message, and our team will get back to you shortly.
+                <h2 className="text-5xl md:text-6xl font-black text-charcoal-900 tracking-tight mb-4">
+                  Get in Touch
+                </h2>
+                <p className="text-charcoal-700 leading-relaxed max-w-md font-bold text-lg mb-2">
+                  We would love to hear from you. Send us a message today.
+                </p>
+                <p className="text-charcoal-600 leading-relaxed max-w-md">
+                  Whether you have a question about our ministry, want to invite Evangelist Emmanuel Abraham for a meeting, or simply want to say hello, we are here to connect with you.
                 </p>
               </div>
 
               {status === 'success' ? (
-                <div className="flex flex-col items-center justify-center text-center py-16 bg-[#f8fafe] rounded-3xl border border-[#eef2f9]">
-                  <CheckCircle className="h-20 w-20 text-[#8b75b6] mb-6" />
-                  <h3 className="text-3xl font-black text-[#1e293b] mb-4">
+                <div className="flex flex-col items-center justify-center text-center py-16 bg-brand-50 rounded-3xl border border-ivory-200">
+                  <CheckCircle className="h-20 w-20 text-brand-700 mb-6" />
+                  <h3 className="text-3xl font-black text-charcoal-900 mb-4">
                     Message Sent!
                   </h3>
-                  <p className="text-[#64748b] max-w-sm text-lg">
+                  <p className="text-charcoal-600 max-w-sm text-lg">
                     Thank you for reaching out. We have received your message and will be in touch soon.
                   </p>
                 </div>
@@ -176,13 +185,13 @@ export default function Contact() {
                   </div>
                   
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <Field label="Phone" name="phone" value={form.phone} onChange={handleChange} />
-                    <Field label="Country" name="country" value={form.country} onChange={handleChange} />
+                    <Field label="Phone Number" name="phone" value={form.phone} onChange={handleChange} />
+                    <Field label="Subject" name="subject" value={form.subject} onChange={handleChange} />
                   </div>
                   
                   <div>
-                    <label className="block text-xs font-bold uppercase tracking-wider text-[#64748b] mb-2 pl-1">
-                      Message <span className="text-[#8b75b6]">*</span>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-charcoal-600 mb-2 pl-1">
+                      Message <span className="text-brand-700">*</span>
                     </label>
                     <textarea
                       name="message"
@@ -190,7 +199,7 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       rows={4}
-                      className="w-full rounded-2xl border-none bg-[#f8fafe] px-5 py-4 text-[15px] text-[#1e293b] placeholder:text-[#94a3b8] focus:ring-2 focus:ring-[#8b75b6]/30 focus:bg-white transition-all resize-none shadow-inner"
+                      className="w-full rounded-2xl border-none bg-ivory-50 px-5 py-4 text-[15px] text-charcoal-900 placeholder:text-charcoal-400 focus:ring-2 focus:ring-brand-700/30 focus:bg-white transition-all resize-none shadow-inner"
                       placeholder="Write your message here..."
                     />
                   </div>
@@ -205,7 +214,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={status === 'loading'}
-                      className="w-auto min-w-[200px] bg-[#a88ed4] hover:bg-[#977cbd] text-white font-bold text-sm tracking-widest py-4 px-10 rounded uppercase shadow-[0_8px_20px_-6px_rgba(168,142,212,0.6)] hover:shadow-[0_12px_25px_-6px_rgba(168,142,212,0.8)] transition-all disabled:opacity-60 disabled:cursor-not-allowed transform hover:-translate-y-0.5 flex items-center justify-center gap-3"
+                      className="w-auto min-w-[200px] bg-brand-700 hover:bg-brand-800 text-white font-bold text-sm tracking-widest py-4 px-10 rounded-xl uppercase shadow-lg shadow-brand-700/20 hover:shadow-brand-700/40 transition-all disabled:opacity-60 disabled:cursor-not-allowed transform hover:-translate-y-0.5 flex items-center justify-center gap-3"
                     >
                       {status === 'loading' ? (
                         <>
@@ -213,7 +222,7 @@ export default function Contact() {
                           Sending...
                         </>
                       ) : (
-                        'CONTACT'
+                        'SEND MESSAGE'
                       )}
                     </button>
                   </div>
@@ -226,10 +235,10 @@ export default function Contact() {
         
         {/* Carousel Dots matching theme at the bottom */}
         <div className="flex justify-center items-center gap-3 mt-12">
-          <div className="w-3 h-3 rounded-full bg-[#a88ed4]"></div>
-          <div className="w-3 h-3 rounded-full bg-transparent border-2 border-[#1e293b]"></div>
-          <div className="w-3 h-3 rounded-full bg-transparent border-2 border-[#1e293b]"></div>
-          <div className="w-3 h-3 rounded-full bg-transparent border-2 border-[#1e293b]"></div>
+          <div className="w-3 h-3 rounded-full bg-brand-700"></div>
+          <div className="w-3 h-3 rounded-full bg-transparent border-2 border-charcoal-900"></div>
+          <div className="w-3 h-3 rounded-full bg-transparent border-2 border-charcoal-900"></div>
+          <div className="w-3 h-3 rounded-full bg-transparent border-2 border-charcoal-900"></div>
         </div>
         
       </div>
@@ -254,8 +263,8 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-xs font-bold uppercase tracking-wider text-[#64748b] mb-2 pl-1">
-        {label} {required && <span className="text-[#8b75b6]">*</span>}
+      <label className="block text-xs font-bold uppercase tracking-wider text-charcoal-600 mb-2 pl-1">
+        {label} {required && <span className="text-brand-700">*</span>}
       </label>
       <input
         type={type}
@@ -264,7 +273,7 @@ function Field({
         onChange={onChange}
         required={required}
         placeholder={`Enter your ${label.toLowerCase()}`}
-        className="w-full rounded-2xl border-none bg-[#f8fafe] px-5 py-4 text-[15px] text-[#1e293b] placeholder:text-[#94a3b8] focus:ring-2 focus:ring-[#8b75b6]/30 focus:bg-white transition-all shadow-inner"
+        className="w-full rounded-2xl border-none bg-ivory-50 px-5 py-4 text-[15px] text-charcoal-900 placeholder:text-charcoal-400 focus:ring-2 focus:ring-brand-700/30 focus:bg-white transition-all shadow-inner"
       />
     </div>
   );

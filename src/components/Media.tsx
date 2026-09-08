@@ -23,21 +23,21 @@ function getSocialIcon(label: string) {
 // Featured sermon videos
 const VIDEOS = [
   {
-    title: 'Gospel Outreach Meeting',
+    title: 'The Power of the Gospel',
     thumbnail: 'https://img.youtube.com/vi/tVpTGkB7KV8/hqdefault.jpg',
     desc: 'Evangelist Emmanuel Abraham proclaims the Gospel at a powerful outreach meeting.',
     duration: '25:14',
     youtubeUrl: 'https://youtu.be/tVpTGkB7KV8?si=y33gglqbeBld52dc',
   },
   {
-    title: 'Prayer & Revival Meeting',
+    title: 'Living by Faith in Difficult Times',
     thumbnail: 'https://img.youtube.com/vi/fuhGTqbKoLw/hqdefault.jpg',
     desc: 'A special gathering of believers for prayer, worship and the Word of God.',
     duration: '32:05',
     youtubeUrl: 'https://youtu.be/fuhGTqbKoLw?si=jwQXq04-Hi2VIAzM',
   },
   {
-    title: 'Village Gospel Outreach',
+    title: 'The Cross and Our Redemption',
     thumbnail: 'https://img.youtube.com/vi/Ur6lXrM4RyU/hqdefault.jpg',
     desc: 'Taking the Gospel to villages and unreached communities in India.',
     duration: '18:47',
@@ -87,12 +87,12 @@ export default function Media() {
     <section id="media" className="section-padding bg-charcoal-900">
       <div ref={ref} className="container-max">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className={`eyebrow text-gold-400 mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Media</p>
+          <p className={`eyebrow text-gold-400 mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>MEDIA & RESOURCES</p>
           <h2 className={`text-display font-serif font-bold text-ivory-50 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
-            Watch &amp; Be Encouraged
+            Messages That Build Your Faith
           </h2>
-          <p className={`mt-4 text-lg text-ivory-300 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
-            Watch sermons, testimonies, and Gospel meetings from Emmanuel Gospel Ministries.
+          <p className={`mt-4 font-bold text-lg text-ivory-300 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
+            Listen to sermons, Bible teachings and live meeting recordings.
           </p>
         </div>
 
@@ -124,6 +124,19 @@ export default function Media() {
               <p className="text-sm text-ivory-400 leading-relaxed">{v.desc}</p>
             </div>
           ))}
+        </div>
+
+        {/* CTA */}
+        <div className={`reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''} text-center mb-16`}>
+          <a
+            href="https://youtube.com/@evangelistemmanuelabraham"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-red-600 text-white font-bold tracking-widest uppercase px-8 py-4 rounded-lg hover:bg-red-700 transition-colors shadow-lg"
+          >
+            <Youtube className="h-5 w-5" />
+            WATCH MORE ON YOUTUBE
+          </a>
         </div>
 
         {/* Social Links */}

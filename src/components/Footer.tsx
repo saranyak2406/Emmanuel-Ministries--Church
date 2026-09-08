@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Youtube, Facebook, Instagram, MapPin, MessageCircle, Send } from 'lucide-react';
+import { Youtube, Facebook, Instagram, MapPin, MessageCircle, Send, Mail, Phone } from 'lucide-react';
 import { MINISTRY, NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants';
 
 // Telegram SVG icon
@@ -56,10 +56,17 @@ export default function Footer() {
           </div>
 
           {/* Quick Links */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory-50 mb-4">Quick Links</h4>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-2">
-              {NAV_LINKS.map((link) => (
+            <div className="grid grid-cols-1 gap-y-2">
+              {[
+                { label: 'Home', href: '/' },
+                { label: 'About Us', href: '/about' },
+                { label: 'Ministries', href: '/ministries' },
+                { label: 'Meetings', href: '/#meetings' },
+                { label: 'Give', href: '/give' },
+                { label: 'Contact', href: '/contact' }
+              ].map((link) => (
                 <button
                   key={link.href}
                   onClick={() => handleNavClick(link.href)}
@@ -71,10 +78,22 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Social */}
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory-50 mb-4">Connect</h4>
-            <div className="flex flex-wrap items-center gap-3 mb-6">
+          {/* Contact Info */}
+          <div className="lg:col-span-1">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory-50 mb-4">Contact Info</h4>
+            <div className="flex flex-col gap-3 text-sm text-ivory-300 mb-6">
+              <div className="flex items-start gap-2">
+                <Mail className="h-4 w-4 text-royal-400 mt-0.5 shrink-0" />
+                <a href={`mailto:${MINISTRY.email}`} className="hover:text-gold-400 transition-colors">{MINISTRY.email}</a>
+              </div>
+              <div className="flex items-start gap-2">
+                <Phone className="h-4 w-4 text-royal-400 mt-0.5 shrink-0" />
+                <a href={`tel:${MINISTRY.phone.replace(/\s+/g, '')}`} className="hover:text-gold-400 transition-colors">{MINISTRY.phone}</a>
+              </div>
+            </div>
+            
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory-50 mb-4">Social Media</h4>
+            <div className="flex flex-wrap items-center gap-3">
               {SOCIAL_LINKS.map((social) => {
                 const isTelegram = social.icon === 'telegram';
                 const Icon = isTelegram ? null : getSocialIcon(social.label);
@@ -98,12 +117,6 @@ export default function Footer() {
                 );
               })}
             </div>
-            <button
-              onClick={() => handleNavClick('/prayer')}
-              className="btn-primary !py-2.5 !px-5 !text-xs"
-            >
-              Request Prayer
-            </button>
           </div>
         </div>
 

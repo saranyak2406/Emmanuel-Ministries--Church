@@ -10,11 +10,15 @@ const SUCCESS_BG =
 
 type FormState = {
   name: string;
+  phone: string;
+  email: string;
   request: string;
 };
 
 const INITIAL: FormState = {
   name: '',
+  phone: '',
+  email: '',
   request: '',
 };
 
@@ -69,21 +73,21 @@ export default function PrayerRequest() {
             alt="Prayer Background" 
             className="h-full w-full object-cover transition-opacity duration-1000" 
           />
-          {/* A very light overlay to ensure text readability without darkening it too much */}
-          <div className="absolute inset-0 bg-white/10" />
+          {/* A light overlay to make the background bright and clean */}
+          <div className="absolute inset-0 bg-white/80 backdrop-blur-sm" />
         </div>
 
         <div ref={ref} className="container-max relative z-10 w-full max-w-lg mx-auto px-4">
           <div className={`transition-all duration-700 transform ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             
             {status === 'success' ? (
-              <div className="text-center py-20 px-6 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20 shadow-2xl">
+              <div className="text-center py-20 px-6 rounded-3xl bg-white/50 backdrop-blur-md border border-white/40 shadow-xl">
                 <h2 
                   className="text-4xl md:text-5xl font-bold mb-8 uppercase leading-tight tracking-wider"
                   style={{
                     color: '#e2d3c1', // Tan/Gold color from the template
                     WebkitTextStroke: '1px #4a3b2c',
-                    textShadow: '3px 3px 6px rgba(0,0,0,0.4), -1px -1px 0 #4a3b2c, 1px -1px 0 #4a3b2c, -1px 1px 0 #4a3b2c, 1px 1px 0 #4a3b2c'
+                    textShadow: '3px 3px 6px rgba(0,0,0,0.2), -1px -1px 0 #4a3b2c, 1px -1px 0 #4a3b2c, -1px 1px 0 #4a3b2c, 1px 1px 0 #4a3b2c'
                   }}
                 >
                   Thank You For<br/>Submitting<br/>Your Request!
@@ -94,13 +98,13 @@ export default function PrayerRequest() {
                     onClick={() => {
                       setStatus('idle');
                     }}
-                    className="px-8 py-4 bg-white/60 backdrop-blur-md text-charcoal-900 font-bold tracking-wider hover:bg-white/80 transition-all rounded shadow-lg"
+                    className="px-8 py-4 bg-white backdrop-blur-md text-charcoal-900 font-bold tracking-wider hover:bg-ivory-100 transition-all rounded-lg shadow-md border border-charcoal-100"
                   >
                     Submit Another
                   </button>
                   <button
                     onClick={() => setSidebarOpen(true)}
-                    className="px-8 py-4 bg-charcoal-900/80 backdrop-blur-md text-white font-bold tracking-wider hover:bg-charcoal-900 transition-all rounded shadow-lg"
+                    className="px-8 py-4 bg-brand-700 backdrop-blur-md text-white font-bold tracking-wider hover:bg-brand-800 transition-all rounded-lg shadow-md"
                   >
                     Explore Ministry
                   </button>
@@ -109,17 +113,28 @@ export default function PrayerRequest() {
             ) : (
               <div className="w-full">
                 <div className="text-center mb-12">
-                  <h2 
-                    className="text-3xl md:text-4xl font-bold text-white mb-2 leading-tight"
-                    style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(0,0,0,0.5)' }}
-                  >
-                    Submit Your Prayer<br/>Requests Here
+                  <h2 className="text-3xl md:text-4xl font-bold text-charcoal-900 mb-4 leading-tight">
+                    Send Us Your Prayer Request
                   </h2>
+                  <p className="text-xl text-brand-700 font-bold mb-6">
+                    We believe in the power of prayer. How can we pray for you?
+                  </p>
+                  <p className="text-base text-charcoal-700 leading-relaxed max-w-2xl mx-auto mb-8">
+                    If you are facing sickness, difficulties, family problems or any challenges, please share your request with us. Our prayer team will stand with you in faith and pray for God's intervention in your life.
+                  </p>
+                  <div className="bg-white/50 backdrop-blur-md rounded-xl p-6 border border-brand-200">
+                    <p className="font-serif italic text-lg text-charcoal-800 mb-2">
+                      “Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not.”
+                    </p>
+                    <p className="text-sm font-bold tracking-widest uppercase text-brand-700">
+                      — Jeremiah 33:3
+                    </p>
+                  </div>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-8">
                   <div>
-                    <label className="block text-xl font-bold text-black mb-2" style={{ textShadow: '0 2px 4px rgba(255,255,255,0.5)' }}>
+                    <label className="block text-xl font-bold text-charcoal-800 mb-2">
                       Full Name
                     </label>
                     <input
@@ -129,12 +144,42 @@ export default function PrayerRequest() {
                       onChange={handleChange}
                       required
                       placeholder="Enter your name"
-                      className="w-full bg-white/60 backdrop-blur-md border-none px-5 py-4 text-black font-medium placeholder:text-charcoal-600 focus:outline-none focus:ring-2 focus:ring-white/80 shadow-inner"
+                      className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-lg px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xl font-bold text-black mb-2" style={{ textShadow: '0 2px 4px rgba(255,255,255,0.5)' }}>
+                    <label className="block text-xl font-bold text-charcoal-800 mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={form.phone}
+                      onChange={handleChange}
+                      required
+                      placeholder="Enter your phone number"
+                      className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-lg px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xl font-bold text-charcoal-800 mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="Enter your email"
+                      className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-lg px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xl font-bold text-charcoal-800 mb-2">
                       Prayer Request
                     </label>
                     <textarea
@@ -144,12 +189,12 @@ export default function PrayerRequest() {
                       required
                       rows={5}
                       placeholder="Enter your prayer request"
-                      className="w-full bg-white/60 backdrop-blur-md border-none px-5 py-4 text-black font-medium placeholder:text-charcoal-600 focus:outline-none focus:ring-2 focus:ring-white/80 shadow-inner resize-none"
+                      className="w-full bg-white/90 backdrop-blur-md border border-charcoal-200 rounded-lg px-5 py-4 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm resize-none"
                     />
                   </div>
 
                   {status === 'error' && (
-                    <p className="text-sm text-red-600 bg-white/80 backdrop-blur-md rounded px-4 py-3 font-bold text-center">
+                    <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3 font-bold text-center">
                       {errorMsg}
                     </p>
                   )}
@@ -158,7 +203,7 @@ export default function PrayerRequest() {
                     <button
                       type="submit"
                       disabled={status === 'loading'}
-                      className="w-full bg-white/50 backdrop-blur-md border-none text-black font-bold text-xl tracking-widest py-4 uppercase shadow-[0_4px_15px_rgba(0,0,0,0.2)] hover:bg-white/70 transition-all disabled:opacity-50 flex items-center justify-center gap-3"
+                      className="w-full btn-primary bg-brand-700 text-white font-bold text-xl tracking-widest py-4 uppercase shadow-lg hover:bg-brand-800 transition-all disabled:opacity-50 flex items-center justify-center gap-3 rounded-lg border-none"
                     >
                       {status === 'loading' ? (
                         <>
@@ -166,19 +211,25 @@ export default function PrayerRequest() {
                           Submitting...
                         </>
                       ) : (
-                        'SUBMIT'
+                        'SUBMIT PRAYER REQUEST'
                       )}
                     </button>
                   </div>
                 </form>
 
                 <div className="mt-16 text-center">
-                  <p className="text-white font-bold text-lg drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] tracking-wide">
+                  <p className="text-charcoal-600 font-bold text-lg tracking-wide">
                     DON'T HAVE AN ACCOUNT?
                   </p>
-                  <a href="#signup" className="text-white font-extrabold text-xl underline underline-offset-4 decoration-2 drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] hover:text-gray-200 transition-colors">
+                  <button onClick={() => {
+                    const event = new MouseEvent('click', { bubbles: true });
+                    const a = document.createElement('a');
+                    a.href = '/signup';
+                    a.dispatchEvent(event);
+                    window.location.href = '/signup';
+                  }} className="text-brand-700 font-extrabold text-xl underline underline-offset-4 decoration-2 hover:text-brand-900 transition-colors bg-transparent border-none cursor-pointer">
                     SIGN UP HERE
-                  </a>
+                  </button>
                 </div>
               </div>
             )}

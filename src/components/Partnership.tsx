@@ -4,28 +4,18 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 const PARTNERSHIPS = [
   {
     icon: Heart,
-    title: 'Prayer Partnership',
-    desc: 'Stand with us in prayer for Gospel meetings, missions, families and souls. Prayer is the foundation of everything we do.',
+    title: 'Pray For Us',
+    desc: 'Commit to praying for our ministry, meetings and outreaches.',
   },
   {
     icon: HandHeart,
-    title: 'Ministry Partnership',
-    desc: 'Work together with us in Gospel outreach and ministry initiatives. Partner in the work of proclaiming Christ.',
-  },
-  {
-    icon: Globe,
-    title: 'Mission Partnership',
-    desc: 'Support Gospel missions and outreach opportunities, helping us carry the message of Christ to unreached communities.',
-  },
-  {
-    icon: Calendar,
-    title: 'Event Partnership',
-    desc: 'Partner with us in organizing Gospel and prayer gatherings — helping to create opportunities for people to encounter God.',
+    title: 'Serve With Us',
+    desc: 'Join our volunteer team for meetings and outreach programs.',
   },
   {
     icon: DollarSign,
-    title: 'Financial Partnership',
-    desc: 'Support ministry activities through approved and transparent giving channels, helping to advance Gospel outreach and missions.',
+    title: 'Support Us',
+    desc: 'Stand with us financially to help advance the Gospel.',
   },
 ];
 
@@ -36,17 +26,28 @@ export default function Partnership() {
     <section id="partnership" className="section-padding bg-ivory-50">
       <div ref={ref} className="container-max">
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Partnership</p>
+          <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>PARTNERSHIP</p>
           <h2 className={`text-display font-serif font-bold text-charcoal-900 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
-            Partner with the Gospel
+            Partner With Us
           </h2>
-          <p className={`mt-6 text-lg text-charcoal-600 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''} text-balance`}>
-            Together, We Can Reach More People With the Gospel of Jesus Christ.
+          <p className={`mt-6 text-xl font-bold text-brand-700 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''} text-balance`}>
+            Together, we can reach more people with the Gospel.
           </p>
-          <p className={`mt-3 text-base text-charcoal-500 reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
-            Ministry becomes stronger when believers pray, serve and work together. You can partner
-            with Emmanuel Gospel Ministries through:
+          <p className={`mt-4 text-base text-charcoal-600 leading-relaxed reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
+            Gospel partnership is a biblical principle. When you partner with us, you are joining hands to proclaim Christ, reach the unreached, help the needy and advance God's Kingdom. Your prayers and support make a difference.
           </p>
+          <div className="mt-8 bg-brand-50 border-l-4 border-brand-700 p-6 text-left max-w-2xl mx-auto rounded-r-lg">
+            <p className="font-serif italic text-lg text-charcoal-800">
+              "I thank my God upon every remembrance of you, for your fellowship in the gospel from the first day until now."
+            </p>
+            <p className="mt-2 text-sm font-bold tracking-widest uppercase text-brand-700">
+              — Philippians 1:3,5
+            </p>
+          </div>
+        </div>
+
+        <div className="text-center mb-8">
+          <h3 className="text-2xl font-serif font-bold text-charcoal-900">HOW YOU CAN PARTNER</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -72,7 +73,7 @@ export default function Partnership() {
             onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
             className="btn-primary"
           >
-            Become a Partner
+            BECOME A PARTNER
             <ArrowRight className="h-4 w-4" />
           </button>
         </div>

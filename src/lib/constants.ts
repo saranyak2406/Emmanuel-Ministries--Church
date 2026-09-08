@@ -4,13 +4,14 @@ export const MINISTRY = {
   tagline: 'Preaching Christ \u2022 Transforming Lives \u2022 Reaching the World',
   heroMessage: 'Proclaiming Jesus Christ. Reaching Souls. Raising Disciples. Advancing God\u2019s Kingdom',
   leader: 'Evangelist Emmanuel Abraham',
-  location: 'Hyderabad, Telangana, India',
-  fullAddress: '#15-66, Amrutha Colony, 3rd Street, Swaroop Nagar, Uppal, Hyderabad, Telangana, India \u2013 500039',
-  phone: '+91 97005 77712',
-  phone2: '+91 90630 49808',
-  whatsapp: '+91 97005 77712',
-  telegram: '+91 97005 77712',
-  email: 'info@emmanuel.gmail.com',
+  location: 'Sarpavaram, Kakinada, Andhra Pradesh, India',
+  fullAddress: 'Sarpavaram, Kakinada, Andhra Pradesh, India.',
+  phone: '+91 9876543210',
+  phone2: '+1 234 567 8900',
+  whatsapp: '+91 9876543210',
+  telegram: '+91 9876543210',
+  email: 'contact@emmanuelgospelministries.org',
+  workingHours: 'Monday – Saturday, 9:00 AM to 5:00 PM (IST)',
 } as const;
 
 export const NAV_LINKS = [

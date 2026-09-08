@@ -5,30 +5,9 @@ import { Quote, Play, ArrowRight, Star } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const ALL_TESTIMONIES = [
-  { title: 'God Answered My Prayer', text: 'I was going through a difficult season and the ministry prayed with me. God answered in ways I could never imagine. My family was restored and I found peace in Christ.', author: 'Verified Testimony', location: 'Andhra Pradesh' },
-  { title: 'Healing & Restoration', text: 'After prayer, I experienced healing and a renewed sense of hope. God is faithful and His presence changed everything. I give glory to Jesus Christ.', author: 'Verified Testimony', location: 'Telangana' },
-  { title: 'A New Beginning in Christ', text: 'I gave my life to Christ at a Gospel meeting. My family and I are now walking with the Lord together. The joy and peace we have found is beyond words.', author: 'Verified Testimony', location: 'India' },
-  { title: 'Delivered from Darkness', text: 'I was living in bondage and darkness. Through the Gospel preaching and prayer, God delivered me completely. I am now free in Jesus Christ.', author: 'Verified Testimony', location: 'Hyderabad' },
-  { title: 'Family Restored', text: 'Our family was falling apart. The ministry stood with us in prayer and counseling. By God\'s grace, our family is now united and strong in Christ.', author: 'Verified Testimony', location: 'Telangana' },
-  { title: 'Provision in Need', text: 'When we had no hope and no provision, God used Emmanuel Gospel Ministries to help us. God provided through His people and we are grateful.', author: 'Verified Testimony', location: 'Andhra Pradesh' },
-];
-
-const VIDEO_TESTIMONIES = [
-  {
-    title: 'Testimony of Salvation',
-    thumbnail: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-    youtubeUrl: 'https://youtube.com/@evangelistemmanuelabraham',
-  },
-  {
-    title: 'Testimony of Healing',
-    thumbnail: 'https://images.pexels.com/photos/6994992/pexels-photo-6994992.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-    youtubeUrl: 'https://youtube.com/@evangelistemmanuelabraham',
-  },
-  {
-    title: 'Testimony of Deliverance',
-    thumbnail: 'https://images.pexels.com/photos/8164742/pexels-photo-8164742.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
-    youtubeUrl: 'https://youtube.com/@evangelistemmanuelabraham',
-  },
+  { title: 'God Healed My Family', text: 'We were going through a very difficult time, and my health was failing. I attended the prayer meeting and Evangelist Emmanuel Abraham prayed for me. By the grace of God, I was completely healed, and my family found peace in Jesus Christ.', author: 'Sarah M.', location: '' },
+  { title: 'A New Beginning', text: 'I lived without hope and didn\'t know the purpose of my life. After hearing the Gospel at one of the revival meetings, I accepted Jesus Christ as my Savior. My life has completely changed, and I now walk in faith.', author: 'David K.', location: '' },
+  { title: 'Provision in Hard Times', text: 'During the pandemic, our family struggled to find food and work. The ministry provided us with groceries and prayed for us. It showed us the true love of Christ.', author: 'Priya R.', location: '' },
 ];
 
 export default function TestimonialsPage() {
@@ -46,11 +25,11 @@ export default function TestimonialsPage() {
           <div className="container-max relative z-10">
             <p className="eyebrow text-gold-400 mb-4">Testimonies</p>
             <h1 className="text-hero font-serif font-bold text-ivory-50 mb-6 text-balance">
-              Testimonies of<br />
-              <span className="text-gold-400">God&rsquo;s Faithfulness</span>
+              Changed Lives.<br />
+              <span className="text-gold-400">Transformed Hearts.</span>
             </h1>
-            <p className="text-xl text-ivory-200 max-w-2xl leading-relaxed">
-              God is still working in people&rsquo;s lives. Read and watch how God has moved through prayer, preaching, and the power of the Gospel.
+            <p className="text-xl font-bold text-ivory-200 max-w-2xl leading-relaxed">
+              Read stories of God's grace, healing and provision.
             </p>
           </div>
         </section>
@@ -88,49 +67,10 @@ export default function TestimonialsPage() {
               ))}
             </div>
 
-            {/* Video Testimonies */}
-            <div className="text-center max-w-3xl mx-auto mb-14">
-              <p className={`eyebrow mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Video Testimonies</p>
-              <h2 className={`text-display font-serif font-bold text-charcoal-900 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
-                Watch & Be Encouraged
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              {VIDEO_TESTIMONIES.map((v, i) => (
-                <a
-                  key={i}
-                  href={v.youtubeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`reveal reveal-delay-${i + 1} ${isVisible ? 'is-visible' : ''} group relative aspect-[16/10] rounded-2xl overflow-hidden shadow-lg cursor-pointer block`}
-                >
-                  <img
-                    src={v.thumbnail}
-                    alt={v.title}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-900/80 via-charcoal-900/20 to-transparent" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-brand-700/90 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-brand-600">
-                      <Play className="h-7 w-7 text-ivory-50 ml-1" fill="currentColor" />
-                    </div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-gold-400 mb-1">Video Testimony</p>
-                    <p className="font-serif text-lg font-bold text-ivory-50">{v.title}</p>
-                  </div>
-                </a>
-              ))}
-            </div>
-
             {/* CTA */}
             <div className={`reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''} text-center`}>
-              <p className="text-lg text-charcoal-600 mb-6">
-                Do you have a testimony of what God has done in your life? We would love to hear from you.
-              </p>
               <button onClick={() => navigate('/contact')} className="btn-primary">
-                Share Your Testimony
+                SHARE YOUR TESTIMONY
                 <ArrowRight className="h-4 w-4" />
               </button>
             </div>

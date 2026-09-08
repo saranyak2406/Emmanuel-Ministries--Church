@@ -73,7 +73,7 @@ export default function Hero() {
       >
         <div className="max-w-xl animate-fade-in text-left pointer-events-auto">
           <p className="eyebrow !text-gold-400 mb-3 lg:mb-6" style={{ animationDelay: '0.05s' }}>
-            Hyderabad, Telangana, India
+            EMMANUEL GOSPEL MINISTRIES
           </p>
 
           <h1 className="text-display text-4xl sm:text-5xl md:text-[4rem] font-serif font-medium text-white leading-[1.1] tracking-tight mb-3 lg:mb-6">
@@ -86,18 +86,20 @@ export default function Hero() {
           </h1>
 
           <p
-            className="mt-2 lg:mt-6 text-base sm:text-lg lg:text-2xl font-serif italic text-gold-400 animate-fade-up font-medium"
+            className="mt-2 lg:mt-6 text-base sm:text-lg lg:text-2xl font-serif text-gold-400 animate-fade-up font-medium"
             style={{ animationDelay: '0.4s' }}
           >
-            Raising Disciples & Advancing God’s Kingdom
+            Raising Disciples. Advancing God's Kingdom.
           </p>
 
-          <p
-            className="mt-2 lg:mt-4 text-sm lg:text-lg text-ivory-200 leading-relaxed animate-fade-up hidden sm:block"
+          <div
+            className="mt-4 lg:mt-6 text-sm lg:text-lg text-ivory-200 leading-relaxed animate-fade-up hidden sm:block"
             style={{ animationDelay: '0.55s' }}
           >
-            Emmanuel Gospel Ministries is a Christ-centered ministry committed to carrying His message of salvation, hope, and healing to nations.
-          </p>
+            <p className="italic font-serif text-xl">"Go ye into all the world, and preach the gospel to every creature."</p>
+            <p className="text-gold-400 text-xs tracking-wider uppercase mt-2">&mdash; Mark 16:15</p>
+            <p className="mt-5 font-bold text-white tracking-widest uppercase text-xs">Evangelist Emmanuel Abraham</p>
+          </div>
 
           <div
             className="mt-8 lg:mt-10 flex flex-col sm:flex-row gap-3 lg:gap-4 animate-fade-up"

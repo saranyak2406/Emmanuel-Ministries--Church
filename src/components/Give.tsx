@@ -8,32 +8,31 @@ const GIVE_IMG = '/give-donate.png';
 const METHODS = [
   {
     icon: Building2,
-    title: 'Bank Transfer',
+    title: 'BANK DETAILS (FOR INDIA)',
     desc: 'Transfer your support directly to the ministry bank account.',
     details: [
-      { label: 'Bank Name',      value: 'State Bank of India' },
       { label: 'Account Name',   value: 'Emmanuel Gospel Ministries' },
-      { label: 'Account Number', value: '1234 5678 9012' },
+      { label: 'Account Number', value: '01234567890' },
+      { label: 'Bank Name',      value: 'State Bank of India' },
       { label: 'IFSC Code',      value: 'SBIN0001234' },
-      { label: 'Branch',         value: 'Hyderabad Main Branch' },
+      { label: 'Branch',         value: 'Sarpavaram, Kakinada' },
     ],
   },
   {
     icon: Smartphone,
-    title: 'UPI',
+    title: 'UPI PAYMENTS (FOR INDIA)',
     desc: 'Give quickly and securely via UPI on any payment app.',
     details: [
-      { label: 'UPI ID',  value: 'emmanuelgospel@sbi' },
-      { label: 'Name',    value: 'Emmanuel Gospel Ministries' },
+      { label: 'Google Pay / PhonePe', value: '9876543210' },
+      { label: 'UPI ID',               value: 'emmanuelgospel@upi' },
     ],
   },
   {
     icon: Globe,
-    title: 'International Giving',
-    desc: 'For supporters outside India — subject to applicable laws and regulations.',
+    title: 'ONLINE GIVING (INTERNATIONAL)',
+    desc: 'You can support our ministry through our secure online giving portal.',
     details: [
       { label: 'Contact', value: 'contact@emmanuelgospelministries.org' },
-      { label: 'Note',    value: 'Write to us for international transfer details.' },
     ],
   },
 ];
@@ -72,32 +71,30 @@ export default function Give() {
 
           {/* Content */}
           <div className={`reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
-            <p className="eyebrow mb-4">Give & Support</p>
+            <p className="eyebrow mb-4">GIVE</p>
             <h2 className="text-display font-serif font-bold text-charcoal-900 mb-5">
-              Give & Support the Ministry
+              Support the Ministry
             </h2>
-            <p className="text-lg text-brand-700 mb-3 font-semibold">
-              Together We Can Reach More People With the Gospel
+            <p className="text-xl text-brand-700 mb-4 font-bold">
+              Your giving helps us advance the Gospel and reach the unreached.
             </p>
             <p className="text-base text-charcoal-600 mb-6 leading-relaxed">
-              Your generous support enables Emmanuel Gospel Ministries to proclaim Jesus Christ, reach the unreached, strengthen families, and transform communities through the power of the Gospel. Every contribution matters and makes a real difference.
+              Your tithes, offerings and donations enable us to organize Gospel meetings, support missionaries, help the needy and spread the Word of God.
             </p>
-            <div className="space-y-3 mb-8">
-              {['Gospel outreach & evangelism', 'Prayer gatherings & intercession', 'Mission trips & community service', 'Discipleship & Bible teaching', 'Support for widows, orphans & elderly'].map(
-                (item) => (
-                  <div key={item} className="flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full bg-brand-700" />
-                    <span className="text-sm font-medium text-charcoal-700">{item}</span>
-                  </div>
-                )
-              )}
+            <div className="bg-brand-50 border-l-4 border-brand-700 p-6 rounded-r-lg mb-8">
+              <p className="font-serif italic text-lg text-charcoal-800 mb-2">
+                “Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver.”
+              </p>
+              <p className="text-sm font-bold tracking-widest uppercase text-brand-700">
+                — 2 Corinthians 9:7
+              </p>
             </div>
             <button
               onClick={() => openModal()}
               className="btn-primary"
             >
               <CreditCard className="h-4 w-4" />
-              Give Now
+              GIVE ONLINE NOW
             </button>
           </div>
         </div>

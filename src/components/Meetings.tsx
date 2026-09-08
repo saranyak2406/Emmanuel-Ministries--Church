@@ -5,8 +5,8 @@ import CoverflowCarousel from '@/components/CoverflowCarousel';
 
 const EVENTS = [
   {
-    name: 'Three Days Special Fasting & Prayer',
-    location: 'Sarpavaram, Kakinada, AP',
+    name: 'THREE DAYS SPECIAL FASTING & PRAYER MEETINGS',
+    location: 'Sarpavaram, Kakinada, Andhra Pradesh',
     date: 'September 8–10, 2026',
     time: '6:00 PM – 9:00 PM',
     speaker: 'Evangelist Emmanuel Abraham',
@@ -239,13 +239,13 @@ export default function Meetings() {
         {/* Header Theme */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className={`text-xs font-bold uppercase tracking-[0.2em] text-charcoal-400 mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>
-            JOIN US
+            UPCOMING MEETINGS
           </p>
           <h2 className={`text-display md:text-5xl font-serif font-medium text-charcoal-900 mb-4 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
-            Upcoming Events & Meetings
+            Upcoming Gospel & Revival Meetings
           </h2>
-          <p className={`text-charcoal-500 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
-            Discover what's happening at Emmanuel Gospel Ministries.
+          <p className={`text-charcoal-500 font-bold reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
+            Experience God. Hear His Word. Pray Together.
           </p>
         </div>
 

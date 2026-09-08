@@ -56,7 +56,7 @@ export default function MinistryDetailPage() {
             <div className="max-w-4xl mx-auto">
               
 
-              <div className="text-center mb-16">
+              <div className="text-center mb-24">
                 <p className={`eyebrow mb-4 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
                   About This Ministry
                 </p>
@@ -69,7 +69,7 @@ export default function MinistryDetailPage() {
               </div>
 
               {/* Aspects Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
                 {detail.aspects.map((aspect, i) => {
                   const Icon = aspect.icon;
                   return (
@@ -92,8 +92,8 @@ export default function MinistryDetailPage() {
               </div>
 
               {/* Online Sermons / Media Section */}
-              <div className={`mb-24 reveal ${isVisible ? 'is-visible' : ''}`}>
-                <div className="text-center mb-12">
+              <div className={`mb-32 reveal ${isVisible ? 'is-visible' : ''}`}>
+                <div className="text-center mb-16">
                   <h2 className="text-display font-serif font-bold text-charcoal-900 mb-4">
                     Online Sermons
                   </h2>

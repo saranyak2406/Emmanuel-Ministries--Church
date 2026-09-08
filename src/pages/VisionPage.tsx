@@ -1,13 +1,13 @@
 import Navbar from '@/components/Navbar';
-import AboutUs from '@/components/AboutUs';
+import Vision from '@/components/Vision';
 import Footer from '@/components/Footer';
 
-export default function AboutPage() {
+export default function VisionPage() {
   return (
     <div className="min-h-screen bg-ivory-50 flex flex-col">
       <Navbar />
       <main className="flex-1 pt-20">
-        <AboutUs />
+        <Vision />
       </main>
       <Footer />
     </div>

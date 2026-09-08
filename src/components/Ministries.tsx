@@ -4,14 +4,14 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const MINISTRIES_DATA = [
-  { id: 'gospel-evangelism',   title: 'Gospel & Evangelism',     image: '/images/slideshow/img1.jpg', desc: 'Proclaiming the good news of Jesus Christ to all people.' },
-  { id: 'prayer-intercession', title: 'Prayer & Intercession',   image: '/images/slideshow/1001500386.jpg', desc: 'Standing before God in prayer for individuals and nations.' },
-  { id: 'revival-meetings',    title: 'Revival Meetings',        image: '/images/slideshow/image 3.jpg', desc: 'Gathering believers and seekers together to worship God.' },
-  { id: 'healing-restoration', title: 'Healing & Restoration',   image: '/images/ministries/healing-ministry.png', desc: 'Ministering God\'s Word and praying for healing and restoration.' },
-  { id: 'discipleship-teaching',title: 'Discipleship',           image: '/images/slideshow/img1.jpg', desc: 'Helping believers grow in faith and relationship with Christ.' },
-  { id: 'missions-outreach',   title: 'Missions & Outreach',     image: '/images/slideshow/1001500423.jpg', desc: 'Taking the Gospel beyond familiar places.' },
-  { id: 'family-ministry',     title: 'Family Ministry',         image: '/images/slideshow/image2.jpg', desc: 'Strengthening families on biblical principles.' },
-  { id: 'youth-ministry',      title: 'Youth Ministry',          image: '/images/slideshow/img1.jpg', desc: 'Guiding young people to know Christ and grow in faith.' },
+  { id: 'gospel-evangelism',   title: 'Gospel & Evangelism',     image: '/images/slideshow/img1.jpg', desc: 'We proclaim Jesus Christ and invite people to respond to the Gospel.' },
+  { id: 'prayer-intercession', title: 'Prayer & Intercession',   image: '/images/slideshow/1001500386.jpg', desc: 'Prayer is central to our ministry. We pray for salvation, families, churches, communities and nations.' },
+  { id: 'revival-meetings',    title: 'Revival Meetings',        image: '/images/slideshow/image 3.jpg', desc: 'Special meetings focused on worship, prayer, God\'s Word and spiritual renewal.' },
+  { id: 'healing-restoration', title: 'Healing & Restoration',   image: '/images/slideshow/e2659171-d689-4189-9460-01d204a70954.jpg', desc: 'We pray with people who are seeking God\'s intervention, comfort, strength and restoration.' },
+  { id: 'family-ministry',     title: 'Family Ministry',         image: '/images/slideshow/image2.jpg', desc: 'Encouraging families to build their relationships upon Christ and biblical principles.' },
+  { id: 'youth-ministry',      title: 'Youth Ministry',          image: '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.56 PM.jpeg', desc: 'Encouraging young people to know Christ, discover God\'s purpose and live faithfully for Him.' },
+  { id: 'missions-outreach',   title: 'Missions & Outreach',     image: '/images/slideshow/1001500423.jpg', desc: 'Taking the Gospel beyond our regular gatherings and serving people in different communities and locations.' },
+  { id: 'bible-teaching',      title: 'Bible Teaching',          image: '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.57 PM.jpeg', desc: 'Helping believers understand God\'s Word and apply biblical truth to everyday life.' },
 ];
 
 export default function Ministries() {
@@ -90,23 +90,12 @@ export default function Ministries() {
                   <img
                     src={ministry.image}
                     alt={ministry.title}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out"
+                    className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-1000 ease-out"
                     style={{ transform: isActive ? 'scale(1.05)' : 'scale(1)' }}
                   />
 
                   {/* Gradient Overlay */}
                   <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-60'}`} />
-
-                  {/* Content for Inactive Cards (Rotated Text) */}
-                  <div 
-                    className={`absolute inset-0 flex items-end justify-center pb-12 transition-opacity duration-300 delay-100 ${
-                      isActive ? 'opacity-0 pointer-events-none' : 'opacity-100'
-                    }`}
-                  >
-                    <h3 className="text-white font-medium text-lg whitespace-nowrap transform -rotate-90 origin-bottom tracking-wider">
-                      {ministry.title}
-                    </h3>
-                  </div>
 
                   {/* Content for Active Card */}
                   <div 
