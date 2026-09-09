@@ -256,7 +256,7 @@ export default function PrayerRequest() {
                             Submitting...
                           </>
                         ) : (
-                          'SUBMIT PRAYER REQUEST'
+                          'SUBMIT'
                         )}
                       </button>
 
