@@ -270,7 +270,7 @@ export default function PrayerRequest() {
                             className="w-full sm:w-[300px] bg-[#25D366] text-white hover:bg-[#20bd5a] py-4 rounded-xl flex items-center justify-center gap-3 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
                           >
                             <WhatsAppIcon className="h-6 w-6" />
-                            <span className="font-bold tracking-widest uppercase">Connect on WhatsApp</span>
+                            <span className="font-bold tracking-widest uppercase">WhatsApp</span>
                           </a>
                         </div>
                       </div>
