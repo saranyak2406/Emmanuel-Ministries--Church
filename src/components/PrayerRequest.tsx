@@ -267,10 +267,10 @@ export default function PrayerRequest() {
                             href={SOCIAL_LINKS.find(s => s.icon === 'whatsapp')?.href || '#'}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full sm:w-[300px] bg-[#25D366] text-white hover:bg-[#20bd5a] py-4 rounded-xl flex items-center justify-center gap-3 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                            className="w-full sm:w-[300px] btn-primary py-4 rounded-xl border-none"
                           >
-                            <WhatsAppIcon className="h-6 w-6" />
-                            <span className="font-bold tracking-widest uppercase">WhatsApp</span>
+                            <WhatsAppIcon className="h-5 w-5" />
+                            <span>WHATSAPP</span>
                           </a>
                         </div>
                       </div>
