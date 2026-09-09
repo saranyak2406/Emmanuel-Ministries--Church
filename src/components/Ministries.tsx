@@ -47,7 +47,7 @@ export default function Ministries() {
         </div>
 
         {/* Accordion Carousel Container */}
-        <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center px-4 md:px-10 mb-20">
+        <div className="relative w-full max-w-[100vw] h-[500px] md:h-[600px] flex items-center justify-center px-4 md:px-10 mb-20 overflow-hidden">
           
           {/* Navigation Arrows */}
           <button 

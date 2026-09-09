@@ -48,7 +48,7 @@ export default function Welcome() {
             </div>
 
             {/* Logo — floating card */}
-            <div className="absolute -bottom-6 -right-6 z-10 bg-white rounded-2xl shadow-xl p-3 border border-royal-100">
+            <div className="absolute -bottom-6 right-2 sm:-right-6 z-10 bg-white rounded-2xl shadow-xl p-3 border border-royal-100">
               <img
                 src={LOGO_IMG}
                 alt="Emmanuel Gospel Ministries logo"
@@ -58,7 +58,7 @@ export default function Welcome() {
 
             {/* Decorative frames */}
             <div className="absolute -bottom-4 -left-4 w-28 h-28 border-2 border-royal-400/30 rounded-2xl -z-10" />
-            <div className="absolute -top-4 -right-4 w-20 h-20 border-2 border-brand-700/20 rounded-2xl -z-10" />
+            <div className="absolute -top-4 right-2 sm:-right-4 w-20 h-20 border-2 border-brand-700/20 rounded-2xl -z-10" />
           </div>
 
           {/* ── Content column ────────────────────────── */}
