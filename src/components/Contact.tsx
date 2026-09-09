@@ -228,7 +228,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={status === 'loading'}
-                      className="w-auto min-w-[200px] bg-brand-700 hover:bg-brand-800 text-white font-bold text-sm tracking-widest py-4 px-10 rounded-xl uppercase shadow-lg shadow-brand-700/20 hover:shadow-brand-700/40 transition-all disabled:opacity-60 disabled:cursor-not-allowed transform hover:-translate-y-0.5 flex items-center justify-center gap-3"
+                      className="btn-primary w-full sm:w-auto min-w-[200px]"
                     >
                       {status === 'loading' ? (
                         <>

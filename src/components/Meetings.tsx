@@ -132,7 +132,7 @@ function EventDetailsModal({ event, onClose }: { event: (typeof EVENTS)[0]; onCl
               href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.location)}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 text-white rounded-full font-medium hover:bg-brand-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              className="btn-primary"
             >
               <MapPin className="h-5 w-5" />
               Get Directions
@@ -194,7 +194,7 @@ function EventCard({
         <div className="shrink-0 flex items-center justify-end">
           <button 
             onClick={event.youtubeUrl ? () => onYoutubeClick(event.youtubeUrl!) : () => onDetailsClick(event)} 
-            className="px-8 py-3 bg-[#BFA582] hover:bg-[#A88E6A] text-white text-[0.7rem] font-bold uppercase tracking-[0.2em] rounded-sm transition-colors shadow-sm"
+            className="btn-primary !text-[0.7rem]"
           >
             {event.youtubeUrl ? 'Watch Live' : 'View Details'}
           </button>

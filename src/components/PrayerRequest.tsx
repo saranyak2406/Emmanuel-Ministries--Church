@@ -239,7 +239,7 @@ export default function PrayerRequest() {
                       <button
                         type="submit"
                         disabled={status === 'loading'}
-                        className="w-full btn-primary bg-brand-700 text-white font-bold text-lg tracking-widest py-4 uppercase shadow-lg hover:bg-brand-800 transition-all disabled:opacity-50 flex items-center justify-center gap-3 rounded-xl border-none transform hover:-translate-y-1"
+                        className="w-full btn-primary py-4 rounded-xl border-none"
                       >
                         {status === 'loading' ? (
                           <>

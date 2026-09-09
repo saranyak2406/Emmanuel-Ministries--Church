@@ -168,7 +168,7 @@ export default function Partnership() {
                        <label className="block text-sm font-bold text-charcoal-800 mb-2">Message (Optional)</label>
                        <textarea rows={3} value={form.message} onChange={e => setForm({...form, message: e.target.value})} className="w-full bg-ivory-50 border border-ivory-200 rounded-xl px-4 py-3.5 text-charcoal-900 font-medium placeholder:text-charcoal-400 focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all resize-none" placeholder="Any additional information..." />
                      </div>
-                     <button type="submit" disabled={status === 'loading'} className="w-full btn-primary bg-brand-700 hover:bg-brand-800 text-white font-bold py-4 uppercase tracking-widest rounded-xl flex items-center justify-center gap-3 mt-4 transition-all shadow-md">
+                     <button type="submit" disabled={status === 'loading'} className="w-full btn-primary font-bold py-4 rounded-xl flex items-center justify-center gap-3 mt-4">
                        {status === 'loading' ? <><Loader2 className="w-5 h-5 animate-spin" /> SUBMITTING...</> : 'SUBMIT PARTNERSHIP'}
                      </button>
                    </form>

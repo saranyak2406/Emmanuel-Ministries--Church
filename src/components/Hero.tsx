@@ -107,13 +107,13 @@ export default function Hero() {
           >
             <button
               onClick={() => setIsJoinModalOpen(true)}
-              className="btn-primary !text-charcoal-900 relative z-50 cursor-pointer shadow-lg w-full sm:w-auto"
+              className="btn-primary relative z-50 cursor-pointer shadow-lg w-full sm:w-auto"
             >
               Join a Meeting
             </button>
             <button
               onClick={() => document.querySelector('#prayer')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-light !bg-transparent !border-gold-400 !text-gold-400 hover:!bg-gold-400 hover:!text-charcoal-900 relative z-50 cursor-pointer w-full sm:w-auto"
+              className="btn-primary relative z-50 cursor-pointer w-full sm:w-auto"
             >
               Request Prayer
             </button>
