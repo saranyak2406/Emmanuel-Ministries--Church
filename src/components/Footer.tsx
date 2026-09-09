@@ -88,7 +88,19 @@ export default function Footer() {
               </div>
               <div className="flex items-start gap-2">
                 <Phone className="h-4 w-4 text-royal-400 mt-0.5 shrink-0" />
-                <a href={`tel:${MINISTRY.phone.replace(/\s+/g, '')}`} className="hover:text-gold-400 transition-colors">{MINISTRY.phone}</a>
+                <div className="flex flex-wrap gap-2">
+                  <a href={`tel:${MINISTRY.phone.split('/')[0].replace(/\s+/g, '')}`} className="hover:text-gold-400 transition-colors">
+                    {MINISTRY.phone.split('/')[0].trim()}
+                  </a>
+                  {MINISTRY.phone.includes('/') && (
+                    <>
+                      <span className="text-charcoal-700">|</span>
+                      <a href={`tel:${MINISTRY.phone.split('/')[1].replace(/\s+/g, '')}`} className="hover:text-gold-400 transition-colors">
+                        {MINISTRY.phone.split('/')[1].trim()}
+                      </a>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
             

@@ -69,18 +69,18 @@ export default function Hero() {
 
       {/* Text Content (Bottom on mobile, Left Chevron on desktop) */}
       <div 
-        className="relative w-full flex-1 bg-brand-900 border-t-[6px] border-gold-400 lg:border-t-0 lg:absolute lg:top-[80px] lg:left-0 lg:w-[55%] lg:h-[calc(100vh-80px)] z-20 flex flex-col justify-start lg:justify-center px-6 py-12 sm:px-12 md:px-16 lg:px-20 transition-all duration-500 lg:[clip-path:polygon(0_0,90%_0,100%_50%,90%_100%,0_100%)] lg:pb-0"
+        className="relative w-full max-w-full flex-1 bg-brand-900 border-t-[6px] border-gold-400 lg:border-t-0 lg:absolute lg:top-[80px] lg:left-0 lg:w-[55%] lg:h-[calc(100vh-80px)] z-20 flex flex-col justify-start lg:justify-center px-6 py-12 sm:px-12 md:px-16 lg:px-20 transition-all duration-500 lg:[clip-path:polygon(0_0,90%_0,100%_50%,90%_100%,0_100%)] lg:pb-0 overflow-hidden"
       >
-        <div className="max-w-xl animate-fade-in text-left pointer-events-auto">
+        <div className="w-full max-w-xl animate-fade-in text-left pointer-events-auto">
           <p className="eyebrow !text-gold-400 mb-3 lg:mb-6" style={{ animationDelay: '0.05s' }}>
             EMMANUEL GOSPEL MINISTRIES
           </p>
 
-          <h1 className="text-display text-4xl sm:text-5xl md:text-[4rem] font-serif font-medium text-white leading-[1.1] tracking-tight mb-3 lg:mb-6">
-            <span className="block animate-fade-up" style={{ animationDelay: '0.1s' }}>
+          <h1 className="text-display text-4xl sm:text-5xl md:text-[4rem] font-serif font-medium text-white leading-[1.1] tracking-tight mb-3 lg:mb-6 flex flex-col break-words">
+            <span className="block animate-fade-up w-full" style={{ animationDelay: '0.1s' }}>
               Proclaiming Jesus Christ
             </span>
-            <span className="block animate-fade-up text-white mt-1 lg:mt-2" style={{ animationDelay: '0.25s' }}>
+            <span className="block animate-fade-up text-white mt-1 lg:mt-2 w-full" style={{ animationDelay: '0.25s' }}>
               Reaching Souls
             </span>
           </h1>

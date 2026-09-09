@@ -63,8 +63,8 @@ export default function Contact() {
     {
       icon: Phone,
       label: 'Phone',
-      value: `${MINISTRY.phone} | ${MINISTRY.phone2}`,
-      href: `tel:${MINISTRY.phone.replace(/\s+/g, '')}`,
+      value: MINISTRY.phone.includes('/') ? MINISTRY.phone.split('/').join(' | ') : MINISTRY.phone,
+      href: `tel:${MINISTRY.phone.split('/')[0].replace(/\s+/g, '')}`,
     },
     {
       icon: Mail,
@@ -109,9 +109,17 @@ export default function Contact() {
                     <div>
                       {label === 'Phone' ? (
                         <div className="flex items-center gap-2 text-base font-medium text-charcoal-900">
-                          <a href={`tel:${MINISTRY.phone.replace(/\s+/g, '')}`} className="hover:text-brand-700 transition-colors">{MINISTRY.phone}</a>
-                          <span className="text-charcoal-300">|</span>
-                          <a href={`tel:${MINISTRY.phone2.replace(/\s+/g, '')}`} className="hover:text-brand-700 transition-colors">{MINISTRY.phone2}</a>
+                          <a href={`tel:${MINISTRY.phone.split('/')[0].replace(/\s+/g, '')}`} className="hover:text-brand-700 transition-colors">
+                            {MINISTRY.phone.split('/')[0].trim()}
+                          </a>
+                          {MINISTRY.phone.includes('/') && (
+                            <>
+                              <span className="text-charcoal-300">|</span>
+                              <a href={`tel:${MINISTRY.phone.split('/')[1].replace(/\s+/g, '')}`} className="hover:text-brand-700 transition-colors">
+                                {MINISTRY.phone.split('/')[1].trim()}
+                              </a>
+                            </>
+                          )}
                         </div>
                       ) : href ? (
                         <a
