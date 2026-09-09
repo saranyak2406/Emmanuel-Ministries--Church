@@ -156,7 +156,7 @@ export default function Navbar() {
           borderBottom: isScrolled ? '1px solid rgba(26,75,140,0.08)' : 'none',
         }}
       >
-        <div className="container-max">
+        <div className="w-full px-4 sm:px-6 lg:px-12">
           <div className="flex items-center justify-between py-2 md:py-3">
 
             {/* Logo */}

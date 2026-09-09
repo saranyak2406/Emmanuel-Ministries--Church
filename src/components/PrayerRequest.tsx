@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Send, CheckCircle, Shield, Loader2, Home, BookOpen, Users, Handshake, DollarSign, Phone, X } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
-import { SOCIAL_LINKS } from '@/lib/constants';
+import { PRAYER_CATEGORIES, SOCIAL_LINKS } from '@/lib/constants';
 
 // WhatsApp SVG icon
 function WhatsAppIcon({ className }: { className?: string }) {
