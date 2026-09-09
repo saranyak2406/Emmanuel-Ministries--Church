@@ -245,32 +245,34 @@ export default function PrayerRequest() {
                     )}
 
                     <div className="pt-2">
-                      <button
-                        type="submit"
-                        disabled={status === 'loading'}
-                        className="w-full btn-primary py-4 rounded-xl border-none"
-                      >
-                        {status === 'loading' ? (
-                          <>
-                            <Loader2 className="h-6 w-6 animate-spin" />
-                            Submitting...
-                          </>
-                        ) : (
-                          'SUBMIT'
-                        )}
-                      </button>
-
-                      <div className="mt-4 flex flex-col items-center gap-3">
-                        <span className="text-sm font-medium text-charcoal-400 uppercase tracking-widest">— OR —</span>
-                        <a 
-                          href={SOCIAL_LINKS.find(s => s.icon === 'whatsapp')?.href || '#'}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full btn-light border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white py-4 rounded-xl flex items-center justify-center gap-3 transition-all"
+                      <div className="flex flex-col items-center gap-4">
+                        <button
+                          type="submit"
+                          disabled={status === 'loading'}
+                          className="w-full sm:w-[300px] btn-primary py-4 rounded-xl border-none"
                         >
-                          <WhatsAppIcon className="h-6 w-6" />
-                          <span className="font-bold tracking-widest uppercase">Connect on WhatsApp</span>
-                        </a>
+                          {status === 'loading' ? (
+                            <>
+                              <Loader2 className="h-6 w-6 animate-spin" />
+                              Submitting...
+                            </>
+                          ) : (
+                            'SUBMIT'
+                          )}
+                        </button>
+
+                        <div className="flex flex-col items-center gap-4 w-full">
+                          <span className="text-sm font-medium text-charcoal-400 uppercase tracking-widest">— OR —</span>
+                          <a 
+                            href={SOCIAL_LINKS.find(s => s.icon === 'whatsapp')?.href || '#'}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full sm:w-[300px] bg-[#25D366] text-white hover:bg-[#20bd5a] py-4 rounded-xl flex items-center justify-center gap-3 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                          >
+                            <WhatsAppIcon className="h-6 w-6" />
+                            <span className="font-bold tracking-widest uppercase">Connect on WhatsApp</span>
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </form>
