@@ -126,11 +126,11 @@ export default function Footer() {
             &copy; 2026 Emmanuel Gospel Ministries. All Rights Reserved.
           </p>
           <div className="flex items-center gap-5 text-sm text-ivory-400">
-            <button className="hover:text-gold-400 transition-colors">Privacy Policy</button>
+            <button onClick={() => handleNavClick('/legal')} className="hover:text-gold-400 transition-colors">Privacy Policy</button>
             <span className="text-charcoal-700">|</span>
-            <button className="hover:text-gold-400 transition-colors">Terms & Conditions</button>
+            <button onClick={() => handleNavClick('/legal')} className="hover:text-gold-400 transition-colors">Terms & Conditions</button>
             <span className="text-charcoal-700">|</span>
-            <button className="hover:text-gold-400 transition-colors">Disclaimer</button>
+            <button onClick={() => handleNavClick('/legal')} className="hover:text-gold-400 transition-colors">Disclaimer</button>
           </div>
         </div>
       </div>

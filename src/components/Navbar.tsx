@@ -43,7 +43,8 @@ const ALL_SECTIONS = [
   {
     group: 'About Us',
     items: [
-      { label: 'Vision',       href: '/about',       icon: Eye           },
+      { label: 'Vision',       href: '/vision',      icon: Eye           },
+      { label: 'Mission',      href: '/mission',     icon: Target        },
       { label: 'Core Values',  href: '/core-values/christ', icon: Heart  },
     ],
   },
@@ -63,8 +64,8 @@ const DESKTOP_NAV = [
     label: 'About Us', 
     href: '/about',
     dropdown: [
-      { title: 'Our Ministry', href: '/about', icon: BookOpen },
-      { title: 'Vision & Mission', href: '/about#vision', icon: Eye },
+      { title: 'Vision', href: '/vision', icon: Eye },
+      { title: 'Mission', href: '/mission', icon: Target },
       { title: 'Core Values', href: '/core-values/christ', icon: Heart },
     ]
   },

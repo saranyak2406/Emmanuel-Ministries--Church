@@ -1,11 +1,11 @@
-import { Facebook, Twitter, Instagram, Bell, Mail } from 'lucide-react';
+import { Facebook, Instagram, Bell, Mail, Youtube } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function FloatingSidebar() {
   const links = [
-    { id: 'facebook',  icon: Facebook,      label: 'Facebook',  href: '#', bg: 'bg-[#3b5998]', hover: 'hover:bg-[#2d4373]' },
-    { id: 'twitter',   icon: Twitter,       label: 'Twitter',   href: '#', bg: 'bg-[#1da1f2]', hover: 'hover:bg-[#0c85d0]' },
-    { id: 'instagram', icon: Instagram,     label: 'Instagram', href: '#', bg: 'bg-[#e1306c]', hover: 'hover:bg-[#c1205c]' },
+    { id: 'facebook',  icon: Facebook,      label: 'Facebook',  href: 'https://www.facebook.com/share/1HtSqsGZUk/', bg: 'bg-[#3b5998]', hover: 'hover:bg-[#2d4373]' },
+    { id: 'youtube',   icon: Youtube,       label: 'YouTube',   href: 'https://youtube.com/@evangelistemmanuelabraham?si=LxICF6iC7paZajYr', bg: 'bg-[#ff0000]', hover: 'hover:bg-[#cc0000]' },
+    { id: 'instagram', icon: Instagram,     label: 'Instagram', href: 'https://www.instagram.com/mariya.dass3?utm_source=qr&igsi=MWtzcTNtOXdtNDNlNQ==', bg: 'bg-[#e1306c]', hover: 'hover:bg-[#c1205c]' },
     { id: 'alerts',    icon: Bell,          label: 'Alerts',    href: '/meetings', bg: 'bg-[#0084ff]', hover: 'hover:bg-[#006bce]' },
     { id: 'email',     icon: Mail,          label: 'Contact',   href: '/contact', bg: 'bg-[#33475b]', hover: 'hover:bg-[#253342]' },
   ];

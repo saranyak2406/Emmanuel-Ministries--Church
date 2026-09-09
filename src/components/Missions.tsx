@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 const MISSION_CARDS = [
   { icon: Home,      title: 'Village Outreach',             href: '/mission/village-outreach',    desc: 'Many villages are still waiting to hear the Gospel. We travel to these places, preach the Word, pray for the sick and distribute Christian literature.' },
-  { icon: Megaphone, title: 'Gospel Tract Distribution',    href: '/mission/gospel-tracts',       desc: 'We distribute Gospel tracts in public places, markets and during special outreaches to share the message of salvation.' },
-  { icon: Heart,     title: 'Compassion Ministry',          href: '/mission/compassion',          desc: 'As God provides, we support poor families, widows, orphans and those in need with basic necessities, demonstrating the love of Christ in action.' },
+  { icon: Megaphone, title: 'Gospel Tract Distribution',    href: '/mission/gospel-evangelism',   desc: 'We distribute Gospel tracts in public places, markets and during special outreaches to share the message of salvation.' },
+  { icon: Heart,     title: 'Compassion Ministry',          href: '/mission/community-outreach',  desc: 'As God provides, we support poor families, widows, orphans and those in need with basic necessities, demonstrating the love of Christ in action.' },
 ];
 
 // Local slideshow image for missions backdrop
@@ -78,11 +78,11 @@ export default function Missions() {
           className={`text-center reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}
         >
           <button
-            className="btn-gold"
+            className="btn-primary bg-gold-500 hover:bg-gold-600 text-charcoal-900 border-none"
             onClick={() => navigate('/partnership')}
           >
             Partner With Us in Missions
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-4 w-4 ml-2" />
           </button>
         </div>
       </div>

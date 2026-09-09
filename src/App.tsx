@@ -10,6 +10,7 @@ import GivePage       from '@/pages/GivePage';
 import ContactPage    from '@/pages/ContactPage';
 import MeetingsPage   from '@/pages/MeetingsPage';
 import MediaPage      from '@/pages/MediaPage';
+import LegalPage      from '@/pages/LegalPage';
 import MissionsPage   from '@/pages/MissionsPage';
 import PartnershipPage from '@/pages/PartnershipPage';
 import PreachPage     from '@/pages/PreachPage';
@@ -44,6 +45,7 @@ export default function App() {
         <Route path="/core-values/:slug" element={<CoreValuePage />}/>
         <Route path="/mission/:slug"  element={<MissionDetailPage />}/>
         <Route path="/ministry/:slug" element={<MinistryDetailPage />}/>
+        <Route path="/legal"          element={<LegalPage />}       />
         {/* Fallback to home */}
         <Route path="*"               element={<HomePage />}        />
       </Routes>

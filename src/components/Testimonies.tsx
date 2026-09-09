@@ -11,12 +11,12 @@ const TESTIMONIES = [
 const VIDEO_TESTIMONIES = [
   {
     title: 'Salvation Testimony',
-    thumbnail: 'https://images.pexels.com/photos/8728380/pexels-photo-8728380.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+    thumbnail: '/images/slideshow/1001500386.jpg',
     youtubeUrl: 'https://youtube.com/@evangelistemmanuelabraham',
   },
   {
     title: 'Healing Testimony',
-    thumbnail: 'https://images.pexels.com/photos/6994992/pexels-photo-6994992.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop',
+    thumbnail: '/images/slideshow/1001500423.jpg',
     youtubeUrl: 'https://youtube.com/@evangelistemmanuelabraham',
   },
 ];

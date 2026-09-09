@@ -88,27 +88,27 @@ function EventDetailsModal({ event, onClose }: { event: (typeof EVENTS)[0]; onCl
           <h2 className="text-4xl md:text-5xl font-serif font-medium text-charcoal-900 mb-4">{event.name}</h2>
           <p className="text-xl md:text-2xl text-charcoal-600 mb-6">{event.desc}</p>
           
-          <div className="flex flex-col sm:flex-row gap-6 mb-8 pb-8 border-b border-charcoal-100">
-            <div className="flex-1 space-y-5">
-               <div className="flex items-center gap-4 text-base font-medium text-charcoal-800">
-                 <Calendar className="h-6 w-6 text-brand-500 shrink-0" />
-                 {event.date} @ {event.time}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 pb-8 border-b border-charcoal-100">
+            <div className="space-y-5">
+               <div className="flex items-start gap-4 text-sm md:text-[15px] font-medium text-charcoal-800">
+                 <Calendar className="h-5 w-5 text-brand-500 shrink-0 mt-0.5" />
+                 <span className="leading-snug">{event.date} <br className="hidden sm:block md:hidden" /> @ {event.time}</span>
                </div>
-               <div className="flex items-center gap-4 text-base font-medium text-charcoal-800">
-                 <User className="h-6 w-6 text-brand-500 shrink-0" />
-                 {event.speaker}
+               <div className="flex items-start gap-4 text-sm md:text-[15px] font-medium text-charcoal-800">
+                 <User className="h-5 w-5 text-brand-500 shrink-0 mt-0.5" />
+                 <span className="leading-snug">{event.speaker}</span>
                </div>
             </div>
             
-            <div className="flex-1 space-y-5">
-               <div className="flex items-center gap-4 text-base font-medium text-charcoal-800">
-                 <MapPin className="h-6 w-6 text-brand-500 shrink-0" />
-                 {event.location}
+            <div className="space-y-5">
+               <div className="flex items-start gap-4 text-sm md:text-[15px] font-medium text-charcoal-800">
+                 <MapPin className="h-5 w-5 text-brand-500 shrink-0 mt-0.5" />
+                 <span className="leading-snug">{event.location}</span>
                </div>
                {event.host && (
-                 <div className="flex items-center gap-4 text-base font-medium text-charcoal-800">
-                   <Building2 className="h-6 w-6 text-brand-500 shrink-0" />
-                   {event.host}
+                 <div className="flex items-start gap-4 text-sm md:text-[15px] font-medium text-charcoal-800">
+                   <Building2 className="h-5 w-5 text-brand-500 shrink-0 mt-0.5" />
+                   <span className="leading-snug">{event.host}</span>
                  </div>
                )}
             </div>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Send, CheckCircle, Shield, Loader2, Home, BookOpen, Users, Handshake, DollarSign, Phone, X } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { PRAYER_CATEGORIES } from '@/lib/constants';
@@ -27,16 +28,17 @@ const INITIAL: FormState = {
 };
 
 const SIDEBAR_LINKS = [
-  { icon: Home,      label: 'Home',        href: '#home'        },
-  { icon: BookOpen,  label: 'About Us',    href: '#about'       },
-  { icon: Users,     label: 'Ministries',  href: '#ministries'  },
-  { icon: Handshake, label: 'Missions',    href: '#missions'    },
-  { icon: DollarSign,label: 'Give',        href: '#give'        },
-  { icon: Phone,     label: 'Contact',     href: '#contact'     },
+  { icon: Home,      label: 'Home',        href: '/'            },
+  { icon: BookOpen,  label: 'About Us',    href: '/about'       },
+  { icon: Users,     label: 'Ministries',  href: '/ministries'  },
+  { icon: Handshake, label: 'Missions',    href: '/missions'    },
+  { icon: DollarSign,label: 'Give',        href: '/give'        },
+  { icon: Phone,     label: 'Contact',     href: '/contact'     },
 ];
 
 export default function PrayerRequest() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+  const navigate = useNavigate();
   const [form, setForm] = useState<FormState>(INITIAL);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -62,9 +64,8 @@ export default function PrayerRequest() {
 
   const navigateTo = (href: string) => {
     setSidebarOpen(false);
-    setTimeout(() => {
-      document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
-    }, 300);
+    navigate(href);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -115,7 +116,7 @@ export default function PrayerRequest() {
                 </div>
               </div>
             ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start lg:pt-8">
                 {/* Left Column: Text & Information */}
                 <div className="text-center lg:text-left">
                   <h2 className="text-4xl md:text-5xl font-serif font-bold text-charcoal-900 mb-6 leading-tight">

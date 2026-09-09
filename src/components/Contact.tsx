@@ -107,7 +107,13 @@ export default function Contact() {
                       <Icon className="h-5 w-5 text-brand-700" />
                     </div>
                     <div>
-                      {href ? (
+                      {label === 'Phone' ? (
+                        <div className="flex items-center gap-2 text-base font-medium text-charcoal-900">
+                          <a href={`tel:${MINISTRY.phone.replace(/\s+/g, '')}`} className="hover:text-brand-700 transition-colors">{MINISTRY.phone}</a>
+                          <span className="text-charcoal-300">|</span>
+                          <a href={`tel:${MINISTRY.phone2.replace(/\s+/g, '')}`} className="hover:text-brand-700 transition-colors">{MINISTRY.phone2}</a>
+                        </div>
+                      ) : href ? (
                         <a
                           href={href}
                           target={href.startsWith('http') ? '_blank' : undefined}
@@ -233,14 +239,7 @@ export default function Contact() {
           </div>
         </div>
         
-        {/* Carousel Dots matching theme at the bottom */}
-        <div className="flex justify-center items-center gap-3 mt-12">
-          <div className="w-3 h-3 rounded-full bg-brand-700"></div>
-          <div className="w-3 h-3 rounded-full bg-transparent border-2 border-charcoal-900"></div>
-          <div className="w-3 h-3 rounded-full bg-transparent border-2 border-charcoal-900"></div>
-          <div className="w-3 h-3 rounded-full bg-transparent border-2 border-charcoal-900"></div>
-        </div>
-        
+
       </div>
     </section>
   );
