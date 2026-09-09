@@ -27,6 +27,7 @@ export const SOCIAL_LINKS = [
   { label: 'Facebook', href: 'https://www.facebook.com/share/1HtSqsGZUk/', icon: 'facebook' },
   { label: 'Instagram', href: 'https://www.instagram.com/mariya.dass3?utm_source=qr&igsi=MWtzcTNtOXdtNDNlNQ==', icon: 'instagram' },
   { label: 'Telegram', href: 'https://t.me/+919700577712', icon: 'telegram' },
+  { label: 'WhatsApp', href: 'https://wa.me/919700577712', icon: 'whatsapp' },
 ] as const;
 
 export const PRAYER_CATEGORIES = [

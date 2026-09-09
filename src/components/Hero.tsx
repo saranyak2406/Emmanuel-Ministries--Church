@@ -47,7 +47,7 @@ export default function Hero() {
       </div>
 
       {/* Slideshow Controls (Centered on image vertically for mobile, centered on screen for desktop) */}
-      <div className="absolute inset-x-0 top-[calc(64px+22.5vh)] lg:top-[calc(50%+40px)] -translate-y-1/2 flex justify-between px-2 md:px-8 z-50 pointer-events-none">
+      <div className="absolute inset-x-0 lg:inset-x-auto lg:right-0 lg:w-[50%] top-[calc(64px+22.5vh)] lg:top-[calc(50%+40px)] -translate-y-1/2 flex justify-between px-2 md:px-8 z-50 pointer-events-none">
         <button 
           onClick={prevSlide}
           className="p-2 md:p-3 rounded-full bg-charcoal-950/70 text-white hover:bg-gold-400 hover:text-charcoal-950 transition-colors backdrop-blur-sm border border-ivory-200/20 shadow-lg pointer-events-auto"
@@ -72,21 +72,21 @@ export default function Hero() {
         className="relative w-full max-w-full flex-1 bg-brand-900 border-t-[6px] border-gold-400 lg:border-t-0 lg:absolute lg:top-[80px] lg:left-0 lg:w-[55%] lg:h-[calc(100vh-80px)] z-20 flex flex-col justify-start lg:justify-center px-6 py-12 sm:px-12 md:px-16 lg:px-20 transition-all duration-500 lg:[clip-path:polygon(0_0,90%_0,100%_50%,90%_100%,0_100%)] lg:pb-0 overflow-hidden"
       >
         <div className="w-full max-w-xl animate-fade-in text-left pointer-events-auto">
-          <p className="eyebrow !text-gold-400 mb-3 lg:mb-6" style={{ animationDelay: '0.05s' }}>
+          <p className="eyebrow bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent mb-3 lg:mb-6" style={{ animationDelay: '0.05s' }}>
             EMMANUEL GOSPEL MINISTRIES
           </p>
 
-          <h1 className="text-display text-4xl sm:text-5xl md:text-[4rem] font-serif font-medium text-white leading-[1.1] tracking-tight mb-3 lg:mb-6 flex flex-col break-words">
-            <span className="block animate-fade-up w-full" style={{ animationDelay: '0.1s' }}>
+          <h1 className="text-display text-4xl sm:text-5xl md:text-[4rem] font-serif font-medium leading-[1.1] tracking-tight mb-3 lg:mb-6 flex flex-col break-words">
+            <span className="block animate-fade-up w-full bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent" style={{ animationDelay: '0.1s' }}>
               Proclaiming Jesus Christ
             </span>
-            <span className="block animate-fade-up text-white mt-1 lg:mt-2 w-full" style={{ animationDelay: '0.25s' }}>
+            <span className="block animate-fade-up mt-1 lg:mt-2 w-full bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent" style={{ animationDelay: '0.25s' }}>
               Reaching Souls
             </span>
           </h1>
 
           <p
-            className="mt-2 lg:mt-6 text-base sm:text-lg lg:text-2xl font-serif text-gold-400 animate-fade-up font-medium"
+            className="mt-2 lg:mt-6 text-base sm:text-lg lg:text-2xl font-serif animate-fade-up font-medium bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent"
             style={{ animationDelay: '0.4s' }}
           >
             Raising Disciples. Advancing God's Kingdom.
@@ -97,8 +97,8 @@ export default function Hero() {
             style={{ animationDelay: '0.55s' }}
           >
             <p className="italic font-serif text-xl">"Go ye into all the world, and preach the gospel to every creature."</p>
-            <p className="text-gold-400 text-xs tracking-wider uppercase mt-2">&mdash; Mark 16:15</p>
-            <p className="mt-5 font-bold text-white tracking-widest uppercase text-xs">Evangelist Emmanuel Abraham</p>
+            <p className="bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent text-xs tracking-wider uppercase mt-2">&mdash; Mark 16:15</p>
+            <p className="mt-5 font-bold bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent tracking-widest uppercase text-xs">Evangelist Emmanuel Abraham</p>
           </div>
 
           <div
