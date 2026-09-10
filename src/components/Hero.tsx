@@ -48,7 +48,7 @@ export default function Hero() {
       </div>
 
       {/* Slideshow Controls (Centered on image vertically for mobile, centered on screen for desktop) */}
-      <div className="absolute inset-x-0 lg:inset-x-auto lg:right-0 lg:w-[50%] top-[calc(64px+22.5vh)] lg:top-[calc(50%+40px)] -translate-y-1/2 flex justify-between px-2 md:px-8 z-50 pointer-events-none">
+      <div className="absolute inset-x-0 lg:inset-x-auto lg:right-0 lg:w-[40%] top-[calc(64px+22.5vh)] lg:top-[calc(50%+40px)] -translate-y-1/2 flex justify-between px-2 md:px-8 z-50 pointer-events-none">
         <button 
           onClick={prevSlide}
           className="p-2 md:p-3 rounded-full bg-charcoal-950/70 text-white hover:bg-gold-400 hover:text-charcoal-950 transition-colors backdrop-blur-sm border border-ivory-200/20 shadow-lg pointer-events-auto"
