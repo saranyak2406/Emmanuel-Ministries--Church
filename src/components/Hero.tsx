@@ -45,21 +45,21 @@ export default function Hero() {
           />
         ))}
 
-      </div>
+        {/* Slideshow Arrows - inside image, left and right sides */}
+        <button 
+          onClick={prevSlide}
+          className="absolute left-[20px] top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-white/90 text-charcoal-950 hover:bg-gold-400 hover:text-white transition-colors shadow-md"
+        >
+          <ChevronLeft className="w-4 h-4" />
+        </button>
+        <button 
+          onClick={nextSlide}
+          className="absolute right-[20px] top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-white/90 text-charcoal-950 hover:bg-gold-400 hover:text-white transition-colors shadow-md"
+        >
+          <ChevronRight className="w-4 h-4" />
+        </button>
 
-      {/* Slideshow Arrows - Full width, one on each side */}
-      <button 
-        onClick={prevSlide}
-        className="absolute left-4 top-[calc(64px+22.5vh)] lg:top-[calc(50%+40px)] -translate-y-1/2 z-50 p-1.5 rounded-full bg-white/90 text-charcoal-950 hover:bg-gold-400 hover:text-white transition-colors shadow-md"
-      >
-        <ChevronLeft className="w-4 h-4" />
-      </button>
-      <button 
-        onClick={nextSlide}
-        className="absolute right-4 top-[calc(64px+22.5vh)] lg:top-[calc(50%+40px)] -translate-y-1/2 z-50 p-1.5 rounded-full bg-white/90 text-charcoal-950 hover:bg-gold-400 hover:text-white transition-colors shadow-md"
-      >
-        <ChevronRight className="w-4 h-4" />
-      </button>
+      </div>
 
 
       {/* Left Chevron Overlay (Gold Border) - Desktop Only */}
