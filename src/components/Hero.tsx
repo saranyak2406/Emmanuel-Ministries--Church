@@ -5,11 +5,12 @@ import { MINISTRY } from '@/lib/constants';
 const SLIDES = [
   '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.56 PM.jpeg',
   '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.57 PM.jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.44 PM (1).jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.58 PM.jpeg',
   '/images/slideshow/e2659171-d689-4189-9460-01d204a70954.jpg',
   '/images/slideshow/img1.jpg',
   '/images/slideshow/image2.jpg',
   '/images/slideshow/image 3.jpg',
-  '/images/slideshow/1001500386.jpg',
   '/images/slideshow/1001500423.jpg',
 ];
 

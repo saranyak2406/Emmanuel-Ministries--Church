@@ -25,3 +25,5 @@ export default function HomePage() {
     </div>
   );
 }
+// Trigger HMR reload
+
