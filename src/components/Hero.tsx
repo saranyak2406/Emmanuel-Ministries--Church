@@ -76,21 +76,9 @@ export default function Hero() {
             EMMANUEL GOSPEL MINISTRIES
           </p>
 
-          <h1 className="text-display text-4xl sm:text-5xl md:text-[4rem] font-serif font-medium leading-[1.1] tracking-tight mb-3 lg:mb-6 flex flex-col break-words">
-            <span className="block animate-fade-up w-full bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent" style={{ animationDelay: '0.1s' }}>
-              Proclaiming Jesus Christ
-            </span>
-            <span className="block animate-fade-up mt-1 lg:mt-2 w-full bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent" style={{ animationDelay: '0.25s' }}>
-              Reaching Souls
-            </span>
+          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-serif font-medium leading-[1.2] tracking-tight mb-3 lg:mb-6 animate-fade-up bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent" style={{ animationDelay: '0.1s' }}>
+            Proclaiming Jesus Christ. Reaching Souls. Raising Disciples. Advancing God's Kingdom.
           </h1>
-
-          <p
-            className="mt-2 lg:mt-6 text-base sm:text-lg lg:text-2xl font-serif animate-fade-up font-medium bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent"
-            style={{ animationDelay: '0.4s' }}
-          >
-            Raising Disciples. Advancing God's Kingdom.
-          </p>
 
           <div
             className="mt-4 lg:mt-6 text-sm lg:text-lg text-ivory-200 leading-relaxed animate-fade-up hidden sm:block"
