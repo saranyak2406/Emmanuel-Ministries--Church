@@ -77,7 +77,7 @@ export default function Hero() {
           </p>
 
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-serif font-medium leading-[1.2] tracking-tight mb-3 lg:mb-6 animate-fade-up bg-gradient-to-br from-[#e8d5a3] via-[#d4af37] to-[#b8942a] bg-clip-text text-transparent" style={{ animationDelay: '0.1s' }}>
-            Proclaiming Jesus Christ. Reaching Souls. Raising Disciples. Advancing God's Kingdom.
+            Proclaiming Jesus Christ Reaching Souls Raising Disciples Advancing God's Kingdom
           </h1>
 
           <div
