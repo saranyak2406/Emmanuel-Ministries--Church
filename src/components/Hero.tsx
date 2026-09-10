@@ -45,23 +45,22 @@ export default function Hero() {
           />
         ))}
 
-      </div>
-
-      {/* Slideshow Controls (Centered on image vertically for mobile, centered on screen for desktop) */}
-      <div className="absolute inset-x-0 lg:inset-x-auto lg:right-0 lg:w-[40%] top-[calc(64px+22.5vh)] lg:top-[calc(50%+40px)] -translate-y-1/2 flex justify-between px-2 md:px-8 z-50 pointer-events-none">
+        {/* Slideshow Controls - inside image container, vertically centered */}
         <button 
           onClick={prevSlide}
-          className="p-2 md:p-3 rounded-full bg-charcoal-950/70 text-white hover:bg-gold-400 hover:text-charcoal-950 transition-colors backdrop-blur-sm border border-ivory-200/20 shadow-lg pointer-events-auto"
+          className="absolute left-[25px] top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-white/90 text-charcoal-950 hover:bg-gold-400 hover:text-white transition-colors shadow-md pointer-events-auto"
         >
-          <ChevronLeft className="w-5 h-5 md:w-8 md:h-8" />
+          <ChevronLeft className="w-4 h-4" />
         </button>
         <button 
           onClick={nextSlide}
-          className="p-2 md:p-3 rounded-full bg-charcoal-950/70 text-white hover:bg-gold-400 hover:text-charcoal-950 transition-colors backdrop-blur-sm border border-ivory-200/20 shadow-lg pointer-events-auto"
+          className="absolute right-[25px] top-1/2 -translate-y-1/2 z-10 p-1.5 rounded-full bg-white/90 text-charcoal-950 hover:bg-gold-400 hover:text-white transition-colors shadow-md pointer-events-auto"
         >
-          <ChevronRight className="w-5 h-5 md:w-8 md:h-8" />
+          <ChevronRight className="w-4 h-4" />
         </button>
+
       </div>
+
 
       {/* Left Chevron Overlay (Gold Border) - Desktop Only */}
       <div 
