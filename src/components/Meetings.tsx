@@ -11,6 +11,8 @@ const EVENTS = [
     time: '6:00 PM – 9:00 PM',
     speaker: 'Evangelist Emmanuel Abraham',
     host: 'Emmanuel Gospel Ministries',
+    contact: '+91 9700577712',
+    prayerFocus: 'Spiritual revival, personal breakthrough, and direction.',
     desc: 'Come together in fasting and prayer as we seek God\'s presence, direction and breakthrough.',
     youtubeUrl: null,
     images: [
@@ -109,6 +111,18 @@ function EventDetailsModal({ event, onClose }: { event: (typeof EVENTS)[0]; onCl
                  <div className="flex items-start gap-4 text-sm md:text-[15px] font-medium text-charcoal-800">
                    <Building2 className="h-5 w-5 text-brand-500 shrink-0 mt-0.5" />
                    <span className="leading-snug">{event.host}</span>
+                 </div>
+               )}
+               {event.contact && (
+                 <div className="flex items-start gap-4 text-sm md:text-[15px] font-medium text-charcoal-800">
+                   <Info className="h-5 w-5 text-brand-500 shrink-0 mt-0.5" />
+                   <span className="leading-snug">Contact: {event.contact}</span>
+                 </div>
+               )}
+               {event.prayerFocus && (
+                 <div className="flex items-start gap-4 text-sm md:text-[15px] font-medium text-charcoal-800">
+                   <Star className="h-5 w-5 text-brand-500 shrink-0 mt-0.5" />
+                   <span className="leading-snug">Prayer Focus: {event.prayerFocus}</span>
                  </div>
                )}
             </div>

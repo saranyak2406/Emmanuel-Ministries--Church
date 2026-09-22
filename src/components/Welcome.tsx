@@ -69,7 +69,7 @@ export default function Welcome() {
             </h2>
             <div className="mt-6 space-y-4 text-base md:text-lg text-charcoal-600 leading-relaxed">
               <p>
-                Emmanuel Gospel Ministries is a Christ-centered ministry committed to proclaiming the Gospel of Jesus Christ and carrying his message of salvation, hope, faith, healing and restoration to individuals, families, communities and nations.
+                Emmanuel Gospel Ministries is a Christ-centered ministry committed to proclaiming the Gospel of Jesus Christ, reaching people with the message of salvation, prayer, faith and hope, and serving communities in the love of Christ.
               </p>
               <p>
                 Our desire is to see people encounter the presence of God, grow in the Word of God, become disciples of Jesus Christ and discover God's purpose for their lives.

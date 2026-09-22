@@ -1,11 +1,11 @@
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const PILLARS = [
-  { num: '01', title: 'Win Souls', desc: 'To proclaim the Gospel and lead people toward a saving relationship with Jesus Christ.' },
-  { num: '02', title: 'Make Disciples', desc: 'To help believers grow in God\u2019s Word, prayer and obedience to Christ.' },
-  { num: '03', title: 'Strengthen Families', desc: 'To encourage families to build their lives upon biblical principles.' },
-  { num: '04', title: 'Reach Communities', desc: 'To carry the Gospel to people and places that need hope and encouragement.' },
-  { num: '05', title: 'Advance the Kingdom', desc: 'To work together with churches, ministries and believers in taking the Gospel forward.' },
+  { num: '01', title: 'Reach', desc: 'Take the Gospel to unreached places and communities.' },
+  { num: '02', title: 'Preach', desc: 'Proclaim Jesus Christ, His death and resurrection.' },
+  { num: '03', title: 'Pray', desc: 'Stand in prayer for individuals, families, churches, communities and the nation.' },
+  { num: '04', title: 'Build', desc: 'Strengthen churches and raise people who will serve God\'s Kingdom.' },
+  { num: '05', title: 'Serve', desc: 'Demonstrate the love of Christ by helping people in need.' },
 ];
 
 
@@ -21,11 +21,10 @@ export default function Vision() {
         <div className="text-center max-w-4xl mx-auto mb-16">
           <p className={`eyebrow text-gold-400 mb-4 reveal ${isVisible ? 'is-visible' : ''}`}>Our Vision</p>
           <h2 className={`text-display font-serif font-bold reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''} text-balance`}>
-            A Vision for Christ-Centered Transformation
+            Our Vision
           </h2>
           <p className={`mt-6 text-lg md:text-xl font-serif italic text-gold-200 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''} text-balance`}>
-            &ldquo;To proclaim Jesus Christ, reach the unreached, strengthen families, raise disciples and see
-            communities transformed by the Gospel and the presence of God.&rdquo;
+            &ldquo;To proclaim Jesus Christ and make His Gospel known to every person, reaching the unreached and strengthening families, churches and communities through the Word of God, prayer and the love of Christ.&rdquo;
           </p>
         </div>
 

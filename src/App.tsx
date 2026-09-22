@@ -18,6 +18,11 @@ import TestimonialsPage from '@/pages/TestimonialsPage';
 import CoreValuePage  from '@/pages/CoreValuePage';
 import MissionDetailPage from '@/pages/MissionDetailPage';
 import MinistryDetailPage from '@/pages/MinistryDetailPage';
+import GalleryPage        from '@/pages/GalleryPage';
+import FounderProfilePage   from '@/pages/FounderProfilePage';
+import OutreachPage       from '@/pages/OutreachPage';
+import DailyPromisePage   from '@/pages/DailyPromisePage';
+import MessagesPage       from '@/pages/MessagesPage';
 import ScrollToTop from '@/components/ScrollToTop';
 import FloatingSidebar from '@/components/FloatingSidebar';
 
@@ -42,10 +47,15 @@ export default function App() {
         <Route path="/partnership"    element={<PartnershipPage />} />
         <Route path="/preach"         element={<PreachPage />}      />
         <Route path="/testimonials"   element={<TestimonialsPage />}/>
+        <Route path="/gallery"        element={<GalleryPage />}     />
         <Route path="/core-values/:slug" element={<CoreValuePage />}/>
         <Route path="/mission/:slug"  element={<MissionDetailPage />}/>
         <Route path="/ministry/:slug" element={<MinistryDetailPage />}/>
         <Route path="/legal"          element={<LegalPage />}       />
+        <Route path="/founder"        element={<FounderProfilePage />} />
+        <Route path="/outreach"       element={<OutreachPage />}    />
+        <Route path="/daily-promise"  element={<DailyPromisePage />}/>
+        <Route path="/messages"       element={<MessagesPage />}    />
         {/* Fallback to home */}
         <Route path="*"               element={<HomePage />}        />
       </Routes>

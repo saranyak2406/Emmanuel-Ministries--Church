@@ -72,7 +72,7 @@ export default function Footer() {
                 { label: 'Home', href: '/' },
                 { label: 'About Us', href: '/about' },
                 { label: 'Ministries', href: '/ministries' },
-                { label: 'Meetings', href: '/#meetings' },
+                { label: 'Meetings', href: '/meetings' },
                 { label: 'Give', href: '/give' },
                 { label: 'Contact', href: '/contact' }
               ].map((link) => (

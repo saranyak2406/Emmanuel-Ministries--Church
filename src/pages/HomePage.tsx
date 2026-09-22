@@ -1,9 +1,11 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import Welcome from '@/components/Welcome';
-import Ministries from '@/components/Ministries';
-import Meetings from '@/components/Meetings';
+import Proclamation from '@/components/Proclamation';
+import FoundersCards from '@/components/FoundersCards';
+import MeetingsGallery from '@/components/MeetingsGallery';
+
 import PrayerRequest from '@/components/PrayerRequest';
+import ContactForm from '@/components/ContactForm';
 import OurHeart from '@/components/OurHeart';
 import FinalCTA from '@/components/FinalCTA';
 import Footer from '@/components/Footer';
@@ -14,11 +16,12 @@ export default function HomePage() {
       <Navbar />
       <main>
         <Hero />
-        <Welcome />
-        <Ministries />
+        <Proclamation />
+        <FoundersCards />
+        <MeetingsGallery />
         <OurHeart />
-        <Meetings />
         <PrayerRequest />
+        <ContactForm />
         <FinalCTA />
       </main>
       <Footer />

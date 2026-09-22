@@ -21,50 +21,50 @@ export interface MinistryDetail {
 
 export const MINISTRY_DETAILS: Record<string, MinistryDetail> = {
   'gospel-evangelism': {
-    title: 'Gospel & Evangelism',
-    heroDesc: 'Proclaiming the good news of Jesus Christ and reaching people with the message of salvation.',
+    title: 'Gospel Evangelism',
+    heroDesc: 'Taking the message of Jesus Christ to villages, cities, remote areas and communities.',
     scripture: '"For I am not ashamed of the gospel of Christ: for it is the power of God unto salvation to every one that believeth." — Romans 1:16',
     aspects: [
       {
         icon: Megaphone,
-        title: 'Public Preaching',
-        desc: 'Boldly declaring the truth of God\'s Word in open spaces and community centers.'
-      },
-      {
-        icon: Users2,
-        title: 'Personal Witnessing',
-        desc: 'Training believers to share their faith confidently in their daily lives.'
+        title: 'Village Ministry',
+        desc: 'Reaching unreached villages with the Good News.'
       },
       {
         icon: Globe,
-        title: 'Tract Distribution',
-        desc: 'Providing clear, written explanations of the Gospel to those we meet.'
+        title: 'City Outreach',
+        desc: 'Proclaiming Christ in urban centers and communities.'
+      },
+      {
+        icon: Users2,
+        title: 'Personal Evangelism',
+        desc: 'Equipping believers to share their faith.'
       }
     ],
     ctaTitle: 'Join the Harvest',
-    ctaDesc: 'Discover how you can be part of reaching our city with the Gospel.',
+    ctaDesc: 'Discover how you can be part of reaching our communities with the Gospel.',
     ctaButton: 'Contact Us',
     ctaLink: '/contact'
   },
-  'prayer-intercession': {
-    title: 'Prayer & Intercession',
-    heroDesc: 'Standing before God in prayer for individuals, families, churches, communities and nations.',
-    scripture: '"I exhort therefore, that, first of all, supplications, prayers, intercessions, and giving of thanks, be made for all men." — 1 Timothy 2:1',
+  'prayer-ministry': {
+    title: 'Prayer Ministry',
+    heroDesc: 'Standing with individuals and families in prayer for their spiritual, personal and family needs.',
+    scripture: '"Call unto me, and I will answer thee, and shew thee great and mighty things, which thou knowest not." — Jeremiah 33:3',
     aspects: [
       {
         icon: Heart,
-        title: 'Corporate Prayer',
-        desc: 'Gathering together as a church family to seek the Lord in unity.'
+        title: 'Intercessory Prayer',
+        desc: 'Standing in the gap for those who need a touch from God.'
       },
       {
         icon: ShieldCheck,
-        title: 'Prayer Chains',
-        desc: 'A dedicated team standing by to lift urgent requests up to the throne of grace.'
+        title: 'Prayer Requests',
+        desc: 'Receiving and praying over specific needs of individuals.'
       },
       {
-        icon: Flame,
-        title: 'Fasting & Seeking',
-        desc: 'Setting aside regular times for fasting and deep spiritual intercession.'
+        icon: Users,
+        title: 'Corporate Prayer',
+        desc: 'Gathering together to seek God\'s face.'
       }
     ],
     ctaTitle: 'Need Prayer?',
@@ -72,25 +72,51 @@ export const MINISTRY_DETAILS: Record<string, MinistryDetail> = {
     ctaButton: 'Submit Request',
     ctaLink: '/prayer'
   },
+  'fasting-prayer': {
+    title: 'Fasting Prayer',
+    heroDesc: 'Special seasons of fasting and prayer seeking God for revival, families, churches and communities.',
+    scripture: '"Is not this the fast that I have chosen? to loose the bands of wickedness, to undo the heavy burdens, and to let the oppressed go free..." — Isaiah 58:6',
+    aspects: [
+      {
+        icon: Flame,
+        title: 'Spiritual Breakthrough',
+        desc: 'Seeking God\'s intervention through fasting and prayer.'
+      },
+      {
+        icon: Church,
+        title: 'Special Meetings',
+        desc: 'Dedicated times set apart for fasting prayer gatherings.'
+      },
+      {
+        icon: HeartPulse,
+        title: 'National Revival',
+        desc: 'Praying for our nation and its leaders.'
+      }
+    ],
+    ctaTitle: 'Join Our Fast',
+    ctaDesc: 'Check our schedule for upcoming fasting prayer meetings.',
+    ctaButton: 'View Meetings',
+    ctaLink: '/meetings'
+  },
   'revival-meetings': {
     title: 'Revival Meetings',
-    heroDesc: 'Gathering believers and seekers together to worship God, hear His Word and seek spiritual renewal.',
+    heroDesc: 'Gospel and revival meetings focused on bringing people together to hear God\'s Word, worship and seek God.',
     scripture: '"Wilt thou not revive us again: that thy people may rejoice in thee?" — Psalm 85:6',
     aspects: [
       {
         icon: Flame,
         title: 'Spiritual Awakening',
-        desc: 'Praying and believing for a mighty move of the Holy Spirit in our generation.'
+        desc: 'Believing for a mighty move of the Holy Spirit.'
       },
       {
         icon: Church,
         title: 'Worship Nights',
-        desc: 'Extended times of passionate worship and encountering the presence of God.'
+        desc: 'Extended times of passionate worship.'
       },
       {
-        icon: HeartPulse,
-        title: 'Altar Calls',
-        desc: 'Providing dedicated time for repentance, rededication, and receiving prayer.'
+        icon: BookOpen,
+        title: 'Word of God',
+        desc: 'Powerful preaching that stirs the heart.'
       }
     ],
     ctaTitle: 'Experience Revival',
@@ -98,160 +124,108 @@ export const MINISTRY_DETAILS: Record<string, MinistryDetail> = {
     ctaButton: 'View Meetings',
     ctaLink: '/meetings'
   },
-  'healing-restoration': {
-    title: 'Healing & Restoration',
-    heroDesc: 'Ministering God\'s Word and praying with people who need healing, restoration, hope and encouragement.',
-    scripture: '"He healeth the broken in heart, and bindeth up their wounds." — Psalm 147:3',
+  'prophetic-prayer-meetings': {
+    title: 'Prophetic Prayer Meetings',
+    heroDesc: 'Prayer gatherings centered on the Word of God, prayer, encouragement and spiritual strengthening.',
+    scripture: '"He that prophesieth speaketh unto men to edification, and exhortation, and comfort." — 1 Corinthians 14:3',
     aspects: [
       {
-        icon: HeartPulse,
-        title: 'Prayer for the Sick',
-        desc: 'Believing in God\'s power to heal physical ailments according to His Word.'
+        icon: Lightbulb,
+        title: 'Encouragement',
+        desc: 'Lifting up believers through the prophetic Word.'
       },
       {
-        icon: HeartHandshake,
-        title: 'Emotional Healing',
-        desc: 'Walking alongside those who have experienced trauma, loss, or deep hurt.'
-      },
-      {
-        icon: Users,
-        title: 'Support Groups',
-        desc: 'Providing safe environments for people to find freedom from addictions and strongholds.'
-      }
-    ],
-    ctaTitle: 'Find Hope Today',
-    ctaDesc: 'Reach out to us if you need prayer for healing or support through a difficult season.',
-    ctaButton: 'Contact Us',
-    ctaLink: '/contact'
-  },
-  'discipleship-teaching': {
-    title: 'Discipleship & Teaching',
-    heroDesc: 'Helping believers grow in faith and develop a deeper relationship with Jesus Christ through God\'s Word.',
-    scripture: '"Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth." — 2 Timothy 2:15',
-    aspects: [
-      {
-        icon: BookOpen,
-        title: 'Foundations Class',
-        desc: 'Teaching essential biblical truths to new believers setting out on their journey.'
-      },
-      {
-        icon: Users2,
-        title: 'Small Groups',
-        desc: 'Fostering close-knit communities where believers can learn and grow together.'
+        icon: Sparkles,
+        title: 'Spiritual Gifts',
+        desc: 'Flowing in the gifts of the Holy Spirit.'
       },
       {
         icon: ShieldCheck,
-        title: 'Leadership Training',
-        desc: 'Equipping mature believers to lead and disciple others effectively.'
+        title: 'Strengthening',
+        desc: 'Building up the church for the work of the ministry.'
       }
     ],
-    ctaTitle: 'Grow Deeper',
-    ctaDesc: 'Connect with a discipleship group and strengthen your biblical foundation.',
-    ctaButton: 'Get Involved',
-    ctaLink: '/contact'
-  },
-  'missions-outreach': {
-    title: 'Missions & Outreach',
-    heroDesc: 'Taking the Gospel beyond familiar places and serving communities with the love of Christ.',
-    scripture: '"Therefore said he unto them, The harvest truly is great, but the labourers are few: pray ye therefore the Lord of the harvest, that he would send forth labourers into his harvest." — Luke 10:2',
-    aspects: [
-      {
-        icon: Globe,
-        title: 'Global Missions',
-        desc: 'Supporting and sending workers to unreached nations across the world.'
-      },
-      {
-        icon: HeartHandshake,
-        title: 'Local Compassion',
-        desc: 'Serving the poor, marginalized, and needy right in our own city.'
-      },
-      {
-        icon: Accessibility,
-        title: 'Short-term Trips',
-        desc: 'Organizing opportunities for believers to experience the mission field firsthand.'
-      }
-    ],
-    ctaTitle: 'Support the Mission',
-    ctaDesc: 'Partner with us financially to send workers into the harvest.',
-    ctaButton: 'Give Now',
-    ctaLink: '/give'
+    ctaTitle: 'Be Strengthened',
+    ctaDesc: 'Attend our next prophetic prayer gathering.',
+    ctaButton: 'View Meetings',
+    ctaLink: '/meetings'
   },
   'family-ministry': {
     title: 'Family Ministry',
-    heroDesc: 'Strengthening families and helping them build their lives on biblical principles.',
+    heroDesc: 'Praying for marriages, children, families and household blessings.',
     scripture: '"And these words, which I command thee this day, shall be in thine heart: And thou shalt teach them diligently unto thy children." — Deuteronomy 6:6-7',
     aspects: [
       {
         icon: Users,
-        title: 'Marriage Enrichment',
-        desc: 'Providing counsel, retreats, and teaching to build strong, God-honoring marriages.'
+        title: 'Marriage Blessing',
+        desc: 'Praying for strong, God-honoring marriages.'
       },
       {
         icon: Baby,
-        title: 'Parenting Support',
-        desc: 'Equipping parents with biblical wisdom to raise children in the fear of the Lord.'
+        title: 'Children & Youth',
+        desc: 'Praying for the next generation.'
       },
       {
         icon: Heart,
-        title: 'Family Counseling',
-        desc: 'Offering biblically-based guidance for families walking through challenging seasons.'
+        title: 'Household Peace',
+        desc: 'Seeking God\'s peace and blessing over every home.'
       }
     ],
-    ctaTitle: 'Strengthen Your Family',
-    ctaDesc: 'Discover resources and events designed to build up your home.',
+    ctaTitle: 'Family Blessing',
+    ctaDesc: 'Submit a prayer request for your family.',
+    ctaButton: 'Prayer Request',
+    ctaLink: '/prayer'
+  },
+  'healing-deliverance-prayer': {
+    title: 'Healing & Deliverance Prayer',
+    heroDesc: 'Praying with people who are seeking God\'s intervention, freedom and restoration.',
+    scripture: '"He sent his word, and healed them, and delivered them from their destructions." — Psalm 107:20',
+    aspects: [
+      {
+        icon: HeartPulse,
+        title: 'Physical Healing',
+        desc: 'Believing in God\'s power to heal the sick.'
+      },
+      {
+        icon: HeartHandshake,
+        title: 'Freedom',
+        desc: 'Praying for deliverance from addictions and spiritual bondage.'
+      },
+      {
+        icon: Sparkles,
+        title: 'Restoration',
+        desc: 'Seeking complete wholeness in Christ.'
+      }
+    ],
+    ctaTitle: 'Receive Prayer',
+    ctaDesc: 'Reach out to us if you need prayer for healing or deliverance.',
     ctaButton: 'Contact Us',
     ctaLink: '/contact'
   },
   'youth-ministry': {
     title: 'Youth Ministry',
-    heroDesc: 'Guiding young people to know Christ, grow in faith, and live out God\'s purpose.',
+    heroDesc: 'Encouraging young people to know Christ, grow in God\'s Word and serve His Kingdom.',
     scripture: '"Let no man despise thy youth; but be thou an example of the believers, in word, in conversation, in charity, in spirit, in faith, in purity." — 1 Timothy 4:12',
     aspects: [
       {
         icon: Sparkles,
         title: 'Youth Gatherings',
-        desc: 'Dynamic services with passionate worship and relevant biblical teaching.'
+        desc: 'Dynamic services with passionate worship.'
       },
       {
         icon: Lightbulb,
         title: 'Mentorship',
-        desc: 'Connecting teens with godly mentors who can guide them through critical years.'
+        desc: 'Guiding teens in their walk with Christ.'
       },
       {
         icon: Flame,
-        title: 'Mission Opportunities',
-        desc: 'Challenging young people to step out in faith and serve others.'
+        title: 'Kingdom Service',
+        desc: 'Challenging young people to serve God.'
       }
     ],
     ctaTitle: 'Join the Youth',
     ctaDesc: 'Find out when our youth group meets and get plugged in.',
     ctaButton: 'View Meetings',
     ctaLink: '/meetings'
-  },
-  'bible-teaching': {
-    title: 'Bible Teaching',
-    heroDesc: 'Teaching God\'s Word faithfully to equip believers for life and ministry.',
-    scripture: '"All scripture is given by inspiration of God, and is profitable for doctrine, for reproof, for correction, for instruction in righteousness." — 2 Timothy 3:16',
-    aspects: [
-      {
-        icon: BookText,
-        title: 'Expository Preaching',
-        desc: 'Teaching verse-by-verse through the Bible to understand its full context.'
-      },
-      {
-        icon: BookOpen,
-        title: 'Bible Studies',
-        desc: 'In-depth exploration of specific books, characters, or theological topics.'
-      },
-      {
-        icon: ShieldCheck,
-        title: 'Apologetics',
-        desc: 'Equipping believers to understand and defend the truths of the Christian faith.'
-      }
-    ],
-    ctaTitle: 'Hear the Word',
-    ctaDesc: 'Listen to our latest teachings and sermons.',
-    ctaButton: 'Watch Now',
-    ctaLink: '/media'
   }
 };

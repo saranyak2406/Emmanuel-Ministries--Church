@@ -58,60 +58,51 @@ export default function AboutUs() {
           {/* ── Content column ────────────────────────── */}
           <div className={`reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
             <h2 className="text-section font-serif font-bold text-charcoal-900 text-balance">
-              About Emmanuel Gospel Ministries
+              Who We Are
             </h2>
             <div className="mt-6 space-y-4 text-base md:text-lg text-charcoal-600 leading-relaxed">
               <p>
-                Emmanuel Gospel Ministries is a Christian ministry based in <span className="font-bold text-charcoal-900">Hyderabad, Telangana, India</span>, with a heart to proclaim Jesus Christ and serve people through Gospel ministry, prayer, evangelism, discipleship, revival meetings and missions.
+                Emmanuel Gospel Ministries is a Christian Gospel ministry based in <span className="font-bold text-charcoal-900">Hyderabad, Telangana, India</span>, with a burden to proclaim the Gospel of Jesus Christ and reach people, families, villages, cities and communities with the message of God's love.
               </p>
               <p>
-                The ministry seeks to create opportunities for people to hear the Gospel, encounter God through prayer and worship, grow in biblical understanding and become faithful followers of Jesus Christ.
-              </p>
-            </div>
-
-            {/* Our Heart */}
-            <div className="mt-8 p-6 rounded-xl bg-brand-50 border-l-4 border-brand-700">
-              <p className="text-sm font-semibold uppercase tracking-wider text-brand-700 mb-2">
-                OUR HEART
-              </p>
-              <p className="text-base text-charcoal-700 leading-relaxed">
-                We believe that the Gospel of Jesus Christ is the good news that every person needs to hear. Our desire is to take this message to cities, villages, communities and nations and to serve wherever God opens a door.
+                Our desire is to see people come to know Jesus Christ, experience the transforming power of God's Word, grow in faith and become disciples who serve God's Kingdom.
               </p>
             </div>
           </div>
         </div>
 
-        {/* ── Leader (Full Width) ────────────────────────── */}
+        {/* ── Ministry Focus (Full Width) ────────────────────────── */}
         <div className={`mt-16 lg:mt-24 pt-12 border-t border-ivory-200 reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
-          <p className="eyebrow text-gold-500 mb-6 text-center">OUR LEADER</p>
-          <div className="flex flex-col md:flex-row items-center md:items-start gap-8 max-w-4xl mx-auto">
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-brand-700 to-charcoal-900 flex items-center justify-center shrink-0 shadow-lg">
-              <span className="font-serif text-2xl md:text-3xl font-bold text-gold-400">EA</span>
-            </div>
-            <div className="text-center md:text-left">
-              <h3 className="font-serif text-2xl md:text-3xl font-bold text-charcoal-900">
-                Evangelist Emmanuel Abraham
-              </h3>
-              <div className="mt-4 space-y-4 text-base md:text-lg text-charcoal-600 leading-relaxed max-w-3xl">
-                <p>
-                  Evangelist Emmanuel Abraham serves in Gospel ministry with a passion for proclaiming Jesus Christ, praying for people, encouraging believers and reaching communities with the message of the Gospel.
-                </p>
-                <p>
-                  Through Gospel meetings, prayer gatherings, evangelistic outreaches and ministry events, the desire is to point people to Jesus Christ and encourage them to walk according to God's Word.
-                </p>
-              </div>
-              
-              <div className="mt-8 flex flex-col md:flex-row items-center md:items-start gap-4 bg-ivory-50 p-6 rounded-xl border border-ivory-200 text-left max-w-2xl mx-auto md:mx-0">
-                <Quote className="h-6 w-6 text-gold-500 shrink-0" />
-                <div>
-                  <p className="font-serif italic text-lg text-charcoal-800">
-                    "For we preach not ourselves, but Christ Jesus the Lord..."
-                  </p>
-                  <p className="text-sm font-bold tracking-widest uppercase text-brand-700 mt-3">
-                    — 2 Corinthians 4:5
-                  </p>
+          <p className="eyebrow text-gold-500 mb-6 text-center">OUR FOCUS</p>
+          <div className="text-center md:text-left max-w-5xl mx-auto">
+            <h3 className="font-serif text-2xl md:text-3xl font-bold text-charcoal-900 text-center mb-10">
+              Our Ministry Focus
+            </h3>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 text-charcoal-700 font-medium">
+              {[
+                'Gospel evangelism',
+                'Prayer and fasting',
+                'Revival meetings',
+                'Prophetic prayer meetings',
+                'Family blessing meetings',
+                'Healing and prayer ministry',
+                'Deliverance ministry',
+                'Youth ministry',
+                'Church strengthening',
+                'Outreach to villages and remote areas',
+                'Helping poor and needy people',
+                'Supporting widows and orphans',
+                'Caring for elderly people',
+                'Gospel meetings and street ministry'
+              ].map((focus, i) => (
+                <div key={i} className="flex items-start gap-3 bg-white p-4 rounded-lg shadow-sm border border-ivory-200">
+                  <div className="text-brand-600 mt-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <span>{focus}</span>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

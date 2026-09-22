@@ -1,51 +1,21 @@
-import { useNavigate } from 'react-router-dom';
-import { Mic, Hand, Globe, GraduationCap, Heart, Send } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { Target, Users, Flame, Heart, Globe, BookOpen, Handshake, ShieldCheck, Sun, Star } from 'lucide-react';
 
 const MISSIONS = [
-  {
-    icon: Mic,
-    title: 'PREACH',
-    desc: 'To proclaim the Gospel of Jesus Christ faithfully.',
-    href: '/preach',
-  },
-  {
-    icon: Hand,
-    title: 'PRAY',
-    desc: 'To seek God through prayer and intercession.',
-    href: '/prayer',
-  },
-  {
-    icon: Globe,
-    title: 'REACH',
-    desc: 'To reach people with the love and message of Christ.',
-    href: '/missions',
-  },
-  {
-    icon: GraduationCap,
-    title: 'EQUIP',
-    desc: 'To equip believers through biblical teaching and discipleship.',
-    href: '/ministries',
-  },
-  {
-    icon: Heart,
-    title: 'SERVE',
-    desc: 'To serve people and communities with compassion and integrity.',
-    href: '/ministries',
-  },
-  {
-    icon: Send,
-    title: 'SEND',
-    desc: 'To encourage and support Gospel workers and missions as God provides opportunities.',
-    href: '/partnership',
-  },
+  { icon: Globe, text: "Preach the Gospel of Jesus Christ." },
+  { icon: Users, text: "Reach unreached villages, remote areas and cities." },
+  { icon: Target, text: "Lead people to salvation through Jesus Christ." },
+  { icon: Flame, text: "Conduct Gospel, prayer, revival and prophetic meetings." },
+  { icon: Heart, text: "Encourage families through prayer and God's Word." },
+  { icon: BookOpen, text: "Equip believers to grow in faith." },
+  { icon: Handshake, text: "Support churches and Gospel workers." },
+  { icon: Sun, text: "Help poor, widows, orphans and elderly people." },
+  { icon: ShieldCheck, text: "Extend practical compassion to people in need." },
+  { icon: Star, text: "Raise prayer warriors, evangelists and Kingdom workers." },
 ];
-
-const FLOW_LABELS = MISSIONS.map(m => ({ title: m.title, href: m.href }));
 
 export default function Mission() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
-  const navigate = useNavigate();
 
   return (
     <section id="mission" className="section-padding bg-white">
@@ -57,47 +27,20 @@ export default function Mission() {
           </h2>
         </div>
 
-        {/* Flow chain */}
-        <div className={`reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''} flex flex-wrap justify-center items-center gap-2 md:gap-4 mb-16`}>
-          {FLOW_LABELS.map((item, i) => (
-            <div key={item.title} className="flex items-center gap-2 md:gap-4">
-              <button
-                onClick={() => navigate(item.href)}
-                className="font-serif text-sm md:text-base font-semibold text-brand-700 uppercase tracking-wider hover:text-brand-900 underline underline-offset-4 decoration-brand-300 hover:decoration-brand-600 transition-all cursor-pointer"
-              >
-                {item.title}
-              </button>
-              {i < FLOW_LABELS.length - 1 && (
-                <span className="text-gold-500 text-xl font-light">&rarr;</span>
-              )}
-            </div>
-          ))}
-        </div>
-
-        {/* Mission blocks — all 15 */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
           {MISSIONS.map((m, i) => {
             const Icon = m.icon;
             return (
               <div
-                key={m.fullTitle}
-                className={`reveal reveal-delay-${(i % 3) + 1} ${isVisible ? 'is-visible' : ''} group relative overflow-hidden rounded-2xl bg-gradient-to-br from-charcoal-900 to-charcoal-800 p-8 transition-all duration-300 hover:-translate-y-1 cursor-pointer`}
-                onClick={() => navigate(m.href)}
+                key={i}
+                className={`reveal reveal-delay-${(i % 3) + 1} ${isVisible ? 'is-visible' : ''} group relative overflow-hidden rounded-xl bg-gradient-to-br from-charcoal-900 to-charcoal-800 p-6 flex items-center gap-4 transition-all duration-300 hover:-translate-y-1 shadow-lg`}
               >
-                {/* Decorative number */}
-                <span className="absolute top-4 right-5 font-serif text-5xl font-bold text-ivory-50/5 transition-colors duration-300 group-hover:text-gold-400/10">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div className="relative z-10">
-                  <div className="w-12 h-12 rounded-lg bg-gold-500/15 flex items-center justify-center mb-5 transition-colors duration-300 group-hover:bg-gold-500/25">
-                    <Icon className="h-6 w-6 text-gold-400" />
-                  </div>
-                  <h3 className="text-xl font-serif font-bold text-ivory-50 mb-4">
-                    {m.title}
-                    <span className="ml-2 text-gold-400 text-sm">→</span>
-                  </h3>
-                  <p className="text-sm text-ivory-300 leading-relaxed">{m.desc}</p>
+                <div className="w-12 h-12 rounded-lg bg-gold-500/15 flex items-center justify-center shrink-0 transition-colors duration-300 group-hover:bg-gold-500/25">
+                  <Icon className="h-6 w-6 text-gold-400" />
                 </div>
+                <p className="text-base text-ivory-100 leading-relaxed font-medium">
+                  {m.text}
+                </p>
               </div>
             );
           })}

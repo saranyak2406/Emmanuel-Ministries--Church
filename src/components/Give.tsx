@@ -1,56 +1,30 @@
 import { useState } from 'react';
-import { Building2, Smartphone, Globe, Shield, X, CreditCard, ArrowRight } from 'lucide-react';
+import { Building2, Shield, QrCode, CreditCard, X, ArrowLeft } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
-// Hand donating money to charity - Indian rupee into cross-shaped offering box
 const GIVE_IMG = '/give-donate.png';
-
-const METHODS = [
-  {
-    icon: Building2,
-    title: 'BANK DETAILS (FOR INDIA)',
-    desc: 'Transfer your support directly to the ministry bank account.',
-    details: [
-      { label: 'Account Name',   value: 'Emmanuel Gospel Ministries' },
-      { label: 'Account Number', value: '01234567890' },
-      { label: 'Bank Name',      value: 'State Bank of India' },
-      { label: 'IFSC Code',      value: 'SBIN0001234' },
-      { label: 'Branch',         value: 'Sarpavaram, Kakinada' },
-    ],
-  },
-  {
-    icon: Smartphone,
-    title: 'UPI PAYMENTS (FOR INDIA)',
-    desc: 'Give quickly and securely via UPI on any payment app.',
-    details: [
-      { label: 'Google Pay / PhonePe', value: '9700577712' },
-      { label: 'UPI ID',               value: 'emmanuelgospel@upi' },
-    ],
-  },
-  {
-    icon: Globe,
-    title: 'ONLINE GIVING (INTERNATIONAL)',
-    desc: 'You can support our ministry through our secure online giving portal.',
-    details: [
-      { label: 'Contact', value: 'contact@emmanuelgospelministries.org' },
-    ],
-  },
-];
 
 export default function Give() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedMethod, setSelectedMethod] = useState<(typeof METHODS)[0] | null>(null);
+  const [activeView, setActiveView] = useState<'options' | 'qr' | 'bank'>('options');
 
-  const openModal = (method?: (typeof METHODS)[0]) => {
-    setSelectedMethod(method ?? null);
+  const openModal = () => {
+    setActiveView('options');
     setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+    setTimeout(() => setActiveView('options'), 300); // reset after fade out
   };
 
   return (
     <section id="give" className="pt-20 md:pt-28 pb-12 md:pb-16 bg-ivory-50 relative overflow-hidden">
       <div ref={ref} className="container-max">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+        
+        {/* Intro Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-12">
           {/* Image */}
           <div className={`reveal ${isVisible ? 'is-visible' : ''} relative`}>
             <div className="relative overflow-hidden rounded-2xl shadow-2xl">
@@ -81,6 +55,24 @@ export default function Give() {
             <p className="text-base text-charcoal-600 mb-6 leading-relaxed">
               Your tithes, offerings and donations enable us to organize Gospel meetings, support missionaries, help the needy and spread the Word of God.
             </p>
+
+            <div className="mb-8">
+              <h3 className="font-bold text-charcoal-900 mb-3">Categories for Support:</h3>
+              <ul className="space-y-2">
+                {[
+                  'Gospel & Evangelism',
+                  'Church Construction & Needs',
+                  'Helping the Poor, Widows & Orphans',
+                  'General Ministry Fund'
+                ].map((category, idx) => (
+                  <li key={idx} className="flex items-center gap-3 text-charcoal-700">
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
+                    <span>{category}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            
             <div className="bg-brand-50 border-l-4 border-brand-700 p-6 rounded-r-lg mb-8">
               <p className="font-serif italic text-lg text-charcoal-800 mb-2">
                 “Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver.”
@@ -90,7 +82,7 @@ export default function Give() {
               </p>
             </div>
             <button
-              onClick={() => openModal()}
+              onClick={openModal}
               className="btn-primary"
             >
               <CreditCard className="h-4 w-4" />
@@ -100,7 +92,7 @@ export default function Give() {
         </div>
 
         {/* Trust & Transparency */}
-        <div className={`mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
+        <div className={`mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 mb-12 reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
           <div className="p-6 rounded-xl bg-brand-50 border border-brand-100">
             <h4 className="font-serif font-bold text-brand-900 mb-2">100% Transparency</h4>
             <p className="text-sm text-charcoal-700 leading-relaxed">
@@ -127,108 +119,136 @@ export default function Give() {
       {/* Payment Modal */}
       {modalOpen && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-fade-in"
           role="dialog"
           aria-modal="true"
         >
           {/* Backdrop */}
           <div
-            className="absolute inset-0 bg-charcoal-900/70 backdrop-blur-sm"
-            onClick={() => setModalOpen(false)}
+            className="absolute inset-0 bg-charcoal-900/80 backdrop-blur-sm"
+            onClick={closeModal}
           />
 
-          {/* Panel */}
-          <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg overflow-hidden animate-fade-up">
+          {/* Modal Panel */}
+          <div className="relative bg-white rounded-3xl shadow-2xl w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh]">
+            
             {/* Header */}
-            <div className="bg-gradient-to-r from-brand-800 to-brand-900 px-8 py-6">
-              <div className="flex items-center justify-between">
+            <div className="bg-gradient-to-r from-brand-800 to-brand-900 px-6 py-5 shrink-0 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                {activeView !== 'options' && (
+                  <button 
+                    onClick={() => setActiveView('options')}
+                    className="p-2 -ml-2 rounded-full text-white/80 hover:bg-white/10 transition-colors"
+                  >
+                    <ArrowLeft className="w-5 h-5" />
+                  </button>
+                )}
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-gold-300 mb-1">
-                    Emmanuel Gospel Ministries
-                  </p>
-                  <h3 className="text-2xl font-serif font-bold text-ivory-50">
-                    {selectedMethod ? selectedMethod.title : 'Payment Options'}
+                  <h3 className="text-xl font-serif font-bold text-ivory-50">
+                    {activeView === 'options' && 'Select Payment Method'}
+                    {activeView === 'qr' && 'Scan & Pay (UPI)'}
+                    {activeView === 'bank' && 'Direct Bank Transfer'}
                   </h3>
                 </div>
-                <button
-                  onClick={() => setModalOpen(false)}
-                  className="w-9 h-9 rounded-full bg-ivory-50/10 flex items-center justify-center text-ivory-50 hover:bg-ivory-50/20 transition-colors"
-                >
-                  <X className="h-5 w-5" />
-                </button>
               </div>
+              <button
+                onClick={closeModal}
+                className="w-8 h-8 rounded-full bg-ivory-50/10 flex items-center justify-center text-ivory-50 hover:bg-ivory-50/20 transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
             </div>
 
-            <div className="px-8 py-6">
-              {selectedMethod ? (
-                /* Specific method details */
-                <>
-                  <p className="text-sm text-charcoal-500 mb-6 leading-relaxed">
-                    {selectedMethod.desc}
+            {/* Content Area */}
+            <div className="p-6 md:p-8 overflow-y-auto flex-1">
+              
+              {/* STEP 1: Select Option */}
+              {activeView === 'options' && (
+                <div className="flex flex-col gap-4 animate-fade-in">
+                  <p className="text-charcoal-600 mb-4 text-center">
+                    Choose how you would like to give your offering.
                   </p>
-                  <div className="space-y-3 mb-6">
-                    {selectedMethod.details.map((d) => (
-                      <div
-                        key={d.label}
-                        className="flex items-start justify-between gap-4 p-4 rounded-xl bg-ivory-50 border border-ivory-200"
-                      >
-                        <span className="text-xs font-semibold uppercase tracking-wider text-charcoal-500 shrink-0">
-                          {d.label}
-                        </span>
-                        <span className="text-sm font-medium text-charcoal-900 text-right">
-                          {d.value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                  <button
-                    className="w-full text-sm text-charcoal-500 hover:text-brand-700 transition-colors text-center mt-2"
-                    onClick={() => setSelectedMethod(null)}
+                  
+                  <button 
+                    onClick={() => setActiveView('qr')}
+                    className="flex items-center gap-6 p-6 rounded-2xl border-2 border-ivory-200 hover:border-brand-500 hover:bg-brand-50 hover:shadow-md transition-all group text-left"
                   >
-                    &larr; View all payment options
+                    <div className="w-14 h-14 rounded-full bg-brand-100 flex items-center justify-center shrink-0 group-hover:bg-brand-600 transition-colors">
+                      <QrCode className="w-7 h-7 text-brand-600 group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg text-charcoal-900 mb-1">Pay by QR Code (UPI)</h4>
+                      <p className="text-sm text-charcoal-500">Google Pay, PhonePe, Paytm, etc.</p>
+                    </div>
                   </button>
-                </>
-              ) : (
-                /* All methods list */
-                <>
-                  <p className="text-sm text-charcoal-500 mb-6">
-                    Choose a payment method below to see the details.
-                  </p>
-                  <div className="space-y-3">
-                    {METHODS.map((m) => {
-                      const Icon = m.icon;
-                      return (
-                        <button
-                          key={m.title}
-                          onClick={() => setSelectedMethod(m)}
-                          className="w-full flex items-center gap-4 p-4 rounded-xl border border-ivory-200 hover:border-brand-200 hover:bg-brand-50 transition-all duration-200 text-left group"
-                        >
-                          <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center shrink-0 group-hover:bg-brand-700 transition-colors duration-200">
-                            <Icon className="h-5 w-5 text-brand-700 group-hover:text-ivory-50 transition-colors duration-200" />
-                          </div>
-                          <div className="flex-1">
-                            <p className="font-semibold text-charcoal-900 text-sm">{m.title}</p>
-                            <p className="text-xs text-charcoal-500">{m.desc}</p>
-                          </div>
-                          <ArrowRight className="h-4 w-4 text-charcoal-400 group-hover:text-brand-700 transition-colors" />
-                        </button>
-                      );
-                    })}
-                  </div>
-                </>
+
+                  <button 
+                    onClick={() => setActiveView('bank')}
+                    className="flex items-center gap-6 p-6 rounded-2xl border-2 border-ivory-200 hover:border-gold-500 hover:bg-gold-50 hover:shadow-md transition-all group text-left"
+                  >
+                    <div className="w-14 h-14 rounded-full bg-gold-100 flex items-center justify-center shrink-0 group-hover:bg-gold-500 transition-colors">
+                      <Building2 className="w-7 h-7 text-gold-600 group-hover:text-white transition-colors" />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-lg text-charcoal-900 mb-1">Direct Bank Transfer</h4>
+                      <p className="text-sm text-charcoal-500">NEFT, RTGS, IMPS, or International</p>
+                    </div>
+                  </button>
+                </div>
               )}
 
-              <div className="mt-6 flex items-start gap-2 p-4 rounded-xl bg-amber-50 border border-amber-100">
-                <Shield className="h-4 w-4 text-amber-600 mt-0.5 shrink-0" />
-                <p className="text-xs text-amber-800 leading-relaxed">
-                  Only transfer to official ministry accounts listed above. Contact us at{' '}
-                  <strong>contact@emmanuelgospelministries.org</strong> for any queries.
-                </p>
-              </div>
+              {/* STEP 2A: QR Code */}
+              {activeView === 'qr' && (
+                <div className="flex flex-col items-center animate-fade-in">
+                  <p className="text-charcoal-600 mb-8 text-center max-w-sm leading-relaxed">
+                    Open any UPI app on your phone and scan the QR code below to directly support the ministry.
+                  </p>
+                  
+                  <div className="w-64 h-64 bg-white p-4 rounded-2xl shadow-inner border-2 border-ivory-200 flex items-center justify-center mb-6">
+                    <img 
+                      src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=emmanuelgospel@upi&color=0D1B2A" 
+                      alt="Ministry QR Code" 
+                      className="w-full h-full object-contain" 
+                    />
+                  </div>
+                  
+                  <p className="font-bold text-charcoal-900 text-lg">UPI ID: emmanuelgospel@upi</p>
+                </div>
+              )}
+
+              {/* STEP 2B: Bank Details */}
+              {activeView === 'bank' && (
+                <div className="animate-fade-in flex flex-col">
+                  <div className="space-y-4">
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b border-ivory-100 pb-3 gap-1">
+                        <span className="text-charcoal-500 font-medium text-xs tracking-wider uppercase">Account Name</span>
+                        <span className="font-bold text-charcoal-900 text-base">Emmanuel Gospel Ministries</span>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b border-ivory-100 pb-3 gap-1">
+                        <span className="text-charcoal-500 font-medium text-xs tracking-wider uppercase">Account Number</span>
+                        <span className="font-bold text-brand-700 tracking-widest text-lg">01234567890</span>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b border-ivory-100 pb-3 gap-1">
+                        <span className="text-charcoal-500 font-medium text-xs tracking-wider uppercase">Bank Name</span>
+                        <span className="font-bold text-charcoal-900 text-base">State Bank of India</span>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between border-b border-ivory-100 pb-3 gap-1">
+                        <span className="text-charcoal-500 font-medium text-xs tracking-wider uppercase">IFSC Code</span>
+                        <span className="font-bold text-charcoal-900 tracking-widest text-base">SBIN0001234</span>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-between pb-1 gap-1">
+                        <span className="text-charcoal-500 font-medium text-xs tracking-wider uppercase">Branch</span>
+                        <span className="font-bold text-charcoal-900 text-base">Sarpavaram, Kakinada</span>
+                      </div>
+                  </div>
+                </div>
+              )}
+
             </div>
           </div>
         </div>
       )}
+
     </section>
   );
 }

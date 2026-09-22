@@ -1,8 +1,8 @@
 export const MINISTRY = {
   name: 'Emmanuel Gospel Ministries',
   shortName: 'Emmanuel',
-  tagline: 'Preaching Christ \u2022 Transforming Lives \u2022 Reaching the World',
-  heroMessage: 'Proclaiming Jesus Christ. Reaching Souls. Raising Disciples. Advancing God\u2019s Kingdom',
+  tagline: 'Proclaiming Jesus Christ • Reaching the Unreached • Transforming Lives',
+  heroMessage: 'Proclaiming Jesus Christ • Reaching the Unreached • Transforming Lives',
   leader: 'Evangelist Emmanuel Abraham',
   location: 'Hyderabad, Telangana, India',
   fullAddress: '# 15 - 66, Amrutha colony, 3rd street, Swaroop Nagar, uppal, Hyderabad, Telangana, India - 500039.',

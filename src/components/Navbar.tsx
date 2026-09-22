@@ -4,7 +4,7 @@ import {
   LayoutGrid, ChevronRight, X, ArrowRight,
   Home, BookOpen, Eye, Target, Users, Calendar,
   PlayCircle, Globe, Handshake, DollarSign,
-  Phone, Star, MessageSquare, Heart,
+  Phone, Star, MessageSquare, Heart, Image, BookText, Flame, Lightbulb, HeartHandshake,
 } from 'lucide-react';
 import { NAV_LINKS } from '@/lib/constants';
 import PrayingHandsIcon from '@/components/PrayingHandsIcon';
@@ -16,14 +16,14 @@ const ALL_SECTIONS = [
     items: [
       { label: 'Home',         href: '/',            icon: Home          },
       { label: 'About',        href: '/about',       icon: BookOpen      },
+      { label: 'Founder',      href: '/founder',     icon: Users         },
     ],
   },
   {
     group: 'Our Ministry',
     items: [
       { label: 'Ministries',   href: '/ministries',  icon: Users         },
-      { label: 'Missions',     href: '/missions',    icon: Globe         },
-      { label: 'Partnership',  href: '/partnership', icon: Handshake     },
+      { label: 'Outreach & Charity', href: '/outreach', icon: Heart      },
     ],
   },
   {
@@ -36,7 +36,10 @@ const ALL_SECTIONS = [
   {
     group: 'Testimonies & Media',
     items: [
+      { label: 'Daily Promise',href: '/daily-promise', icon: BookOpen    },
+      { label: 'Bible Messages',href: '/messages',   icon: BookText      },
       { label: 'Testimonials', href: '/testimonials', icon: Star         },
+      { label: 'Gallery',      href: '/gallery',      icon: Image        },
       { label: 'Media',        href: '/media',       icon: PlayCircle    },
     ],
   },
@@ -66,6 +69,7 @@ const DESKTOP_NAV = [
     dropdown: [
       { title: 'Vision', href: '/vision', icon: Eye },
       { title: 'Mission', href: '/mission', icon: Target },
+      { title: 'Founder', href: '/founder', icon: Users },
       { title: 'Core Values', href: '/core-values/christ', icon: Heart },
     ]
   },
@@ -74,12 +78,14 @@ const DESKTOP_NAV = [
     href: '/ministries',
     dropdown: [
       { title: 'All Ministries', href: '/ministries', icon: Users },
-      { title: 'Missions & Outreach', href: '/missions', icon: Target },
-      { title: 'Gospel & Evangelism', href: '/ministry/gospel-evangelism', icon: Globe },
-      { title: 'Prayer & Intercession', href: '/ministry/prayer-intercession', icon: MessageSquare },
+      { title: 'Gospel Evangelism', href: '/ministry/gospel-evangelism', icon: Globe },
+      { title: 'Prayer Ministry', href: '/ministry/prayer-ministry', icon: MessageSquare },
+      { title: 'Fasting Prayer', href: '/ministry/fasting-prayer', icon: Flame },
       { title: 'Revival Meetings', href: '/ministry/revival-meetings', icon: Calendar },
-      { title: 'Healing & Restoration', href: '/ministry/healing-restoration', icon: Heart },
+      { title: 'Prophetic Prayer', href: '/ministry/prophetic-prayer-meetings', icon: Lightbulb },
       { title: 'Family Ministry', href: '/ministry/family-ministry', icon: Users },
+      { title: 'Healing & Deliverance', href: '/ministry/healing-deliverance-prayer', icon: Heart },
+      { title: 'Outreach & Charity', href: '/outreach', icon: HeartHandshake },
     ]
   },
   {
@@ -87,8 +93,10 @@ const DESKTOP_NAV = [
     href: '/media',
     dropdown: [
       { title: 'Events & Meetings', href: '/meetings', icon: Calendar },
-      { title: 'Sermons & Videos', href: '/media', icon: PlayCircle },
+      { title: 'Daily Promise', href: '/daily-promise', icon: BookOpen },
+      { title: 'Bible Messages', href: '/messages', icon: BookText },
       { title: 'Testimonials', href: '/testimonials', icon: Star },
+      { title: 'Gallery', href: '/gallery', icon: Image },
     ]
   },
   {
