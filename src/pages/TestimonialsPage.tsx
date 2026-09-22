@@ -18,21 +18,7 @@ export default function TestimonialsPage() {
     <div className="min-h-screen bg-ivory-50">
       <Navbar />
       <main>
-        {/* Hero */}
-        <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-charcoal-900 via-royal-950 to-charcoal-900" />
-          <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #d9a347 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
-          <div className="container-max relative z-10">
-            <p className="eyebrow text-gold-400 mb-4">Testimonies</p>
-            <h1 className="text-hero font-serif font-bold text-ivory-50 mb-6 text-balance">
-              Changed Lives.<br />
-              <span className="text-gold-400">Transformed Hearts.</span>
-            </h1>
-            <p className="text-xl font-bold text-ivory-200 max-w-2xl leading-relaxed">
-              Read stories of God's grace, healing and provision.
-            </p>
-          </div>
-        </section>
+
 
         {/* Written Testimonies */}
         <section ref={ref} className="section-padding bg-ivory-50">
