@@ -22,7 +22,6 @@ const ALL_SECTIONS = [
   {
     group: 'Our Ministry',
     items: [
-      { label: 'Ministries',   href: '/ministries',  icon: Users         },
       { label: 'Outreach & Charity', href: '/outreach', icon: Heart      },
     ],
   },
@@ -65,19 +64,12 @@ const DESKTOP_NAV = [
   { label: 'Home', href: '/' },
   { 
     label: 'About Us', 
-    href: '/about',
-    dropdown: [
-      { title: 'Vision', href: '/vision', icon: Eye },
-      { title: 'Mission', href: '/mission', icon: Target },
-      { title: 'Founder', href: '/founder', icon: Users },
-      { title: 'Core Values', href: '/core-values/christ', icon: Heart },
-    ]
+    href: '/about'
   },
   {
     label: 'Ministries',
     href: '/ministries',
     dropdown: [
-      { title: 'All Ministries', href: '/ministries', icon: Users },
       { title: 'Gospel Evangelism', href: '/ministry/gospel-evangelism', icon: Globe },
       { title: 'Prayer Ministry', href: '/ministry/prayer-ministry', icon: MessageSquare },
       { title: 'Fasting Prayer', href: '/ministry/fasting-prayer', icon: Flame },

@@ -121,7 +121,7 @@ export default function CoverflowCarousel({ items, categories, onItemClick, titl
                 else goTo(index);
               }}
               className={`absolute top-1/2 left-1/2 -translate-y-1/2 transition-all duration-700 ease-out cursor-pointer ${cardSizeClass} ${
-                offset === 0 ? 'shadow-[0_20px_50px_rgba(0,0,0,0.3)]' : 'shadow-lg'
+                offset === 0 ? 'shadow-[0_20px_50px_rgba(10,18,46,0.5)]' : 'shadow-lg'
               }`}
               style={{
                 zIndex,

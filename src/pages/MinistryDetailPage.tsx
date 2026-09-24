@@ -1,16 +1,28 @@
+import { useState, useRef } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
-import { ArrowRight, ArrowLeft, Music, Video } from 'lucide-react';
+import { ArrowRight, ArrowLeft, Music, Video, Image as ImageIcon, X } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { MINISTRY_DETAILS } from '@/lib/ministryDetails';
+import ministryPhotos from '@/lib/ministryPhotos.json';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
-// Reusing the ministries banner
-const HERO_IMG = '/ministries-banner.jpg';
+// Reusing the ministries banner as fallback
+const FALLBACK_HERO_IMG = '/ministries-banner.jpg';
 
 export default function MinistryDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
+  const [activeTab, setActiveTab] = useState<number | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleTabClick = (index: number) => {
+    setActiveTab(index);
+    setTimeout(() => {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 50);
+  };
 
   if (!slug || !MINISTRY_DETAILS[slug]) {
     // If the slug is invalid, redirect to ministries page
@@ -19,125 +31,136 @@ export default function MinistryDetailPage() {
 
   const detail = MINISTRY_DETAILS[slug];
 
+  // Try to find an image from this ministry's folders to use as the hero banner
+  let heroImage = FALLBACK_HERO_IMG;
+  // @ts-ignore
+  const ministryData = ministryPhotos[detail.title];
+  if (ministryData) {
+    const firstAspect = Object.keys(ministryData)[0];
+    if (firstAspect && ministryData[firstAspect] && ministryData[firstAspect].length > 0) {
+      heroImage = `/images/ministries-aspects/${detail.title}/${firstAspect}/${ministryData[firstAspect][0]}`;
+    }
+  }
+
   return (
     <div className="min-h-screen bg-ivory-50">
       <Navbar />
       <main>
-        {/* Hero Banner */}
-        <section className="relative pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden">
-          <div className="absolute inset-0">
-            <img src={HERO_IMG} alt="" className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-charcoal-900/80" />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950 to-transparent" />
-          </div>
-          <div className="container-max relative z-10 text-center pt-8">
-            <p className="eyebrow text-gold-400 mb-4">Our Ministries</p>
-            <h1 className="text-display md:text-[4rem] font-serif font-bold text-ivory-50 mb-6 text-balance">
-              {detail.title}
-            </h1>
-          </div>
-        </section>
-
-        {detail.scripture && (
-          <section className="py-16 bg-brand-700">
-            <div className="container-max text-center">
-              <p className="font-serif italic text-xl md:text-2xl text-ivory-50 max-w-3xl mx-auto">
-                {detail.scripture.split('—')[0].trim()}
-              </p>
-              {detail.scripture.split('—')[1] && (
-                <p className="mt-3 text-sm text-gold-300 font-medium">&mdash; {detail.scripture.split('—')[1].trim()}</p>
-              )}
-            </div>
-          </section>
-        )}
-
-        <section className="section-padding">
+        <section className="pt-32 pb-16">
           <div ref={ref} className="container-max">
             <div className="max-w-4xl mx-auto">
               
-
-              <div className="text-center mb-24">
-                <p className={`eyebrow mb-4 reveal reveal-delay-1 ${isVisible ? 'is-visible' : ''}`}>
-                  About This Ministry
+              <div className="text-center mb-16">
+                <p className={`text-xs font-bold tracking-[0.15em] uppercase mb-4 reveal reveal-delay-1 text-brand-700 ${isVisible ? 'is-visible' : ''}`}>
+                  Our Ministries
                 </p>
-                <h2 className={`text-display font-serif font-bold text-charcoal-900 mb-6 reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
+                <h1 className={`text-display md:text-[4rem] font-serif font-bold text-charcoal-900 mb-6 text-balance reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
                   {detail.title}
-                </h2>
+                </h1>
                 <p className={`text-lg text-charcoal-600 leading-relaxed max-w-3xl mx-auto reveal reveal-delay-3 ${isVisible ? 'is-visible' : ''}`}>
                   {detail.heroDesc}
                 </p>
               </div>
 
-              {/* Aspects Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-32">
-                {detail.aspects.map((aspect, i) => {
-                  const Icon = aspect.icon;
-                  return (
-                    <div 
-                      key={aspect.title}
-                      className={`reveal reveal-delay-${i + 1} ${isVisible ? 'is-visible' : ''} bg-white p-8 rounded-2xl shadow-sm border border-charcoal-100 hover:shadow-md transition-shadow`}
-                    >
-                      <div className="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center mb-6">
-                        <Icon className="h-6 w-6 text-brand-700" />
-                      </div>
-                      <h3 className="font-serif text-xl font-bold text-charcoal-900 mb-3">
-                        {aspect.title}
-                      </h3>
-                      <p className="text-charcoal-600 leading-relaxed text-sm">
-                        {aspect.desc}
-                      </p>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {/* Online Sermons / Media Section */}
-              <div className={`mb-32 reveal ${isVisible ? 'is-visible' : ''}`}>
-                <div className="text-center mb-16">
-                  <h2 className="text-display font-serif font-bold text-charcoal-900 mb-4">
-                    Online Sermons
-                  </h2>
-                  <p className="text-charcoal-600">
-                    Couldn't attend a service? Watch or listen anytime.
-                  </p>
+              {detail.scripture && (
+                <div className={`reveal reveal-delay-4 ${isVisible ? 'is-visible' : ''} bg-brand-50/50 border-l-4 border-brand-700 p-8 md:p-12 rounded-xl max-w-4xl mx-auto text-center mb-24 shadow-sm`}>
+                  <p className="font-serif italic text-xl md:text-2xl text-charcoal-700">"{detail.scripture.split('—')[0].trim()}"</p>
+                  {detail.scripture.split('—')[1] && (
+                    <p className="mt-6 text-sm font-bold text-brand-700 uppercase tracking-[0.15em]">— {detail.scripture.split('—')[1].trim()}</p>
+                  )}
                 </div>
-                
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {[
-                    { id: 1, title: "Living with Purpose: God's Plan for Your Life", date: 'March 24, 11:55 AM', img: '/images/slideshow/img1.jpg' },
-                    { id: 2, title: "Living with Purpose: God's Plan for Your Life", date: 'March 24, 11:55 AM', img: '/images/slideshow/image2.jpg' },
-                    { id: 3, title: 'The Power of Prayer: Connecting with God', date: 'March 24, 11:55 AM', img: '/images/slideshow/1001500386.jpg' },
-                    { id: 4, title: 'Walking in Faith in Uncertain Times', date: 'March 24, 11:55 AM', img: '/images/slideshow/1001500423.jpg' },
-                  ].map((sermon) => (
-                    <div key={sermon.id} className="bg-white rounded-md overflow-hidden shadow-sm border border-charcoal-100 group cursor-pointer hover:shadow-lg transition-all duration-300">
-                      <div className="relative aspect-[4/5] overflow-hidden">
-                        <img 
-                          src={sermon.img} 
-                          alt={sermon.title} 
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        />
-                        {/* Audio / Video Icons Overlay */}
-                        <div className="absolute top-3 right-3 flex flex-col gap-2">
-                          <button className="w-8 h-8 rounded-full bg-brand-800/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-700 transition-colors">
-                            <Music className="w-4 h-4" />
-                          </button>
-                          <button className="w-8 h-8 rounded-full bg-brand-800/80 backdrop-blur-md flex items-center justify-center text-white hover:bg-brand-700 transition-colors">
-                            <Video className="w-4 h-4" />
-                          </button>
+              )}
+
+              {/* Aspects Tabs */}
+              <div className="mb-32">
+                {/* Aspects Grid as Tabs */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                  {detail.aspects.map((aspect, i) => {
+                    const Icon = aspect.icon;
+                    const isActive = activeTab === i;
+                    return (
+                      <div 
+                        key={aspect.title}
+                        onClick={() => handleTabClick(i)}
+                        className={`cursor-pointer reveal reveal-delay-${i + 1} ${isVisible ? 'is-visible' : ''} bg-white p-8 rounded-2xl border transition-all duration-300 ${
+                          isActive 
+                            ? 'shadow-lg border-brand-500 ring-2 ring-brand-500/20' 
+                            : 'shadow-sm border-charcoal-100 hover:shadow-md'
+                        }`}
+                      >
+                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors ${
+                          isActive ? 'bg-brand-600' : 'bg-brand-50'
+                        }`}>
+                          <Icon className={`h-6 w-6 transition-colors ${
+                            isActive ? 'text-white' : 'text-brand-700'
+                          }`} />
                         </div>
-                      </div>
-                      <div className="p-5">
-                        <h3 className="font-serif font-medium text-lg leading-snug text-charcoal-900 mb-6 group-hover:text-brand-700 transition-colors">
-                          {sermon.title}
+                        <h3 className="font-serif text-xl font-bold text-charcoal-900 mb-3">
+                          {aspect.title}
                         </h3>
-                        <p className="text-xs text-charcoal-400 font-medium tracking-wide">
-                          {sermon.date}
+                        <p className="text-charcoal-600 leading-relaxed text-sm">
+                          {aspect.desc}
                         </p>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
+
+                {/* Tab Content */}
+                {activeTab !== null && (
+                  <div ref={contentRef} className="bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-ivory-200 animate-fade-in min-h-[300px]">
+                    <div className="text-center max-w-2xl mx-auto mb-10">
+                      <h3 className="font-serif text-2xl md:text-3xl font-bold text-charcoal-900 mb-4">
+                        {detail.aspects[activeTab].title}
+                      </h3>
+                      <p className="text-lg text-charcoal-600 leading-relaxed">
+                        {detail.aspects[activeTab].desc}
+                      </p>
+                    </div>
+
+                    {/* Photos for the active tab */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+                      {(() => {
+                        const activeAspect = detail.aspects[activeTab];
+                        // @ts-ignore
+                        const photos = (ministryPhotos[detail.title] && ministryPhotos[detail.title][activeAspect.title]) || [];
+                        
+                        if (photos.length === 0) {
+                          return (
+                            <div className="col-span-full text-center text-charcoal-400 py-8 italic border-2 border-dashed border-ivory-200 rounded-2xl">
+                              Images coming soon
+                            </div>
+                          );
+                        }
+
+                        return photos.slice(0, 6).map((photoFileName: string, idx: number) => {
+                          const imgUrl = `/images/ministries-aspects/${detail.title}/${activeAspect.title}/${photoFileName}`;
+                          return (
+                            <div 
+                              key={idx} 
+                              onClick={() => setSelectedImage(imgUrl)}
+                              className={`relative rounded-2xl overflow-hidden shadow-sm group cursor-pointer flex items-center justify-center bg-gray-50 ${idx > 0 ? (idx > 1 ? 'hidden lg:block' : 'hidden sm:block') : ''}`}
+                            >
+                              <img 
+                                src={imgUrl} 
+                                alt={`${activeAspect.title} activity`} 
+                                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700" 
+                              />
+                              {/* Hover overlay with zoom icon */}
+                              <div className="absolute inset-0 bg-charcoal-900/0 group-hover:bg-charcoal-900/20 transition-colors duration-300 flex items-center justify-center">
+                                <div className="w-10 h-10 rounded-full bg-white/0 group-hover:bg-white/90 flex items-center justify-center transform scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300">
+                                  <ImageIcon className="w-5 h-5 text-charcoal-900" />
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        });
+                      })()}
+                    </div>
+                  </div>
+                )}
               </div>
+
 
               {/* Call to Action */}
               <div className={`reveal reveal-delay-4 ${isVisible ? 'is-visible' : ''} bg-gradient-to-br from-brand-900 to-charcoal-900 rounded-3xl p-8 md:p-12 text-center shadow-xl`}>
@@ -158,6 +181,28 @@ export default function MinistryDetailPage() {
         </section>
       </main>
       <Footer />
+
+      {/* Lightbox Overlay */}
+      {selectedImage && (
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-charcoal-950/95 backdrop-blur-sm" onClick={() => setSelectedImage(null)}>
+          <div className="absolute top-0 inset-x-0 p-4 flex justify-end z-10">
+            <button 
+              onClick={(e) => { e.stopPropagation(); setSelectedImage(null); }}
+              className="p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+          <div className="relative w-full h-full p-4 md:p-12 flex items-center justify-center">
+            <img 
+              src={selectedImage} 
+              alt="Expanded view" 
+              className="max-w-full max-h-full object-contain rounded-md shadow-2xl animate-fade-in"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

@@ -4,17 +4,19 @@ import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
 const MINISTRIES_DATA = [
-  { id: 'gospel-evangelism',   title: 'Gospel & Evangelism',     image: '/images/slideshow/img1.jpg', desc: 'We proclaim Jesus Christ and invite people to respond to the Gospel.' },
-  { id: 'prayer-intercession', title: 'Prayer & Intercession',   image: '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.57 PM.jpeg', desc: 'Prayer is central to our ministry. We pray for salvation, families, churches, communities and nations.' },
-  { id: 'revival-meetings',    title: 'Revival Meetings',        image: '/images/slideshow/image 3.jpg', desc: 'Special meetings focused on worship, prayer, God\'s Word and spiritual renewal.' },
-  { id: 'healing-restoration', title: 'Healing & Restoration',   image: '/images/slideshow/1001500423.jpg', desc: 'We pray with people who are seeking God\'s intervention, comfort, strength and restoration.' },
-  { id: 'family-ministry',     title: 'Family Ministry',         image: '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.56 PM.jpeg', desc: 'Encouraging families to build their relationships upon Christ and biblical principles.' },
+  { id: 'revival-meetings',    title: 'Revival Meetings',        image: '/images/ministries-aspects/Revival Meetings/Spiritual Awakening/IMG-20260922-WA0056.jpg', desc: 'Special meetings focused on worship, prayer, God\'s Word and spiritual renewal.' },
+  { id: 'prophetic-prayer',    title: 'Prophetic Prayer Meetings', image: '/images/ministries-aspects/Prophetic Prayer Meetings/Strengthening/IMG-20260922-WA0285.jpg', desc: 'Experiencing the prophetic voice of God for guidance and encouragement.' },
+  { id: 'prayer-ministry',     title: 'Prayer Ministry',         image: '/images/ministries-aspects/Prayer Ministry/Corporate Prayer/IMG-20260922-WA0310.jpg', desc: 'Standing with individuals and families in prayer for their spiritual, personal and family needs.' },
+  { id: 'gospel-evangelism',   title: 'Gospel Evangelism',       image: '/images/ministries-aspects/Gospel Evangelism/Personal Evangelism/IMG-20260922-WA0285.jpg', desc: 'We proclaim Jesus Christ and invite people to respond to the Gospel.' },
+  { id: 'fasting-prayer',      title: 'Fasting Prayer',          image: '/images/ministries-aspects/Fasting Prayer/Spiritual Breakthrough/IMG-20260922-WA0141.jpg', desc: 'Seeking God through prayer and fasting for breakthrough and national revival.' },
+  { id: 'healing-deliverance', title: 'Healing & Deliverance Prayer', image: '/images/ministries-aspects/Healing & Deliverance Prayer/Physical Healing/IMG-20260922-WA0146.jpg', desc: 'We pray with people who are seeking God\'s intervention, comfort, strength and restoration.' },
+  { id: 'family-ministry',     title: 'Family Ministry',         image: '/images/ministries-aspects/Family Ministry/Household Peace/IMG-20260922-WA0301.jpg', desc: 'Encouraging families to build their relationships upon Christ and biblical principles.' },
 ];
 
 export default function Ministries() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
   const navigate = useNavigate();
-  const [activeIndex, setActiveIndex] = useState(2);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -92,7 +94,7 @@ export default function Ministries() {
                   />
 
                   {/* Gradient Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-60'}`} />
+                  <div className={`absolute inset-0 bg-gradient-to-t from-charcoal-950/90 via-charcoal-950/30 to-transparent transition-opacity duration-700 ${isActive ? 'opacity-100' : 'opacity-60'}`} />
 
                   {/* Content for Active Card */}
                   <div 

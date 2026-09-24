@@ -9,8 +9,10 @@ export const MINISTRY = {
   phone: '+91 9700577712 / +91 9063049808',
   whatsapp: '+91 9700577712',
   telegram: '+91 9700577712',
-  email: 'contact@emmanueal.org',
+  email: 'support@emmanuelgospelministries.com',
   workingHours: 'Monday – Saturday, 9:00 AM to 5:00 PM (IST)',
+  primaryColor: 'gold',
+  secondaryColor: 'Navy Blue',
 } as const;
 
 export const NAV_LINKS = [

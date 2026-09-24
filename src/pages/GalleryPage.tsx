@@ -61,14 +61,14 @@ export default function GalleryPage() {
       <Navbar />
 
       {/* Hero Header */}
-      <section className="relative pt-[104px] pb-24 md:pt-[136px] md:pb-32 bg-charcoal-950 overflow-hidden">
+      <section className="relative pt-[104px] pb-24 md:pt-[136px] md:pb-32 bg-blue-600 overflow-hidden">
         <div className="absolute inset-0">
            <img 
              src="/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.58 PM.jpeg" 
              alt="Gallery Background" 
              className="w-full h-full object-cover object-center opacity-40 blur-[2px] transform scale-105"
            />
-           <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950/80 via-charcoal-900/60 to-charcoal-950/90" />
+           <div className="absolute inset-0 bg-gradient-to-b from-blue-600/80 via-blue-500/60 to-blue-600/90" />
         </div>
 
         <div className="relative w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
@@ -181,7 +181,7 @@ export default function GalleryPage() {
 
       {/* Lightbox Overlay */}
       {selectedImageIndex !== null && (
-        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black/95 backdrop-blur-sm">
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-charcoal-950/95 backdrop-blur-sm">
           {/* Top Bar */}
           <div className="absolute top-0 inset-x-0 p-4 flex items-center justify-between z-10">
             <span className="text-white/70 text-sm font-medium">

@@ -22,17 +22,17 @@ export default {
           900: '#564530',
         },
         brand: {
-          50: '#fcfaf6',
-          100: '#f7f2e8',
-          200: '#efe3cf',
-          300: '#e5cdac',
-          400: '#d9a347',
-          500: '#d4af37', // Classic gold
-          600: '#b89228',
-          700: '#9b7622',
-          800: '#806021',
-          900: '#694f1f',
-          950: '#3c2b0e',
+          50:  '#eff6ff',
+          100: '#dbeafe',
+          200: '#bfdbfe',
+          300: '#93c5fd',
+          400: '#60a5fa',
+          500: '#3b82f6', // Logo Blue
+          600: '#2563eb',
+          700: '#1a4b8c',
+          800: '#1e3a6e',
+          900: '#1a3258',
+          950: '#0f1f3a',
         },
         // Royal blue accent (from logo globe)
         royal: {
@@ -76,17 +76,17 @@ export default {
           950: '#422612',
         },
         charcoal: {
-          50:  '#f5f5f4',
-          100: '#e7e5e4',
-          200: '#d6d3d1',
-          300: '#b8b3af',
-          400: '#928c87',
-          500: '#79726d',
-          600: '#5f5955',
-          700: '#4a4541',
-          800: '#332f2c',
-          900: '#1f1c1a',
-          950: '#121010',
+          50:  '#f0f4f8',
+          100: '#d9e2ec',
+          200: '#bcccdc',
+          300: '#9fb3c8',
+          400: '#5c7a9c', // Softer navy
+          500: '#3d5a80', // Lighter navy
+          600: '#294365', // Mid navy
+          700: '#1e3a8a', // Standard navy blue
+          800: '#172554', // Dark navy blue
+          900: '#0f172a', // Very dark navy
+          950: '#0a122e', // Deepest navy
         },
       },
       fontFamily: {
@@ -119,11 +119,11 @@ export default {
         pulseSoft: { '0%, 100%': { opacity: '0.8' }, '50%': { opacity: '1' } },
       },
       backgroundImage: {
-        'hero-overlay': 'linear-gradient(180deg, rgba(15,31,58,0.72) 0%, rgba(15,31,58,0.45) 40%, rgba(15,31,58,0.88) 100%)',
-        'dark-overlay': 'linear-gradient(180deg, rgba(15,31,58,0.82) 0%, rgba(15,31,58,0.62) 100%)',
-        'brand-gradient': 'linear-gradient(135deg, #c11212 0%, #841616 100%)',
-        'royal-gradient':'linear-gradient(135deg, #1a4b8c 0%, #1a3258 100%)',
-        'hero-gradient':  'linear-gradient(135deg, #0f1f3a 0%, #1a3258 50%, #1a4b8c 100%)',
+        'hero-overlay': 'linear-gradient(180deg, rgba(219,234,254,0.72) 0%, rgba(219,234,254,0.45) 40%, rgba(219,234,254,0.88) 100%)',
+        'dark-overlay': 'linear-gradient(180deg, rgba(219,234,254,0.82) 0%, rgba(219,234,254,0.62) 100%)',
+        'brand-gradient': 'linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%)',
+        'royal-gradient':'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
+        'hero-gradient':  'linear-gradient(135deg, #eff6ff 0%, #dbeafe 50%, #bfdbfe 100%)',
       },
     },
   },
