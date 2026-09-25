@@ -40,8 +40,8 @@ export default function Proclamation() {
           </p>
           
           {/* Name */}
-          <div className="inline-block border-t border-gold-400/30 pt-8 px-12">
-            <p className="font-['Montserrat'] text-base md:text-xl text-white tracking-[0.2em] uppercase font-semibold" style={{ textShadow: '1px 2px 4px rgba(10,18,46,0.8)' }}>
+          <div className="inline-block border-t border-gold-400/30 pt-8 px-4 sm:px-12 max-w-full">
+            <p className="font-['Montserrat'] text-sm sm:text-base md:text-xl text-white tracking-[0.1em] sm:tracking-[0.2em] uppercase font-semibold" style={{ textShadow: '1px 2px 4px rgba(10,18,46,0.8)' }}>
               Evangelist Emmanuel Abraham
             </p>
           </div>

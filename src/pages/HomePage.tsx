@@ -12,9 +12,9 @@ import Footer from '@/components/Footer';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-ivory-50">
+    <div className="min-h-screen bg-ivory-50 w-full overflow-x-hidden">
       <Navbar />
-      <main>
+      <main className="w-full overflow-x-hidden">
         <Hero />
         <Proclamation />
         <MeetingsGallery />

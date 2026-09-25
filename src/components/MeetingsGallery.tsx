@@ -43,8 +43,8 @@ export default function MeetingsGallery() {
           <div className={`relative reveal ${isVisible ? 'is-visible' : ''}`}>
             
             {/* Decorative Offset Outlines */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 border border-gold-300 rounded-3xl rounded-br-[64px] z-0" />
-            <div className="absolute -bottom-6 -left-6 w-32 h-32 border border-brand-300 rounded-3xl rounded-tl-[64px] z-0" />
+            <div className="hidden sm:block absolute -top-6 -right-6 w-32 h-32 border border-gold-300 rounded-3xl rounded-br-[64px] z-0 pointer-events-none" />
+            <div className="hidden sm:block absolute -bottom-6 -left-6 w-32 h-32 border border-brand-300 rounded-3xl rounded-tl-[64px] z-0 pointer-events-none" />
 
             {/* Main Slideshow Container */}
             <div className="relative aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl z-10 group">
