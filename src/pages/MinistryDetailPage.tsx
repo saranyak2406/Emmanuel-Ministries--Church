@@ -167,13 +167,13 @@ export default function MinistryDetailPage() {
                             );
                           }
 
-                          return photos.slice(0, 6).map((photoFileName: string, idx: number) => {
+                          return photos.map((photoFileName: string, idx: number) => {
                             const imgUrl = `/images/ministries-aspects/${detail.title}/${activeAspect.title}/${photoFileName}`;
                             return (
                               <div 
                                 key={idx} 
                                 onClick={() => setSelectedImage(imgUrl)}
-                                className={`relative rounded-2xl overflow-hidden shadow-sm group cursor-pointer flex items-center justify-center bg-gray-50 ${idx > 0 ? (idx > 1 ? 'hidden lg:block' : 'hidden sm:block') : ''}`}
+                                className="relative rounded-2xl overflow-hidden shadow-sm group cursor-pointer flex items-center justify-center bg-gray-50"
                               >
                                 <img 
                                   src={imgUrl} 
