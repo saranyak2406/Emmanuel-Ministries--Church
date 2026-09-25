@@ -91,9 +91,9 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <h4 className="text-sm font-semibold uppercase tracking-wider text-ivory-50 mb-4">Contact Info</h4>
             <div className="flex flex-col gap-3 text-sm text-ivory-300 mb-6">
-              <div className="flex items-start gap-2">
+              <div className="flex items-start gap-2 min-w-0">
                 <Mail className="h-4 w-4 text-royal-400 mt-0.5 shrink-0" />
-                <a href={`mailto:${MINISTRY.email}`} className="hover:text-gold-400 transition-colors">{MINISTRY.email}</a>
+                <a href={`mailto:${MINISTRY.email}`} className="hover:text-gold-400 transition-colors break-all text-xs sm:text-sm">{MINISTRY.email}</a>
               </div>
               <div className="flex items-start gap-2">
                 <Phone className="h-4 w-4 text-royal-400 mt-0.5 shrink-0" />

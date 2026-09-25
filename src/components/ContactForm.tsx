@@ -51,13 +51,15 @@ export default function ContactForm() {
               </div>
             </div>
 
-            <div className="flex items-start gap-4">
+            <div className="flex items-start gap-4 min-w-0">
               <div className="w-12 h-12 rounded-full bg-brand-50 flex items-center justify-center shrink-0">
                 <Mail className="w-6 h-6 text-brand-700" />
               </div>
-              <div>
+              <div className="min-w-0 flex-1">
                 <h4 className="font-bold text-charcoal-900 mb-1">Email</h4>
-                <p className="text-charcoal-600">support@emmanuelgospelministries.com</p>
+                <a href="mailto:support@emmanuelgospelministries.com" className="text-charcoal-600 hover:text-brand-700 text-xs sm:text-sm md:text-base break-all block">
+                  support@emmanuelgospelministries.com
+                </a>
               </div>
             </div>
           </div>

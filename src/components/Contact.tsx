@@ -89,7 +89,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             
             {/* Left Column: Illustration & Info */}
-            <div className="p-10 md:p-16 flex flex-col justify-center items-center bg-brand-50 border-r border-ivory-200">
+            <div className="p-6 sm:p-10 md:p-16 flex flex-col justify-center items-center bg-brand-50 border-r border-ivory-200">
               {/* Custom Illustration matching the theme */}
               <div className="w-full max-w-md mb-12 transform hover:scale-105 transition-transform duration-500">
                 <img 
@@ -102,13 +102,13 @@ export default function Contact() {
               {/* Contact Details beneath illustration */}
               <div className="w-full max-w-md space-y-6">
                 {CONTACT_INFO.map(({ icon: Icon, label, value, href }) => (
-                  <div key={label} className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 border border-ivory-200">
-                      <Icon className="h-5 w-5 text-brand-700" />
+                  <div key={label} className="flex items-center gap-3 sm:gap-4 min-w-0 w-full">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-sm flex items-center justify-center shrink-0 border border-ivory-200">
+                      <Icon className="h-4 w-4 sm:h-5 sm:w-5 text-brand-700" />
                     </div>
-                    <div>
+                    <div className="min-w-0 flex-1 overflow-hidden">
                       {label === 'Phone' ? (
-                        <div className="flex items-center gap-2 text-base font-medium text-charcoal-900">
+                        <div className="flex flex-wrap items-center gap-2 text-sm sm:text-base font-medium text-charcoal-900">
                           <a href={`tel:${MINISTRY.phone.split('/')[0].replace(/\s+/g, '')}`} className="hover:text-brand-700 transition-colors">
                             {MINISTRY.phone.split('/')[0].trim()}
                           </a>
@@ -126,12 +126,12 @@ export default function Contact() {
                           href={href}
                           target={href.startsWith('http') ? '_blank' : undefined}
                           rel="noopener noreferrer"
-                          className="text-base font-medium text-charcoal-900 hover:text-brand-700 transition-colors"
+                          className="text-xs sm:text-sm md:text-base font-medium text-charcoal-900 hover:text-brand-700 transition-colors break-all block"
                         >
                           {value}
                         </a>
                       ) : (
-                        <p className="text-base font-medium text-charcoal-900">{value}</p>
+                        <p className="text-xs sm:text-sm md:text-base font-medium text-charcoal-900 break-words">{value}</p>
                       )}
                     </div>
                   </div>
