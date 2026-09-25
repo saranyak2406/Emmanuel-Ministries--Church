@@ -77,20 +77,30 @@ export default function Hero() {
         {/* Welcome Text (No Card Background) */}
         <div className="max-w-6xl mx-auto mb-8 drop-shadow-2xl flex flex-col items-center mt-4">
           
-          <h2 className="text-center mb-4">
+          <h2 className="text-center mb-4 max-w-full px-2">
             <span className={`block font-['Playball'] text-gold-400 text-3xl md:text-5xl mb-2 transition-all duration-700 ${showSupport ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ textShadow: '2px 2px 4px rgba(10,18,46,0.8)' }}>
               Welcome to
             </span>
-            <span className="block font-['Cormorant_Garamond'] text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white uppercase tracking-[0.1em] leading-tight whitespace-nowrap" style={{ textShadow: '2px 4px 8px rgba(10,18,46,0.6)', minHeight: '1.2em' }}>
-              {HEADING.split('').map((char, i) => (
-                <span
-                  key={i}
-                  className="inline-block transition-opacity duration-300"
-                  style={{ opacity: i < revealedCount ? 1 : 0 }}
-                >
-                  {char === ' ' ? '\u00A0' : char}
-                </span>
-              ))}
+            <span className="block font-['Cormorant_Garamond'] text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white uppercase tracking-[0.05em] sm:tracking-[0.1em] leading-tight" style={{ textShadow: '2px 4px 8px rgba(10,18,46,0.6)', minHeight: '1.2em' }}>
+              {HEADING.split(' ').map((word, wordIndex, wordsArr) => {
+                const prevCharsCount = wordsArr.slice(0, wordIndex).join(' ').length + (wordIndex > 0 ? 1 : 0);
+                return (
+                  <span key={wordIndex} className="inline-block whitespace-nowrap mx-1">
+                    {word.split('').map((char, charIndex) => {
+                      const charOverallIndex = prevCharsCount + charIndex;
+                      return (
+                        <span
+                          key={charIndex}
+                          className="inline-block transition-opacity duration-300"
+                          style={{ opacity: charOverallIndex < revealedCount ? 1 : 0 }}
+                        >
+                          {char}
+                        </span>
+                      );
+                    })}
+                  </span>
+                );
+              })}
             </span>
           </h2>
 
@@ -100,7 +110,7 @@ export default function Hero() {
             <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-gold-400/50"></div>
           </div>
 
-          <p className={`text-sm md:text-base text-ivory-50 leading-relaxed max-w-4xl mx-auto font-medium font-['Montserrat'] text-center px-4 transition-all duration-1000 transform ${showSupport ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ textShadow: '1px 2px 4px rgba(10,18,46,0.8)' }}>
+          <p className={`text-sm md:text-base text-ivory-50 leading-relaxed max-w-4xl mx-auto font-medium font-['Montserrat'] text-center px-4 w-full transition-all duration-1000 transform ${showSupport ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ textShadow: '1px 2px 4px rgba(10,18,46,0.8)' }}>
             <strong>Emmanuel Gospel Ministries</strong> is a Christ-centered Christian Gospel ministry based in <strong>Hyderabad, Telangana, India</strong>, committed to proclaiming the Gospel of Jesus Christ and reaching people, families, villages, cities, and communities with the message of God’s love, salvation, prayer, faith, and hope.
             <br/><br/>
             Our desire is to see people come to know Jesus Christ, experience the transforming power of God’s Word, grow in faith, and become devoted disciples who serve God’s Kingdom. Through prayer, evangelism, discipleship, and compassionate service, we seek to share the love of Christ and bring hope and spiritual transformation to communities.
