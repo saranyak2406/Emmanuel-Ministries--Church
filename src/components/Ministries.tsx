@@ -48,8 +48,40 @@ export default function Ministries() {
           </h2>
         </div>
 
-        {/* Accordion Carousel Container */}
-        <div className="relative w-full max-w-[100vw] h-[500px] md:h-[600px] flex items-center justify-center px-4 md:px-10 mb-20 overflow-hidden">
+        {/* Mobile View: Single Column showing all images & ministries */}
+        <div className="lg:hidden flex flex-col gap-6 px-4 mb-16">
+          {MINISTRIES_DATA.map((ministry) => (
+            <div
+              key={`mobile-${ministry.id}`}
+              onClick={() => navigate(`/ministry/${ministry.id}`)}
+              className="relative h-72 sm:h-80 w-full rounded-2xl overflow-hidden shadow-lg cursor-pointer group"
+            >
+              <img
+                src={ministry.image}
+                alt={ministry.title}
+                className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+              />
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-950/95 via-charcoal-950/40 to-transparent" />
+
+              {/* Content */}
+              <div className="absolute inset-x-0 bottom-0 p-6 flex flex-col items-start text-left">
+                <h3 className="text-white text-2xl font-serif font-bold mb-2">
+                  {ministry.title}
+                </h3>
+                <p className="text-ivory-200 text-sm mb-4 line-clamp-2">
+                  {ministry.desc}
+                </p>
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 hover:bg-white text-white hover:text-charcoal-900 font-semibold text-xs transition-colors backdrop-blur-md border border-white/30">
+                  Explore Ministry <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Desktop View: Accordion Carousel Container */}
+        <div className="hidden lg:flex relative w-full max-w-[100vw] h-[500px] md:h-[600px] items-center justify-center px-4 md:px-10 mb-20 overflow-hidden">
           
           {/* Navigation Arrows */}
           <button 
@@ -72,9 +104,6 @@ export default function Ministries() {
           <div className="flex w-full h-full gap-2 md:gap-4 justify-center">
             {MINISTRIES_DATA.map((ministry, index) => {
               const isActive = index === activeIndex;
-              
-              // On mobile, hide cards that are far away from active index
-              if (isMobile && Math.abs(index - activeIndex) > 1 && !isActive) return null;
 
               return (
                 <div
