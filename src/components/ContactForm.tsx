@@ -57,7 +57,7 @@ export default function ContactForm() {
               </div>
               <div>
                 <h4 className="font-bold text-charcoal-900 mb-1">Email</h4>
-                <p className="text-charcoal-600">info@emmanuelgospel.org</p>
+                <p className="text-charcoal-600">support@emmanuelgospelministries.com</p>
               </div>
             </div>
           </div>

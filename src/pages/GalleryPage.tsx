@@ -60,33 +60,7 @@ export default function GalleryPage() {
     <main className="min-h-screen bg-ivory-50 flex flex-col font-sans selection:bg-brand-200 selection:text-brand-900">
       <Navbar />
 
-      {/* Hero Header */}
-      <section className="relative pt-[104px] pb-24 md:pt-[136px] md:pb-32 bg-blue-600 overflow-hidden">
-        <div className="absolute inset-0">
-           <img 
-             src="/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.58 PM.jpeg" 
-             alt="Gallery Background" 
-             className="w-full h-full object-cover object-center opacity-40 blur-[2px] transform scale-105"
-           />
-           <div className="absolute inset-0 bg-gradient-to-b from-blue-600/80 via-blue-500/60 to-blue-600/90" />
-        </div>
-
-        <div className="relative w-full max-w-[1400px] mx-auto px-6 sm:px-8 lg:px-12 text-center">
-          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.1] tracking-tight text-white mb-6 animate-fade-up">
-            Our Gallery
-          </h1>
-          <p 
-            className="text-lg md:text-xl text-ivory-200 max-w-2xl mx-auto leading-relaxed animate-fade-up"
-            style={{ animationDelay: '0.1s' }}
-          >
-            A visual journey of our faith, fellowship, and God's work in our community.
-          </p>
-        </div>
-        
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[2px] h-12 bg-brand-400" />
-      </section>
-
-      <section className="py-16 md:py-24 bg-white">
+      <section className="pt-28 md:pt-36 pb-16 md:pb-24 bg-white">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
           
           {/* Interactive Tabs */}
@@ -120,17 +94,17 @@ export default function GalleryPage() {
           {/* 📸 TAB CONTENT: PHOTO GALLERY */}
           {activeTab === 'photos' && (
             <div className="animate-fade-in">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
                 {GALLERY_IMAGES.map((image, index) => (
                   <div 
                     key={`grid-${index}`} 
-                    className="group relative aspect-[4/3] overflow-hidden cursor-pointer rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300"
+                    className="group relative overflow-hidden cursor-pointer rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 break-inside-avoid"
                     onClick={() => setSelectedImageIndex(index)}
                   >
                     <img 
                       src={image} 
                       alt="Gallery Photo"
-                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-700" 
+                      className="w-full h-auto object-cover group-hover:scale-110 transition-transform duration-700" 
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-charcoal-900/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

@@ -22,6 +22,7 @@ const ALL_SECTIONS = [
   {
     group: 'Our Ministry',
     items: [
+      { label: 'All Ministries', href: '/ministries', icon: Globe      },
       { label: 'Outreach & Charity', href: '/outreach', icon: Heart      },
     ],
   },
@@ -65,6 +66,10 @@ const DESKTOP_NAV = [
   { 
     label: 'About Us', 
     href: '/about'
+  },
+  {
+    label: 'Founder',
+    href: '/founder'
   },
   {
     label: 'Ministries',

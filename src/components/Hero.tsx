@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import QuickLinks from './QuickLinks';
 
 // The user will manually add photos to public/images/home-slideshow/
 // Add the exact filenames here once you have uploaded them.
@@ -106,34 +107,11 @@ export default function Hero() {
           </p>
         </div>
 
-        {/* Buttons */}
+        {/* Quick Links Overlay */}
         <div 
-          className={`flex flex-wrap justify-center gap-4 w-full transition-all duration-1000 transform ${showButtons ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+          className={`w-full transition-all duration-1000 transform ${showButtons ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'} pb-12`}
         >
-          <a
-            href="/prayer"
-            className="btn-primary min-w-[200px] text-center"
-          >
-            🙏 Prayer Request
-          </a>
-          <a
-            href="/about"
-            className="btn-primary min-w-[200px] text-center bg-transparent border-2 border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-white"
-          >
-            📖 Know Jesus
-          </a>
-          <a
-            href="/meetings"
-            className="btn-primary min-w-[200px] text-center bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white/20 hover:border-white/40"
-          >
-            📅 Upcoming Meetings
-          </a>
-          <a
-            href="/give"
-            className="btn-primary min-w-[200px] text-center bg-brand-700 border-brand-700 text-white hover:bg-brand-600 hover:border-brand-600"
-          >
-            ❤️ Support the Ministry
-          </a>
+          <QuickLinks />
         </div>
 
       </div>

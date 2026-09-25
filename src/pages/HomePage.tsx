@@ -17,8 +17,8 @@ export default function HomePage() {
       <main>
         <Hero />
         <Proclamation />
-        <FoundersCards />
         <MeetingsGallery />
+        <FoundersCards />
         <OurHeart />
         <PrayerRequest />
         <ContactForm />
