@@ -21,15 +21,15 @@ export default function FloatingSidebar() {
   ];
 
   return (
-    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-[100] hidden md:flex flex-col shadow-2xl rounded-r-md overflow-hidden">
+    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-[50] flex flex-col shadow-2xl rounded-r-md overflow-hidden">
       {links.map((link) => {
         const Icon = link.icon;
         const isExternal = link.href.startsWith('#') || link.href.startsWith('http');
         
         const content = (
-          <div className={`w-10 h-10 md:w-12 md:h-12 overflow-hidden flex items-center text-white transition-all duration-300 ease-in-out ${link.bg} ${link.hover} cursor-pointer group hover:w-32 md:hover:w-40 border-b border-white/10 last:border-b-0`}>
-            <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">
-              <Icon className="w-[18px] h-[18px] md:w-[20px] md:h-[20px]" />
+          <div className={`w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 overflow-hidden flex items-center text-white transition-all duration-300 ease-in-out ${link.bg} ${link.hover} cursor-pointer group hover:w-32 md:hover:w-40 border-b border-white/10 last:border-b-0`}>
+            <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">
+              <Icon className="w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-[20px] md:h-[20px]" />
             </div>
             <span className="whitespace-nowrap font-medium text-xs md:text-sm tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
               {link.label}
