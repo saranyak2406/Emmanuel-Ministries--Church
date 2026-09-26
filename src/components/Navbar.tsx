@@ -12,50 +12,48 @@ import PrayingHandsIcon from '@/components/PrayingHandsIcon';
 // ── All page sections for the sidebar (full site map) ─────────────────────
 const ALL_SECTIONS = [
   {
-    group: 'Main',
+    group: 'Main Pages',
     items: [
       { label: 'Home',         href: '/',            icon: Home          },
-      { label: 'About',        href: '/about',       icon: BookOpen      },
+      { label: 'About Us',     href: '/about',       icon: BookOpen      },
       { label: 'Founder',      href: '/founder',     icon: Users         },
-    ],
-  },
-  {
-    group: 'Our Ministry',
-    items: [
-      { label: 'All Ministries', href: '/ministries', icon: Globe      },
-      { label: 'Outreach & Charity', href: '/outreach', icon: Heart      },
-    ],
-  },
-  {
-    group: 'Events & Prayer',
-    items: [
-      { label: 'Events',       href: '/meetings',    icon: Calendar      },
-      { label: 'Prayer',       href: '/prayer',      icon: MessageSquare },
-    ],
-  },
-  {
-    group: 'Testimonies & Media',
-    items: [
-      { label: 'Daily Promise',href: '/daily-promise', icon: BookOpen    },
-      { label: 'Bible Messages',href: '/messages',   icon: BookText      },
-      { label: 'Testimonials', href: '/testimonials', icon: Star         },
-      { label: 'Gallery',      href: '/gallery',      icon: Image        },
-      { label: 'Media',        href: '/media',       icon: PlayCircle    },
-    ],
-  },
-  {
-    group: 'About Us',
-    items: [
       { label: 'Vision',       href: '/vision',      icon: Eye           },
       { label: 'Mission',      href: '/mission',     icon: Target        },
       { label: 'Core Values',  href: '/core-values/christ', icon: Heart  },
     ],
   },
   {
-    group: 'Support',
+    group: 'Ministries',
     items: [
-      { label: 'Give',         href: '/give',        icon: DollarSign    },
-      { label: 'Contact',      href: '/contact',     icon: Phone         },
+      { label: 'All Ministries',          href: '/ministries',                        icon: Globe          },
+      { label: 'Gospel Evangelism',       href: '/ministry/gospel-evangelism',        icon: Globe          },
+      { label: 'Prayer Ministry',          href: '/ministry/prayer-ministry',          icon: MessageSquare  },
+      { label: 'Fasting Prayer',           href: '/ministry/fasting-prayer',           icon: Flame          },
+      { label: 'Revival Meetings',         href: '/ministry/revival-meetings',         icon: Calendar       },
+      { label: 'Prophetic Prayer',         href: '/ministry/prophetic-prayer-meetings', icon: Lightbulb     },
+      { label: 'Family Ministry',          href: '/ministry/family-ministry',          icon: Users          },
+      { label: 'Healing & Deliverance',    href: '/ministry/healing-deliverance-prayer', icon: Heart        },
+      { label: 'Outreach & Charity',       href: '/outreach',                          icon: HeartHandshake },
+    ],
+  },
+  {
+    group: 'Media & Events',
+    items: [
+      { label: 'Events & Meetings', href: '/meetings',      icon: Calendar   },
+      { label: 'Daily Promise',     href: '/daily-promise',  icon: BookOpen   },
+      { label: 'Bible Messages',    href: '/messages',       icon: BookText   },
+      { label: 'Testimonials',      href: '/testimonials',   icon: Star       },
+      { label: 'Gallery',           href: '/gallery',        icon: Image      },
+      { label: 'Media Hub',         href: '/media',          icon: PlayCircle },
+    ],
+  },
+  {
+    group: 'Connect & Support',
+    items: [
+      { label: 'Contact Us',     href: '/contact',     icon: Phone        },
+      { label: 'Prayer Request', href: '/prayer',      icon: MessageSquare },
+      { label: 'Partnership',    href: '/partnership', icon: Handshake    },
+      { label: 'Give Online',    href: '/give',        icon: DollarSign   },
     ],
   },
 ];
@@ -293,7 +291,7 @@ export default function Navbar() {
 
       {/* ─── Sidebar panel ───────────────────────────────────────────────── */}
       <aside
-        className={`fixed top-0 right-0 h-full w-72 z-[70] bg-white shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out ${
+        className={`fixed top-0 right-0 h-full w-80 max-w-[85vw] z-[70] bg-white shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out ${
           sidebarOpen ? 'translate-x-0' : 'translate-x-full'
         }`}
         aria-label="Full navigation sidebar"
@@ -382,7 +380,7 @@ export default function Navbar() {
             Request Prayer
           </button>
           <p className="text-[0.6rem] text-charcoal-400 text-center mt-2 leading-relaxed">
-            Preaching Christ \u2022 Transforming Lives \u2022 Reaching the World
+            Preaching Christ • Transforming Lives • Reaching the World
           </p>
         </div>
       </aside>
