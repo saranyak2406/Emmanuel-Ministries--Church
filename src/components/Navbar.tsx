@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import {
-  LayoutGrid, ChevronRight, ChevronLeft, X, ArrowRight,
+  LayoutGrid, ChevronRight, ChevronDown, ChevronLeft, X, ArrowRight,
   Home, BookOpen, Eye, Target, Users, Calendar,
   PlayCircle, Globe, Handshake, DollarSign,
   Phone, Star, MessageSquare, Heart, Image, BookText, Flame, Lightbulb, HeartHandshake,
@@ -9,7 +9,7 @@ import {
 import { NAV_LINKS } from '@/lib/constants';
 import PrayingHandsIcon from '@/components/PrayingHandsIcon';
 
-// ── All page sections for the sidebar (full site map) ─────────────────────
+// ── All page sections for the sidebar (full site map with accordion dropdowns) ──
 const ALL_SECTIONS = [
   {
     group: 'Main Pages',
@@ -23,28 +23,42 @@ const ALL_SECTIONS = [
     ],
   },
   {
-    group: 'Ministries',
+    group: 'Our Ministry',
     items: [
-      { label: 'All Ministries',          href: '/ministries',                        icon: Globe          },
-      { label: 'Gospel Evangelism',       href: '/ministry/gospel-evangelism',        icon: Globe          },
-      { label: 'Prayer Ministry',          href: '/ministry/prayer-ministry',          icon: MessageSquare  },
-      { label: 'Fasting Prayer',           href: '/ministry/fasting-prayer',           icon: Flame          },
-      { label: 'Revival Meetings',         href: '/ministry/revival-meetings',         icon: Calendar       },
-      { label: 'Prophetic Prayer',         href: '/ministry/prophetic-prayer-meetings', icon: Lightbulb     },
-      { label: 'Family Ministry',          href: '/ministry/family-ministry',          icon: Users          },
-      { label: 'Healing & Deliverance',    href: '/ministry/healing-deliverance-prayer', icon: Heart        },
-      { label: 'Outreach & Charity',       href: '/outreach',                          icon: HeartHandshake },
+      { 
+        label: 'Ministries', 
+        href: '/ministries', 
+        icon: Globe,
+        subItems: [
+          { label: 'All Ministries Overview', href: '/ministries', icon: Globe },
+          { label: 'Gospel Evangelism', href: '/ministry/gospel-evangelism', icon: Globe },
+          { label: 'Prayer Ministry', href: '/ministry/prayer-ministry', icon: MessageSquare },
+          { label: 'Fasting Prayer', href: '/ministry/fasting-prayer', icon: Flame },
+          { label: 'Revival Meetings', href: '/ministry/revival-meetings', icon: Calendar },
+          { label: 'Prophetic Prayer', href: '/ministry/prophetic-prayer-meetings', icon: Lightbulb },
+          { label: 'Family Ministry', href: '/ministry/family-ministry', icon: Users },
+          { label: 'Healing & Deliverance', href: '/ministry/healing-deliverance-prayer', icon: Heart },
+        ]
+      },
+      { label: 'Outreach & Charity', href: '/outreach', icon: HeartHandshake },
     ],
   },
   {
     group: 'Media & Events',
     items: [
-      { label: 'Events & Meetings', href: '/meetings',      icon: Calendar   },
-      { label: 'Daily Promise',     href: '/daily-promise',  icon: BookOpen   },
-      { label: 'Bible Messages',    href: '/messages',       icon: BookText   },
-      { label: 'Testimonials',      href: '/testimonials',   icon: Star       },
-      { label: 'Gallery',           href: '/gallery',        icon: Image      },
-      { label: 'Media Hub',         href: '/media',          icon: PlayCircle },
+      { 
+        label: 'Media & Events', 
+        href: '/media', 
+        icon: PlayCircle,
+        subItems: [
+          { label: 'Events & Meetings', href: '/meetings', icon: Calendar },
+          { label: 'Daily Promise', href: '/daily-promise', icon: BookOpen },
+          { label: 'Bible Messages', href: '/messages', icon: BookText },
+          { label: 'Testimonials', href: '/testimonials', icon: Star },
+          { label: 'Gallery', href: '/gallery', icon: Image },
+          { label: 'Media Hub', href: '/media', icon: PlayCircle },
+        ]
+      },
     ],
   },
   {
@@ -112,6 +126,12 @@ export default function Navbar() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<{ [key: string]: boolean }>({ 'Ministries': true });
+
+  const toggleExpand = (label: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setExpandedItems((prev) => ({ ...prev, [label]: !prev[label] }));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -346,34 +366,82 @@ export default function Navbar() {
               {section.items.map((item) => {
                 const Icon = item.icon;
                 const active = isActive(item.href);
+                // @ts-ignore
+                const hasSubItems = Boolean(item.subItems && item.subItems.length > 0);
+                const isExpanded = Boolean(expandedItems[item.label]);
+
                 return (
-                  <button
-                    key={item.label}
-                    onClick={() => handleNavClick(item.href)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-all duration-200 group ${
-                      active
-                        ? 'bg-brand-50 text-brand-800'
-                        : 'text-charcoal-800 hover:bg-brand-50 hover:text-brand-800'
-                    }`}
-                  >
-                    <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 transition-all duration-200 ${
-                      active
-                        ? 'bg-brand-700 border-brand-700'
-                        : 'bg-ivory-100 border-ivory-200 group-hover:bg-brand-700 group-hover:border-brand-700'
-                    }`}>
-                      <Icon className={`h-3.5 w-3.5 transition-colors duration-200 ${
-                        active ? 'text-ivory-50' : 'text-brand-700 group-hover:text-ivory-50'
-                      }`} />
-                    </div>
-                    <span className={`flex-1 text-sm ${active ? 'font-semibold' : 'font-medium'}`}>
-                      {item.label}
-                    </span>
-                    <ChevronRight className={`h-3.5 w-3.5 transition-all duration-200 ${
-                      active
-                        ? 'text-brand-500 translate-x-0.5'
-                        : 'text-charcoal-300 group-hover:text-brand-500 group-hover:translate-x-0.5'
-                    }`} />
-                  </button>
+                  <div key={item.label} className="w-full">
+                    <button
+                      onClick={(e) => {
+                        if (hasSubItems) {
+                          toggleExpand(item.label, e);
+                        } else {
+                          handleNavClick(item.href);
+                        }
+                      }}
+                      className={`w-full flex items-center gap-3 px-4 py-3 text-left transition-all duration-200 group ${
+                        active || isExpanded
+                          ? 'bg-brand-50 text-brand-800'
+                          : 'text-charcoal-800 hover:bg-brand-50 hover:text-brand-800'
+                      }`}
+                    >
+                      <div className={`w-8 h-8 rounded-lg border flex items-center justify-center shrink-0 transition-all duration-200 ${
+                        active || isExpanded
+                          ? 'bg-brand-700 border-brand-700'
+                          : 'bg-ivory-100 border-ivory-200 group-hover:bg-brand-700 group-hover:border-brand-700'
+                      }`}>
+                        <Icon className={`h-3.5 w-3.5 transition-colors duration-200 ${
+                          active || isExpanded ? 'text-ivory-50' : 'text-brand-700 group-hover:text-ivory-50'
+                        }`} />
+                      </div>
+                      <span className={`flex-1 text-sm ${active || isExpanded ? 'font-semibold' : 'font-medium'}`}>
+                        {item.label}
+                      </span>
+                      {hasSubItems ? (
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
+                          isExpanded
+                            ? 'text-brand-700 rotate-180'
+                            : 'text-charcoal-400 group-hover:text-brand-500'
+                        }`} />
+                      ) : (
+                        <ChevronRight className={`h-3.5 w-3.5 transition-all duration-200 ${
+                          active
+                            ? 'text-brand-500 translate-x-0.5'
+                            : 'text-charcoal-300 group-hover:text-brand-500 group-hover:translate-x-0.5'
+                        }`} />
+                      )}
+                    </button>
+
+                    {/* Inline Expandable Sub-items in the same menu */}
+                    {/* @ts-ignore */}
+                    {hasSubItems && isExpanded && (
+                      <div className="pl-6 pr-3 py-1 space-y-1 bg-ivory-100/50 border-y border-ivory-200/50 animate-fade-in">
+                        {/* @ts-ignore */}
+                        {item.subItems.map((sub: any) => {
+                          const SubIcon = sub.icon;
+                          const subActive = location.pathname === sub.href;
+                          return (
+                            <button
+                              key={sub.label}
+                              onClick={() => handleNavClick(sub.href)}
+                              className={`w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-left transition-all text-xs font-medium ${
+                                subActive
+                                  ? 'bg-white text-brand-800 shadow-sm font-bold'
+                                  : 'text-charcoal-700 hover:bg-white hover:text-brand-800'
+                              }`}
+                            >
+                              <div className="w-6 h-6 rounded-md bg-white border border-ivory-200 flex items-center justify-center shrink-0">
+                                <SubIcon className="h-3 w-3 text-brand-700" />
+                              </div>
+                              <span className="flex-1 truncate">{sub.label}</span>
+                              <ChevronRight className="h-3 w-3 text-charcoal-300" />
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
                 );
               })}
 
