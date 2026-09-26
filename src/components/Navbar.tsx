@@ -9,18 +9,6 @@ import {
 import { NAV_LINKS } from '@/lib/constants';
 import PrayingHandsIcon from '@/components/PrayingHandsIcon';
 
-// ── All ministry items for dedicated mobile sub-drawer ───────────────────
-const MINISTRY_ITEMS = [
-  { label: 'Gospel Evangelism',       href: '/ministry/gospel-evangelism',        icon: Globe,          desc: 'Proclaiming Jesus Christ to all' },
-  { label: 'Prayer Ministry',          href: '/ministry/prayer-ministry',          icon: MessageSquare,  desc: 'Standing together in prayer' },
-  { label: 'Fasting Prayer',           href: '/ministry/fasting-prayer',           icon: Flame,          desc: 'Seeking God with fervent fasting' },
-  { label: 'Revival Meetings',         href: '/ministry/revival-meetings',         icon: Calendar,       desc: 'Worship and spiritual renewal' },
-  { label: 'Prophetic Prayer',         href: '/ministry/prophetic-prayer-meetings', icon: Lightbulb,      desc: 'Encouragement and divine guidance' },
-  { label: 'Family Ministry',          href: '/ministry/family-ministry',          icon: Users,          desc: 'Building Christ-centered families' },
-  { label: 'Healing & Deliverance',    href: '/ministry/healing-deliverance-prayer', icon: Heart,        desc: 'Prayer for restoration & peace' },
-  { label: 'Outreach & Charity',       href: '/outreach',                          icon: HeartHandshake, desc: 'Serving our community in love' },
-];
-
 // ── All page sections for the sidebar (full site map) ─────────────────────
 const ALL_SECTIONS = [
   {
@@ -35,10 +23,17 @@ const ALL_SECTIONS = [
     ],
   },
   {
-    group: 'Our Ministry',
+    group: 'Ministries',
     items: [
-      { label: 'Ministries',         href: '#open-ministries', icon: Globe,          isDrawer: true },
-      { label: 'Outreach & Charity', href: '/outreach',         icon: HeartHandshake                },
+      { label: 'All Ministries',          href: '/ministries',                        icon: Globe          },
+      { label: 'Gospel Evangelism',       href: '/ministry/gospel-evangelism',        icon: Globe          },
+      { label: 'Prayer Ministry',          href: '/ministry/prayer-ministry',          icon: MessageSquare  },
+      { label: 'Fasting Prayer',           href: '/ministry/fasting-prayer',           icon: Flame          },
+      { label: 'Revival Meetings',         href: '/ministry/revival-meetings',         icon: Calendar       },
+      { label: 'Prophetic Prayer',         href: '/ministry/prophetic-prayer-meetings', icon: Lightbulb     },
+      { label: 'Family Ministry',          href: '/ministry/family-ministry',          icon: Users          },
+      { label: 'Healing & Deliverance',    href: '/ministry/healing-deliverance-prayer', icon: Heart        },
+      { label: 'Outreach & Charity',       href: '/outreach',                          icon: HeartHandshake },
     ],
   },
   {
@@ -116,7 +111,6 @@ export default function Navbar() {
   const location = useLocation();
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [ministriesDrawerOpen, setMinistriesDrawerOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -127,9 +121,9 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Prevent background page from scrolling while drawer or sidebar is open
+  // Prevent background page from scrolling while sidebar is open
   useEffect(() => {
-    if (sidebarOpen || ministriesDrawerOpen) {
+    if (sidebarOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -137,16 +131,10 @@ export default function Navbar() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [sidebarOpen, ministriesDrawerOpen]);
+  }, [sidebarOpen]);
 
   const handleNavClick = (href: string) => {
-    if (href === '#open-ministries') {
-      setMinistriesDrawerOpen(true);
-      return;
-    }
-
     setSidebarOpen(false);
-    setMinistriesDrawerOpen(false);
     
     if (href.includes('#')) {
       const [path, hash] = href.split('#');
@@ -406,106 +394,6 @@ export default function Navbar() {
           <p className="text-[0.6rem] text-charcoal-400 text-center mt-2 leading-relaxed">
             Preaching Christ • Transforming Lives • Reaching the World
           </p>
-        </div>
-      </aside>
-
-      {/* ─── Ministries Mobile Sub-Drawer Backdrop ──────────────────────── */}
-      <div
-        className={`fixed inset-0 z-[80] bg-charcoal-950/60 backdrop-blur-sm transition-opacity duration-300 ${
-          ministriesDrawerOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
-        onClick={() => setMinistriesDrawerOpen(false)}
-        aria-hidden="true"
-      />
-
-      {/* ─── Ministries Mobile Sub-Drawer Panel (85-90% width, sliding from right) ─── */}
-      <aside
-        className={`fixed top-0 right-0 h-full w-[88vw] sm:w-96 max-w-[420px] z-[90] bg-ivory-50 shadow-2xl flex flex-col transform transition-transform duration-300 ease-in-out ${
-          ministriesDrawerOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
-        aria-label="Mobile Ministries Menu"
-      >
-        {/* Top Header */}
-        <div className="bg-white border-b border-ivory-200 px-5 py-4 sm:px-6 sm:py-5 flex items-center justify-between shrink-0 shadow-sm">
-          <div className="flex items-center gap-3">
-            <button
-              onClick={() => setMinistriesDrawerOpen(false)}
-              className="w-9 h-9 rounded-full bg-ivory-100 flex items-center justify-center text-charcoal-700 hover:bg-brand-50 hover:text-brand-700 transition-colors"
-              aria-label="Back to main menu"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <div>
-              <h2 className="font-serif text-xl sm:text-2xl font-bold text-charcoal-900 tracking-wide">
-                MINISTRIES
-              </h2>
-              <p className="text-[0.65rem] uppercase tracking-widest text-brand-700 font-semibold">
-                Explore All Areas
-              </p>
-            </div>
-          </div>
-
-          <button
-            onClick={() => {
-              setMinistriesDrawerOpen(false);
-              setSidebarOpen(false);
-            }}
-            className="w-9 h-9 rounded-full bg-charcoal-100 flex items-center justify-center text-charcoal-700 hover:bg-brand-600 hover:text-white transition-colors"
-            aria-label="Close Ministries Drawer"
-          >
-            <X className="h-4 w-4" />
-          </button>
-        </div>
-
-        {/* Scrollable List of All 8 Ministries */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-2.5">
-          {MINISTRY_ITEMS.map((item) => {
-            const Icon = item.icon;
-            const active = isActive(item.href);
-            return (
-              <button
-                key={item.label}
-                onClick={() => handleNavClick(item.href)}
-                className={`w-full flex items-center gap-3.5 p-3.5 rounded-2xl text-left transition-all duration-200 group border min-h-[54px] ${
-                  active
-                    ? 'bg-white border-brand-400 shadow-md text-brand-900 ring-1 ring-brand-300'
-                    : 'bg-white border-ivory-200/90 hover:border-brand-300 hover:shadow-sm text-charcoal-900'
-                }`}
-              >
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all ${
-                  active
-                    ? 'bg-brand-700 text-white shadow-sm'
-                    : 'bg-ivory-100 text-brand-700 group-hover:bg-brand-700 group-hover:text-white'
-                }`}>
-                  <Icon className="h-5 w-5" />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <span className={`text-sm block leading-snug ${active ? 'font-bold text-brand-900' : 'font-semibold text-charcoal-900'}`}>
-                    {item.label}
-                  </span>
-                  <span className="text-xs text-charcoal-500 line-clamp-1 block mt-0.5">
-                    {item.desc}
-                  </span>
-                </div>
-                <ChevronRight className={`h-4 w-4 shrink-0 transition-transform ${
-                  active
-                    ? 'text-brand-600 translate-x-1'
-                    : 'text-charcoal-400 group-hover:text-brand-600 group-hover:translate-x-1'
-                }`} />
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Footer in Drawer */}
-        <div className="p-4 bg-white border-t border-ivory-200 shrink-0">
-          <button
-            onClick={() => handleNavClick('/prayer')}
-            className="btn-primary w-full !text-xs !py-2.5"
-          >
-            <PrayingHandsIcon className="h-3.5 w-3.5" />
-            Request Prayer
-          </button>
         </div>
       </aside>
     </>
