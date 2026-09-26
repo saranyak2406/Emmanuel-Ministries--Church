@@ -37,9 +37,8 @@ const ALL_SECTIONS = [
   {
     group: 'Our Ministry',
     items: [
-      { label: 'Ministries',              href: '#open-ministries', icon: Globe,          isDrawer: true },
-      { label: 'All Ministries Overview', href: '/ministries',       icon: Globe                         },
-      { label: 'Outreach & Charity',      href: '/outreach',         icon: HeartHandshake                },
+      { label: 'Ministries',         href: '#open-ministries', icon: Globe,          isDrawer: true },
+      { label: 'Outreach & Charity', href: '/outreach',         icon: HeartHandshake                },
     ],
   },
   {
@@ -460,29 +459,6 @@ export default function Navbar() {
 
         {/* Scrollable List of All 8 Ministries */}
         <div className="flex-1 overflow-y-auto p-4 space-y-2.5">
-          {/* Main All Ministries Page Button */}
-          <button
-            onClick={() => handleNavClick('/ministries')}
-            className="w-full flex items-center gap-3.5 p-3.5 rounded-2xl bg-brand-50 border border-brand-200/70 text-left hover:bg-brand-100/70 transition-all group min-h-[52px]"
-          >
-            <div className="w-10 h-10 rounded-xl bg-brand-700 flex items-center justify-center shrink-0 shadow-sm text-ivory-50 group-hover:scale-105 transition-transform">
-              <Globe className="h-5 w-5" />
-            </div>
-            <div className="flex-1 min-w-0">
-              <span className="text-sm font-bold text-brand-950 block">
-                All Ministries Overview
-              </span>
-              <span className="text-xs text-brand-800/80 line-clamp-1">
-                View our main ministries overview page
-              </span>
-            </div>
-            <ArrowRight className="h-4 w-4 text-brand-700 shrink-0 group-hover:translate-x-1 transition-transform" />
-          </button>
-
-          <div className="pt-2 pb-1 px-2 text-[0.65rem] font-bold uppercase tracking-widest text-charcoal-400">
-            Our Ministries List
-          </div>
-
           {MINISTRY_ITEMS.map((item) => {
             const Icon = item.icon;
             const active = isActive(item.href);
