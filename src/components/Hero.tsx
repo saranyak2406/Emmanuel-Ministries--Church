@@ -4,8 +4,7 @@ import QuickLinks from './QuickLinks';
 // The user will manually add photos to public/images/home-slideshow/
 // Add the exact filenames here once you have uploaded them.
 const SLIDES = [
-  '/images/home-slideshow/WhatsApp Image 2026-09-28 at 2.46.39 PM.jpeg',
-  '/images/home-slideshow/WhatsApp Image 2026-09-28 at 2.52.30 PM.jpeg',
+  '/images/home-slideshow/crowd.jpg',
   '/images/home-slideshow/pexels-arth-443963208-36124692.jpg.jpeg',
 ];
 
