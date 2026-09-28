@@ -21,7 +21,7 @@ export default function FloatingSidebar() {
   ];
 
   return (
-    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-[50] flex flex-col shadow-2xl rounded-r-md overflow-hidden">
+    <div className="hidden md:flex fixed left-0 top-1/2 -translate-y-1/2 z-[50] flex-col shadow-2xl rounded-r-md overflow-hidden">
       {links.map((link) => {
         const Icon = link.icon;
         const isExternal = link.href.startsWith('#') || link.href.startsWith('http');

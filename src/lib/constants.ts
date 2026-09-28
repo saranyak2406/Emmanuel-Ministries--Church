@@ -34,11 +34,11 @@ export const SOCIAL_LINKS = [
 
 export const PRAYER_CATEGORIES = [
   'Salvation',
-  'Family',
-  'Healing',
+  'Family Blessings',
+  'Healing / Deliverance',
+  'Breakthrough Prayer',
+  'Business / Education',
   'Guidance',
-  'Provision',
-  'Deliverance',
   'Ministry',
   'Other',
 ] as const;

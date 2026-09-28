@@ -7,6 +7,21 @@ const IMAGES = [
   '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.56 PM.jpeg',
   '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.57 PM.jpeg',
   '/images/slideshow/WhatsApp Image 2026-09-04 at 3.36.58 PM.jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.47.56 PM (1).jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.47.56 PM.jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.47.57 PM.jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.00 PM (1).jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.00 PM.jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.01 PM.jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.03 PM (1).jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.03 PM (2).jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.03 PM.jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.04 PM (1).jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.04 PM (2).jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.04 PM.jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.06 PM.jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.08 PM.jpeg',
+  '/images/slideshow/WhatsApp Image 2026-09-28 at 2.48.10 PM (1).jpeg',
   '/images/slideshow/e2659171-d689-4189-9460-01d204a70954.jpg',
   '/images/slideshow/image 3.jpg',
   '/images/slideshow/image2.jpg',
@@ -47,7 +62,7 @@ export default function MeetingsGallery() {
             <div className="hidden sm:block absolute -bottom-6 -left-6 w-32 h-32 border border-brand-300 rounded-3xl rounded-tl-[64px] z-0 pointer-events-none" />
 
             {/* Main Slideshow Container */}
-            <div className="relative aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl z-10 group">
+            <div className="relative aspect-square md:aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl z-10 group bg-charcoal-950">
               
               {/* Images */}
               {IMAGES.map((src, index) => (
@@ -58,14 +73,14 @@ export default function MeetingsGallery() {
                   }`}
                 >
                   <div 
-                    className={`w-full h-full transform transition-transform duration-[10000ms] ease-linear ${
+                    className={`w-full h-full transform transition-transform duration-[10000ms] ease-linear flex items-center justify-center ${
                       index === currentIndex ? 'scale-110' : 'scale-100'
                     }`}
                   >
                     <img 
                       src={src} 
                       alt={`Ministry Meeting ${index + 1}`}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-contain"
                     />
                   </div>
                 </div>

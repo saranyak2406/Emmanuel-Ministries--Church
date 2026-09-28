@@ -7,7 +7,7 @@ const FOUNDERS = [
   {
     name: "Evangelist Emmanuel Abraham",
     title: "Founder & President",
-    image: "/images/slideshow/1001500423.jpg",
+    image: "/images/8f3270bb-c6c3-4547-83c6-a512b0ad2c17.png",
     initials: "EA",
     bio1: "Evangelist Emmanuel Abraham serves in Gospel ministry with a passion for proclaiming Jesus Christ, praying for people, encouraging believers and reaching communities with the message of the Gospel.",
     bio2: "Through Gospel meetings, prayer gatherings, evangelistic outreaches and ministry events, the desire is to point people to Jesus Christ and encourage them to walk according to God's Word.",
@@ -15,10 +15,10 @@ const FOUNDERS = [
     verse: "— 2 Corinthians 4:5"
   },
   {
-    name: "Mrs. Emmanuel Abraham",
+    name: "Joy Sarala Abraham",
     title: "Co-Founder",
-    image: "/images/slideshow/790b93a3-9c0a-42a8-8d3f-aaa67b87e1ce.png",
-    initials: "EA",
+    image: "/images/3cd6a63a-2d32-412d-bb8d-12c7288ea7e3.png",
+    initials: "JA",
     bio1: "She faithfully serves alongside her husband in ministry, deeply committed to prayer, counseling, and encouraging the body of Christ.",
     bio2: "Her heart for families, women's ministry, and the unreached communities continues to be a pillar of strength for Emmanuel Gospel Ministries.",
     quote: "Let all that you do be done in love.",

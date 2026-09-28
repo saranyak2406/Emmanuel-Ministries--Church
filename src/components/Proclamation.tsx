@@ -10,24 +10,27 @@ export default function Proclamation() {
         <img 
           src="/images/cross.jpg"
           alt="Cross at sunset" 
-          className="w-full h-full object-cover opacity-50"
+          className="w-full h-full object-cover opacity-80"
         />
-        {/* Dark gradient overlay to blend seamlessly with Hero section */}
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950 via-charcoal-950/70 to-charcoal-950/90" />
+        {/* Lighter gradient overlay to allow background to show through clearly */}
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950 via-charcoal-950/40 to-charcoal-950/60" />
       </div>
 
       <div ref={ref} className={`relative z-10 container-max px-4 text-center reveal ${isVisible ? 'is-visible' : ''}`}>
         
         {/* Main Slogan */}
-        <h2 className="text-2xl md:text-4xl lg:text-5xl font-['Cormorant_Garamond'] font-bold text-white mb-16 uppercase tracking-[0.2em] leading-relaxed" style={{ textShadow: '2px 4px 8px rgba(10,18,46,0.8)' }}>
-          <span className="block mb-2 md:inline md:mb-0">Proclaiming Jesus Christ</span>
-          <span className="hidden md:inline text-gold-400 mx-4 text-3xl">✝</span>
-          <span className="block mb-2 md:inline md:mb-0">Reaching Souls</span>
-          <span className="hidden lg:inline text-gold-400 mx-4 text-3xl">✝</span>
-          <br className="hidden lg:block" />
-          <span className="block mb-2 lg:mt-6 md:inline md:mb-0">Raising Disciples</span>
-          <span className="hidden md:inline text-gold-400 mx-4 text-3xl">✝</span>
-          <span className="block mb-2 md:inline md:mb-0">Advancing God's Kingdom</span>
+        <h2 className="text-xl md:text-3xl lg:text-4xl font-['Cormorant_Garamond'] font-bold text-white mb-16 uppercase tracking-[0.1em] md:tracking-[0.2em] leading-relaxed" style={{ textShadow: '2px 4px 8px rgba(10,18,46,0.8)' }}>
+          <span className="block mb-2 md:inline md:mb-0">Proclaiming the Gospel of Jesus Christ</span>
+          <span className="hidden md:inline text-gold-400 mx-4 text-2xl">✝</span>
+          <span className="block mb-2 md:inline md:mb-0">Reaching Souls & The Unreached</span>
+          <span className="hidden md:inline text-gold-400 mx-4 text-2xl">✝</span>
+          <span className="block mb-2 md:inline md:mb-0 lg:mt-6">Raising Pastors</span>
+          <span className="hidden md:inline text-gold-400 mx-4 text-2xl">✝</span>
+          <span className="block mb-2 md:inline md:mb-0">Building the People's Church</span>
+          <span className="hidden md:inline text-gold-400 mx-4 text-2xl">✝</span>
+          <span className="block mb-2 md:inline md:mb-0 lg:mt-6">Raising a New Joshua Generation</span>
+          <span className="hidden md:inline text-gold-400 mx-4 text-2xl">✝</span>
+          <span className="block mb-2 md:inline md:mb-0">Building the Kingdom of the Lord</span>
         </h2>
         
         <div className="max-w-4xl mx-auto">

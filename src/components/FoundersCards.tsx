@@ -9,13 +9,13 @@ export default function FoundersCards() {
     {
       name: "Evangelist Emmanuel Abraham",
       title: "Founder & President",
-      image: "/images/slideshow/1001500423.jpg", // The user's uploaded image path
+      image: "/images/8f3270bb-c6c3-4547-83c6-a512b0ad2c17.png", // The user's uploaded image path
       slug: "emmanuel-abraham"
     },
     {
-      name: "Mrs. Emmanuel Abraham",
+      name: "Joy Sarala Abraham",
       title: "Co-Founder",
-      image: "/images/slideshow/790b93a3-9c0a-42a8-8d3f-aaa67b87e1ce.png", // The user's uploaded image path
+      image: "/images/3cd6a63a-2d32-412d-bb8d-12c7288ea7e3.png", // The user's uploaded image path
       slug: "co-founder"
     }
   ];

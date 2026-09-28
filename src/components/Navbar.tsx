@@ -40,7 +40,6 @@ const ALL_SECTIONS = [
           { label: 'Healing & Deliverance', href: '/ministry/healing-deliverance-prayer', icon: Heart },
         ]
       },
-      { label: 'Outreach & Charity', href: '/outreach', icon: HeartHandshake },
     ],
   },
   {
@@ -66,6 +65,7 @@ const ALL_SECTIONS = [
     items: [
       { label: 'Contact Us',     href: '/contact',     icon: Phone        },
       { label: 'Prayer Request', href: '/prayer',      icon: MessageSquare },
+      { label: 'Outreach & Charity', href: '/outreach', icon: HeartHandshake },
       { label: 'Partnership',    href: '/partnership', icon: Handshake    },
       { label: 'Give Online',    href: '/give',        icon: DollarSign   },
     ],
@@ -94,7 +94,6 @@ const DESKTOP_NAV = [
       { title: 'Prophetic Prayer', href: '/ministry/prophetic-prayer-meetings', icon: Lightbulb },
       { title: 'Family Ministry', href: '/ministry/family-ministry', icon: Users },
       { title: 'Healing & Deliverance', href: '/ministry/healing-deliverance-prayer', icon: Heart },
-      { title: 'Outreach & Charity', href: '/outreach', icon: HeartHandshake },
     ]
   },
   {
@@ -114,6 +113,7 @@ const DESKTOP_NAV = [
     dropdown: [
       { title: 'Contact Us', href: '/contact', icon: Phone },
       { title: 'Prayer Request', href: '/prayer', icon: MessageSquare },
+      { title: 'Outreach & Charity', href: '/outreach', icon: HeartHandshake },
       { title: 'Partnership', href: '/partnership', icon: Handshake },
       { title: 'Give Online', href: '/give', icon: DollarSign },
     ]
@@ -205,10 +205,10 @@ export default function Navbar() {
                 className="h-12 w-12 md:h-14 md:w-14 rounded-lg object-cover shadow-sm group-hover:shadow-md transition-shadow duration-300"
               />
               <div className="flex flex-col">
-                <span className="font-serif text-lg md:text-xl font-bold leading-none tracking-wide text-brand-800">
+                <span className="font-serif text-lg md:text-xl font-bold leading-none tracking-wide text-red-600">
                   EMMANUEL
                 </span>
-                <span className="font-sans text-[0.52rem] md:text-[0.58rem] font-semibold uppercase tracking-[0.18em] mt-0.5 text-royal-700">
+                <span className="font-sans text-[0.52rem] md:text-[0.58rem] font-semibold uppercase tracking-[0.18em] mt-0.5 text-red-600">
                   Gospel Ministries
                 </span>
               </div>
@@ -265,18 +265,20 @@ export default function Navbar() {
                                 );
                               })}
                             </div>
-                            <div className="mt-4 pt-4 border-t border-ivory-100 px-2 flex justify-between items-center">
-                              <span className="text-xs text-charcoal-500 font-medium">Explore {link.label}</span>
-                              <button
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  handleNavClick(link.href);
-                                }}
-                                className="text-xs font-bold uppercase tracking-wider text-brand-700 hover:text-brand-800 flex items-center gap-1 transition-colors bg-brand-50 px-3 py-1.5 rounded-md"
-                              >
-                                View Main Page <ArrowRight className="w-3 h-3" />
-                              </button>
-                            </div>
+                            {link.label !== 'Connect & Support' && (
+                              <div className="mt-4 pt-4 border-t border-ivory-100 px-2 flex justify-between items-center">
+                                <span className="text-xs text-charcoal-500 font-medium">Explore {link.label}</span>
+                                <button
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    handleNavClick(link.href);
+                                  }}
+                                  className="text-xs font-bold uppercase tracking-wider text-brand-700 hover:text-brand-800 flex items-center gap-1 transition-colors bg-brand-50 px-3 py-1.5 rounded-md"
+                                >
+                                  View Main Page <ArrowRight className="w-3 h-3" />
+                                </button>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -337,10 +339,10 @@ export default function Navbar() {
               className="h-11 w-11 rounded-lg object-cover border-2 border-brand-400/40"
             />
             <div>
-              <span className="font-serif text-xl font-bold text-ivory-50 block leading-none">
+              <span className="font-serif text-xl font-bold text-red-500 block leading-none">
                 EMMANUEL
               </span>
-              <span className="text-[0.52rem] font-semibold uppercase tracking-[0.18em] text-royal-300 mt-0.5 block">
+              <span className="text-[0.52rem] font-semibold uppercase tracking-[0.18em] text-red-400 mt-0.5 block">
                 Gospel Ministries
               </span>
               <p className="text-[0.58rem] text-ivory-300/60 mt-0.5">All Sections</p>

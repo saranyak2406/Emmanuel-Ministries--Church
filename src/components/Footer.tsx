@@ -49,8 +49,8 @@ export default function Footer() {
                 className="h-12 w-12 rounded-xl object-cover border border-brand-400/30"
               />
               <div>
-                <h3 className="font-serif text-xl font-bold text-ivory-50 leading-none">EMMANUEL</h3>
-                <p className="text-[0.52rem] font-semibold uppercase tracking-[0.18em] text-royal-400 mt-0.5">
+                <h3 className="font-serif text-xl font-bold text-red-600 leading-none">EMMANUEL</h3>
+                <p className="text-[0.52rem] font-semibold uppercase tracking-[0.18em] text-red-500 mt-0.5">
                   Gospel Ministries
                 </p>
               </div>

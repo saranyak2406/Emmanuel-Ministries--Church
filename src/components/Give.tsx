@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Building2, Shield, QrCode, CreditCard, X, ArrowLeft } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
-const GIVE_IMG = '/give-donate.png';
+const GIVE_IMG = '/donate.png';
 
 export default function Give() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
@@ -47,7 +47,7 @@ export default function Give() {
           <div className={`reveal reveal-delay-2 ${isVisible ? 'is-visible' : ''}`}>
             <p className="eyebrow mb-4">GIVE</p>
             <h2 className="text-display font-serif font-bold text-charcoal-900 mb-5">
-              Support the Ministry
+              Donate & Support
             </h2>
             <p className="text-xl text-brand-700 mb-4 font-bold">
               Your giving helps us advance the Gospel and reach the unreached.
@@ -86,7 +86,7 @@ export default function Give() {
               className="btn-primary"
             >
               <CreditCard className="h-4 w-4" />
-              GIVE ONLINE NOW
+              DONATE AND SUPPORT
             </button>
           </div>
         </div>

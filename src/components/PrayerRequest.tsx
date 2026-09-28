@@ -6,7 +6,7 @@ import { PRAYER_CATEGORIES } from '@/lib/constants';
 
 import PrayingHandsIcon from '@/components/PrayingHandsIcon';
 
-const PRAYER_BG = '/images/prayer-bg.jpeg';
+const PRAYER_BG = '/images/hands-raised-in-prayer-gesture-with-divine-light-rays-from-above-on-a-dark-background-photo.jpeg';
 const SUCCESS_BG = 
   'https://images.pexels.com/photos/272337/pexels-photo-272337.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&fit=crop';
 
@@ -62,8 +62,9 @@ export default function PrayerRequest() {
             alt="Prayer Background" 
             className="h-full w-full object-cover transition-opacity duration-1000" 
           />
-          {/* A light overlay to make the background bright but keep image visible */}
-          <div className="absolute inset-0 bg-white/60 backdrop-blur-[2px]" />
+          {/* A light overlay to make the background bright but keep image visible, 
+              ensuring the dark text is perfectly readable */}
+          <div className="absolute inset-0 bg-white/70 backdrop-blur-[3px]" />
         </div>
 
         <div ref={ref} className="container-max relative z-10 w-full px-4">

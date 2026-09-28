@@ -4,10 +4,9 @@ import QuickLinks from './QuickLinks';
 // The user will manually add photos to public/images/home-slideshow/
 // Add the exact filenames here once you have uploaded them.
 const SLIDES = [
+  '/images/home-slideshow/WhatsApp Image 2026-09-28 at 2.46.39 PM.jpeg',
+  '/images/home-slideshow/WhatsApp Image 2026-09-28 at 2.52.30 PM.jpeg',
   '/images/home-slideshow/pexels-arth-443963208-36124692.jpg.jpeg',
-  '/images/home-slideshow/pexels-jersonmfotos-34634375.jpg.jpeg',
-  '/images/home-slideshow/pexels-lucasandrade-31542998.jpg.jpeg',
-  '/images/home-slideshow/pexels-suthee-pakcharoen-76943299-8788077.jpg.jpeg',
 ];
 
 export default function Hero() {
@@ -20,7 +19,7 @@ export default function Hero() {
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-    }, 3000);
+    }, 2000);
     return () => clearInterval(timer);
   }, []);
 
@@ -59,7 +58,7 @@ export default function Hero() {
             key={slide}
             src={slide}
             alt={`Slide ${index + 1}`}
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[1000ms] ease-in-out ${
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ease-in-out ${
               index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
             }`}
           />
@@ -78,11 +77,11 @@ export default function Hero() {
         <div className="max-w-6xl mx-auto mb-8 drop-shadow-2xl flex flex-col items-center mt-4">
           
           <h2 className="text-center mb-4 max-w-full px-2">
-            <span className={`block font-['Playball'] text-gold-400 text-3xl md:text-5xl mb-2 transition-all duration-700 ${showSupport ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ textShadow: '2px 2px 4px rgba(10,18,46,0.8)' }}>
+            <span className={`block font-['Playball'] text-4xl md:text-6xl mb-2 transition-all duration-700 shine-sweep luxury-gold-text ${showSupport ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               Welcome to
             </span>
-            <span className="block font-['Cormorant_Garamond'] text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white uppercase tracking-[0.05em] sm:tracking-[0.1em] leading-tight" style={{ textShadow: '2px 4px 8px rgba(10,18,46,0.6)', minHeight: '1.2em' }}>
-              {HEADING.split(' ').map((word, wordIndex, wordsArr) => {
+            <span className="block font-['Cormorant_Garamond'] text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[0.05em] sm:tracking-[0.1em] leading-tight shine-sweep neon-text-red" style={{ minHeight: '1.2em', fontVariant: 'small-caps' }}>
+              {"Emmanuel Gospel Ministries".split(' ').map((word, wordIndex, wordsArr) => {
                 const prevCharsCount = wordsArr.slice(0, wordIndex).join(' ').length + (wordIndex > 0 ? 1 : 0);
                 return (
                   <span key={wordIndex} className="inline-block whitespace-nowrap mx-1">
@@ -104,10 +103,8 @@ export default function Hero() {
             </span>
           </h2>
 
-          <div className={`flex items-center gap-4 w-full max-w-sm mx-auto mb-6 transition-all duration-1000 ${showSupport ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-gold-400/50"></div>
-            <div className="w-2 h-2 rotate-45 bg-gold-400 shadow-[0_0_10px_rgba(212,175,55,0.5)]"></div>
-            <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-gold-400/50"></div>
+          <div className={`w-full max-w-lg mx-auto mb-8 transition-all duration-1000 ${showSupport ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="glowing-line-wrapper"></div>
           </div>
 
           <p className={`text-sm md:text-base text-ivory-50 leading-relaxed max-w-4xl mx-auto font-medium font-['Montserrat'] text-center px-4 w-full transition-all duration-1000 transform ${showSupport ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ textShadow: '1px 2px 4px rgba(10,18,46,0.8)' }}>
