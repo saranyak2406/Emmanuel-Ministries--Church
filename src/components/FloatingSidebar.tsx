@@ -12,9 +12,9 @@ function WhatsAppIcon({ className }: { className?: string }) {
 
 export default function FloatingSidebar() {
   const links = [
-    { id: 'facebook',  icon: Facebook,      label: 'Facebook',  href: 'https://www.facebook.com/share/1HtSqsGZUk/', bg: 'bg-[#3b5998]', hover: 'hover:bg-[#2d4373]' },
+    { id: 'facebook',  icon: Facebook,      label: 'Facebook',  href: 'https://www.facebook.com/share/1HtSqsGZUk/', bg: 'bg-[#3b5998]', hover: 'hover:bg-[#2d4373]', hideOnMobile: true },
     { id: 'youtube',   icon: Youtube,       label: 'YouTube',   href: 'https://youtube.com/@evangelistemmanuelabraham?si=LxICF6iC7paZajYr', bg: 'bg-[#ff0000]', hover: 'hover:bg-[#cc0000]' },
-    { id: 'instagram', icon: Instagram,     label: 'Instagram', href: 'https://www.instagram.com/mariya.dass3?utm_source=qr&igsi=MWtzcTNtOXdtNDNlNQ==', bg: 'bg-[#e1306c]', hover: 'hover:bg-[#c1205c]' },
+    { id: 'instagram', icon: Instagram,     label: 'Instagram', href: 'https://www.instagram.com/mariya.dass3?utm_source=qr&igsi=MWtzcTNtOXdtNDNlNQ==', bg: 'bg-[#e1306c]', hover: 'hover:bg-[#c1205c]', hideOnMobile: true },
     { id: 'whatsapp',  icon: WhatsAppIcon,  label: 'WhatsApp',  href: 'https://wa.me/919949667712', bg: 'bg-[#25D366]', hover: 'hover:bg-[#128C7E]' },
     { id: 'alerts',    icon: Bell,          label: 'Alerts',    href: '/meetings', bg: 'bg-[#0084ff]', hover: 'hover:bg-[#006bce]' },
     { id: 'email',     icon: Mail,          label: 'Contact',   href: '/contact', bg: 'bg-[#33475b]', hover: 'hover:bg-[#253342]' },
@@ -39,14 +39,14 @@ export default function FloatingSidebar() {
 
         if (isExternal) {
           return (
-            <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer" className="block">
+            <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer" className={`block ${link.hideOnMobile ? 'hidden md:block' : ''}`}>
               {content}
             </a>
           );
         }
 
         return (
-          <Link key={link.id} to={link.href} className="block">
+          <Link key={link.id} to={link.href} className={`block ${link.hideOnMobile ? 'hidden md:block' : ''}`}>
             {content}
           </Link>
         );
