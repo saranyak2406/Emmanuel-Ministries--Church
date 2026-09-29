@@ -82,8 +82,8 @@ const quickLinks = [
 export default function QuickLinks() {
   return (
     <div className="w-full relative z-20 py-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 max-w-6xl mx-auto">
+      <div className="container mx-auto px-2 sm:px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-6 max-w-6xl mx-auto">
           {quickLinks.map((link, index) => {
             const IconComponent = link.icon;
             return (
