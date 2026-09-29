@@ -37,8 +37,11 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-charcoal-950 text-ivory-200">
-      <div className="container-max py-16">
+    <footer 
+      className="relative text-ivory-200 bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: 'linear-gradient(rgba(10, 18, 46, 0.85), rgba(10, 18, 46, 0.95)), url(/images/home-slideshow/gospel3.png)' }}
+    >
+      <div className="container-max py-16 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-1">

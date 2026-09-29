@@ -2,7 +2,7 @@ import { Quote, Building2 } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
 const LOGO_IMG     = '/logo.jpg';
-const BUILDING_IMG = '/church-building.jpg';
+const BUILDING_IMG = '/images/home-slideshow/gospel3.png';
 
 export default function AboutUs() {
   const { ref, isVisible } = useScrollReveal<HTMLDivElement>();
