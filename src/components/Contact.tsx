@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { MapPin, Phone, Mail, MessageCircle, Send, Loader2, CheckCircle, Youtube, Facebook, Instagram, Clock } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { MINISTRY, SOCIAL_LINKS } from '@/lib/constants';
+import { submitContact } from '@/api/emailApi';
 
 type FormState = {
   name: string;
@@ -45,12 +46,21 @@ export default function Contact() {
     setStatus('loading');
     setErrorMsg('');
 
-    // Simulate a brief processing delay
-    await new Promise((resolve) => setTimeout(resolve, 600));
-
-    setStatus('success');
-    setForm(INITIAL);
-    setTimeout(() => setStatus('idle'), 5000);
+    try {
+      await submitContact({
+        name: form.name,
+        email: form.email,
+        phone: form.phone || 'Not provided',
+        subject: form.subject || 'General Contact Inquiry',
+        message: form.message,
+      });
+      setStatus('success');
+      setForm(INITIAL);
+    } catch (error: any) {
+      console.error(error);
+      setStatus('error');
+      setErrorMsg(error?.message || 'Failed to send message. Please try again later.');
+    }
   };
 
   const CONTACT_INFO = [
@@ -182,14 +192,21 @@ export default function Contact() {
               </div>
 
               {status === 'success' ? (
-                <div className="flex flex-col items-center justify-center text-center py-16 bg-brand-50 rounded-3xl border border-ivory-200">
+                <div className="flex flex-col items-center justify-center text-center py-16 bg-brand-50 rounded-3xl border border-ivory-200 px-6 animate-fade-in">
                   <CheckCircle className="h-20 w-20 text-brand-700 mb-6" />
                   <h3 className="text-3xl font-black text-charcoal-900 mb-4">
                     Message Sent!
                   </h3>
-                  <p className="text-charcoal-600 max-w-sm text-lg">
+                  <p className="text-charcoal-600 max-w-sm text-lg mb-8 leading-relaxed">
                     Thank you for reaching out. We have received your message and will be in touch soon.
                   </p>
+                  <button
+                    type="button"
+                    onClick={() => setStatus('idle')}
+                    className="btn-primary min-w-[200px]"
+                  >
+                    Send Another Message
+                  </button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">

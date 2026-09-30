@@ -13,23 +13,23 @@ function WhatsAppIcon({ className }: { className?: string }) {
 export default function FloatingSidebar() {
   const links = [
     { id: 'facebook',  icon: Facebook,      label: 'Facebook',  href: 'https://www.facebook.com/share/1HtSqsGZUk/', bg: 'bg-[#3b5998]', hover: 'hover:bg-[#2d4373]', hideOnMobile: true },
-    { id: 'youtube',   icon: Youtube,       label: 'YouTube',   href: 'https://youtube.com/@evangelistemmanuelabraham?si=LxICF6iC7paZajYr', bg: 'bg-[#ff0000]', hover: 'hover:bg-[#cc0000]' },
+    { id: 'youtube',   icon: Youtube,       label: 'YouTube',   href: 'https://youtube.com/@evangelistemmanuelabraham?si=LxICF6iC7paZajYr', bg: 'bg-[#ff0000]', hover: 'hover:bg-[#cc0000]', hideOnMobile: false },
     { id: 'instagram', icon: Instagram,     label: 'Instagram', href: 'https://www.instagram.com/mariya.dass3?utm_source=qr&igsi=MWtzcTNtOXdtNDNlNQ==', bg: 'bg-[#e1306c]', hover: 'hover:bg-[#c1205c]', hideOnMobile: true },
-    { id: 'whatsapp',  icon: WhatsAppIcon,  label: 'WhatsApp',  href: 'https://wa.me/919949667712', bg: 'bg-[#25D366]', hover: 'hover:bg-[#128C7E]' },
-    { id: 'alerts',    icon: Bell,          label: 'Alerts',    href: '/meetings', bg: 'bg-[#0084ff]', hover: 'hover:bg-[#006bce]' },
-    { id: 'email',     icon: Mail,          label: 'Contact',   href: '/contact', bg: 'bg-[#33475b]', hover: 'hover:bg-[#253342]' },
+    { id: 'whatsapp',  icon: WhatsAppIcon,  label: 'WhatsApp',  href: 'https://wa.me/919949667712', bg: 'bg-[#25D366]', hover: 'hover:bg-[#128C7E]', hideOnMobile: false },
+    { id: 'alerts',    icon: Bell,          label: 'Alerts',    href: '/meetings', bg: 'bg-[#0084ff]', hover: 'hover:bg-[#006bce]', hideOnMobile: false },
+    { id: 'email',     icon: Mail,          label: 'Contact',   href: '/contact', bg: 'bg-[#33475b]', hover: 'hover:bg-[#253342]', hideOnMobile: false },
   ];
 
   return (
-    <div className="hidden md:flex fixed left-0 top-1/2 -translate-y-1/2 z-[50] flex-col shadow-2xl rounded-r-md overflow-hidden origin-left">
+    <div className="fixed left-0 top-1/2 -translate-y-1/2 z-[50] flex flex-col shadow-2xl rounded-r-md overflow-hidden origin-left">
       {links.map((link) => {
         const Icon = link.icon;
         const isExternal = link.href.startsWith('#') || link.href.startsWith('http');
         
         const content = (
-          <div className={`w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 overflow-hidden flex items-center text-white transition-all duration-300 ease-in-out ${link.bg} ${link.hover} cursor-pointer group hover:w-32 md:hover:w-40 border-b border-white/10 last:border-b-0`}>
-            <div className="w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center shrink-0">
-              <Icon className="w-4 h-4 sm:w-[18px] sm:h-[18px] md:w-[20px] md:h-[20px]" />
+          <div className={`w-8 h-8 sm:w-9 sm:h-9 md:w-12 md:h-12 overflow-hidden flex items-center text-white transition-all duration-300 ease-in-out ${link.bg} ${link.hover} cursor-pointer group hover:w-32 md:hover:w-40 border-b border-white/10 last:border-b-0`}>
+            <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-12 md:h-12 flex items-center justify-center shrink-0">
+              <Icon className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5" />
             </div>
             <span className="whitespace-nowrap font-medium text-xs md:text-sm tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-75">
               {link.label}
@@ -37,16 +37,18 @@ export default function FloatingSidebar() {
           </div>
         );
 
+        const linkClass = link.hideOnMobile ? 'hidden md:block' : 'block';
+
         if (isExternal) {
           return (
-            <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer" className={`block ${link.hideOnMobile ? 'hidden md:block' : ''}`}>
+            <a key={link.id} href={link.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
               {content}
             </a>
           );
         }
 
         return (
-          <Link key={link.id} to={link.href} className={`block ${link.hideOnMobile ? 'hidden md:block' : ''}`}>
+          <Link key={link.id} to={link.href} className={linkClass}>
             {content}
           </Link>
         );

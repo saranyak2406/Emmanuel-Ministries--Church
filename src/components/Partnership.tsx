@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Heart, HandHeart, Globe, Calendar, DollarSign, ArrowRight, X, Loader2 } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { submitPartnership } from '@/api/emailApi';
 
 const PARTNERSHIPS = [
   {
@@ -45,10 +46,20 @@ export default function Partnership() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
-    // Simulate network request
-    await new Promise(r => setTimeout(r, 600));
-    setStatus('success');
-    setForm({ name: '', phone: '', email: '', type: 'PRAYER PARTNERSHIP', message: '' });
+    try {
+      await submitPartnership({ 
+        ...form, 
+        partnershipType: form.type, 
+        address: 'Not provided', 
+        amount: 'Not provided' 
+      });
+      setStatus('success');
+      setForm({ name: '', phone: '', email: '', type: 'PRAYER PARTNERSHIP', message: '' });
+    } catch (error) {
+      console.error(error);
+      setStatus('idle');
+      alert("Failed to submit partnership request. Please try again later.");
+    }
   };
 
   return (

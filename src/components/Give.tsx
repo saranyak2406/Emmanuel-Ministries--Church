@@ -108,10 +108,16 @@ export default function Give() {
         </div>
 
         {/* Security notice */}
-        <div className={`flex items-start gap-3 p-6 rounded-xl bg-brand-50 border-2 border-brand-200 reveal reveal-delay-4 ${isVisible ? 'is-visible' : ''}`}>
+        <div className={`flex items-start gap-3 p-4 sm:p-6 rounded-xl bg-brand-50 border-2 border-brand-200 reveal reveal-delay-4 ${isVisible ? 'is-visible' : ''}`}>
           <Shield className="h-5 w-5 text-brand-700 mt-0.5 shrink-0" />
-          <p className="text-sm text-charcoal-800 leading-relaxed">
-            <strong className="text-brand-900">Important:</strong> Only official ministry payment details shown above should be used. Do not transfer funds to any unofficial or personal accounts. For any queries, contact <span className="font-semibold text-brand-700">support@emmanuelgospelministries.com</span>.
+          <p className="text-sm text-charcoal-800 leading-relaxed break-words min-w-0">
+            <strong className="text-brand-900">Important:</strong> Only official ministry payment details shown above should be used. Do not transfer funds to any unofficial or personal accounts. For any queries, contact{' '}
+            <a
+              href="mailto:support@emmanuelgospelministries.com"
+              className="font-semibold text-brand-700 hover:text-brand-900 underline underline-offset-2 break-all"
+            >
+              support@emmanuelgospelministries.com
+            </a>.
           </p>
         </div>
       </div>

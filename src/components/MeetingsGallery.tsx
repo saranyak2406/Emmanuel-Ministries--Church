@@ -92,27 +92,40 @@ export default function MeetingsGallery() {
                 <button onClick={nextSlide} className="w-10 h-10 rounded-full bg-white/80 text-charcoal-900 flex items-center justify-center hover:bg-white shadow-md transition-colors"><ChevronRight className="w-6 h-6" /></button>
               </div>
 
-              {/* Bottom Decorative Gold Bar & Dots */}
-              <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-gold-600 to-gold-500 rounded-2xl p-4 flex items-center justify-between shadow-lg z-20">
-                <div className="text-white">
-                  <p className="text-xs uppercase tracking-widest font-bold opacity-80 mb-0.5">Global Reach</p>
-                  <p className="font-serif font-bold text-lg leading-none">Ministry Events</p>
+              {/* Bottom Decorative Gold Bar & Slide Controls */}
+              <div className="absolute bottom-4 left-4 right-4 bg-gradient-to-r from-gold-600 to-gold-500 rounded-2xl p-3.5 sm:p-4 flex items-center justify-between shadow-lg z-20 overflow-hidden">
+                <div className="text-white min-w-0 pr-3">
+                  <p className="text-[10px] sm:text-xs uppercase tracking-widest font-bold opacity-85 mb-0.5 truncate">Global Reach</p>
+                  <p className="font-serif font-bold text-base sm:text-lg leading-none truncate">Ministry Events</p>
                 </div>
                 
-                {/* Dots */}
-                <div className="flex gap-2">
-                  {IMAGES.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-all shadow-sm ${
-                        index === currentIndex 
-                          ? 'bg-white scale-125' 
-                          : 'bg-white/40 hover:bg-white/80'
-                      }`}
-                      aria-label={`Go to slide ${index + 1}`}
-                    />
-                  ))}
+                {/* Slide Counter & Controls */}
+                <div className="flex items-center gap-1.5 shrink-0 bg-black/25 backdrop-blur-sm px-2.5 py-1.5 rounded-full text-white border border-white/20 shadow-inner">
+                  <button
+                    onClick={(e) => { e.stopPropagation(); prevSlide(); }}
+                    className="p-0.5 hover:bg-white/25 active:scale-90 rounded-full transition-all text-white/90 hover:text-white"
+                    aria-label="Previous slide"
+                  >
+                    <ChevronLeft className="w-3.5 h-3.5" />
+                  </button>
+                  <span className="text-xs font-semibold tracking-wider px-1 font-mono select-none">
+                    {String(currentIndex + 1).padStart(2, '0')}&nbsp;<span className="opacity-40 font-normal">/</span>&nbsp;{String(IMAGES.length).padStart(2, '0')}
+                  </span>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); nextSlide(); }}
+                    className="p-0.5 hover:bg-white/25 active:scale-90 rounded-full transition-all text-white/90 hover:text-white"
+                    aria-label="Next slide"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+
+                {/* Progress line along bottom of the gold card */}
+                <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/10">
+                  <div 
+                    className="h-full bg-white/90 transition-all duration-300 ease-out"
+                    style={{ width: `${((currentIndex + 1) / IMAGES.length) * 100}%` }}
+                  />
                 </div>
               </div>
 

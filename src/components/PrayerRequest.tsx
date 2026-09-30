@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Send, User, Mail, Phone, MapPin, Tag, Home, BookOpen, Users, Handshake, DollarSign, Phone as PhoneIcon } from 'lucide-react';
+import { Send, User, Mail, Phone, MapPin, Tag, ChevronDown, Check } from 'lucide-react';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { PRAYER_CATEGORIES } from '@/lib/constants';
+import { submitPrayerRequest } from '@/api/emailApi';
 
 import PrayingHandsIcon from '@/components/PrayingHandsIcon';
 
@@ -33,7 +34,18 @@ export default function PrayerRequest() {
   const navigate = useNavigate();
   const [form, setForm] = useState<FormState>(INITIAL);
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isCategoryOpen, setIsCategoryOpen] = useState(false);
+  const categoryRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (categoryRef.current && !categoryRef.current.contains(event.target as Node)) {
+        setIsCategoryOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -45,11 +57,15 @@ export default function PrayerRequest() {
     e.preventDefault();
     setStatus('loading');
 
-    // Simulate a brief processing delay
-    await new Promise((resolve) => setTimeout(resolve, 600));
-
-    setStatus('success');
-    setForm(INITIAL);
+    try {
+      await submitPrayerRequest(form);
+      setStatus('success');
+      setForm(INITIAL);
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+      alert("Failed to submit prayer request. Please try again later.");
+    }
   };
 
   return (
@@ -217,20 +233,86 @@ export default function PrayerRequest() {
                           placeholder="Your city and country"
                         />
                       </div>
-                      <div>
+                      <div className="relative" ref={categoryRef}>
                         <label className="flex items-center gap-2 text-sm font-bold text-charcoal-900 mb-2">
                           <Tag className="w-4 h-4 text-gold-600" /> Prayer Category
                         </label>
-                        <select
-                          name="category"
-                          value={form.category}
-                          onChange={handleChange}
-                          className="w-full bg-white border border-ivory-200 rounded-xl px-4 py-3 text-charcoal-900 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all appearance-none"
+                        
+                        {/* Custom Dropdown Trigger Button */}
+                        <button
+                          type="button"
+                          onClick={() => setIsCategoryOpen((prev) => !prev)}
+                          className="w-full bg-white border border-ivory-200 rounded-xl px-4 py-3 text-charcoal-900 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all flex items-center justify-between text-left shadow-sm active:bg-ivory-50 cursor-pointer"
+                          aria-haspopup="listbox"
+                          aria-expanded={isCategoryOpen}
                         >
-                          {PRAYER_CATEGORIES.map((cat) => (
-                            <option key={cat} value={cat}>{cat}</option>
-                          ))}
-                        </select>
+                          <span className="font-medium truncate">{form.category}</span>
+                          <ChevronDown className={`w-4 h-4 text-gold-600 transition-transform duration-200 shrink-0 ml-2 ${isCategoryOpen ? 'rotate-180' : ''}`} />
+                        </button>
+
+                        {/* Dropdown Options List */}
+                        {isCategoryOpen && (
+                          <>
+                            {/* Backdrop for closing on mobile touch */}
+                            <div 
+                              className="fixed inset-0 z-40 bg-charcoal-950/20 backdrop-blur-[1px] md:hidden"
+                              onClick={() => setIsCategoryOpen(false)}
+                            />
+                            
+                            <div className="absolute left-0 right-0 top-full mt-2 bg-white border border-ivory-200 rounded-2xl shadow-2xl z-50 max-h-64 overflow-y-auto py-2 animate-fade-in divide-y divide-ivory-100">
+                              {PRAYER_CATEGORIES.map((cat) => {
+                                const isSelected = form.category === cat;
+                                return (
+                                  <button
+                                    type="button"
+                                    key={cat}
+                                    onClick={() => {
+                                      setForm((prev) => ({ ...prev, category: cat }));
+                                      setIsCategoryOpen(false);
+                                    }}
+                                    className={`w-full px-4 py-3 text-left text-sm flex items-center justify-between transition-colors cursor-pointer ${
+                                      isSelected
+                                        ? 'bg-gold-50 text-gold-700 font-bold'
+                                        : 'text-charcoal-800 hover:bg-ivory-50 active:bg-ivory-100'
+                                    }`}
+                                  >
+                                    <span>{cat}</span>
+                                    {isSelected && <Check className="w-4 h-4 text-gold-600 shrink-0" />}
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Quick Category Buttons for 1-tap mobile selection */}
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-wider text-charcoal-500 mb-2.5 flex items-center gap-1.5">
+                        <span>Select Category:</span>
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {PRAYER_CATEGORIES.map((cat) => {
+                          const isSelected = form.category === cat;
+                          return (
+                            <button
+                              type="button"
+                              key={cat}
+                              onClick={() => {
+                                setForm((prev) => ({ ...prev, category: cat }));
+                                setIsCategoryOpen(false);
+                              }}
+                              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
+                                isSelected
+                                  ? 'bg-gold-500 text-white shadow-md ring-2 ring-gold-400/50 scale-[1.02]'
+                                  : 'bg-ivory-100 text-charcoal-700 hover:bg-ivory-200 border border-ivory-200 active:scale-95'
+                              }`}
+                            >
+                              {cat}
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
 
