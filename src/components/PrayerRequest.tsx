@@ -220,23 +220,29 @@ export default function PrayerRequest() {
                     {/* City & Category */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label className="flex items-center gap-2 text-sm font-bold text-charcoal-900 mb-2">
-                          <MapPin className="w-4 h-4 text-gold-600" /> Country / City
+                        <label className="flex items-center gap-2 text-sm font-bold text-charcoal-900 mb-1">
+                          <MapPin className="w-4 h-4 text-gold-600" /> Current City
                         </label>
+                        <p className="text-xs text-charcoal-500 mb-2 font-normal">
+                          The location where prayer request has to be done
+                        </p>
                         <input
                           type="text"
                           name="city"
                           required
                           value={form.city}
                           onChange={handleChange}
-                          className="w-full bg-white border border-ivory-200 rounded-xl px-4 py-3 text-charcoal-900 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all placeholder:text-charcoal-300"
-                          placeholder="Your city and country"
+                          className="w-full bg-white border border-ivory-200 rounded-xl px-4 py-3 text-charcoal-900 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all placeholder:text-charcoal-400"
+                          placeholder="Enter your current city / prayer location"
                         />
                       </div>
                       <div className="relative" ref={categoryRef}>
-                        <label className="flex items-center gap-2 text-sm font-bold text-charcoal-900 mb-2">
+                        <label className="flex items-center gap-2 text-sm font-bold text-charcoal-900 mb-1">
                           <Tag className="w-4 h-4 text-gold-600" /> Prayer Category
                         </label>
+                        <p className="text-xs text-charcoal-500 mb-2 font-normal">
+                          Select the category for your prayer request
+                        </p>
                         
                         {/* Custom Dropdown Trigger Button */}
                         <button
@@ -287,34 +293,6 @@ export default function PrayerRequest() {
                       </div>
                     </div>
 
-                    {/* Quick Category Buttons for 1-tap mobile selection */}
-                    <div>
-                      <p className="text-xs font-bold uppercase tracking-wider text-charcoal-500 mb-2.5 flex items-center gap-1.5">
-                        <span>Select Category:</span>
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {PRAYER_CATEGORIES.map((cat) => {
-                          const isSelected = form.category === cat;
-                          return (
-                            <button
-                              type="button"
-                              key={cat}
-                              onClick={() => {
-                                setForm((prev) => ({ ...prev, category: cat }));
-                                setIsCategoryOpen(false);
-                              }}
-                              className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 cursor-pointer ${
-                                isSelected
-                                  ? 'bg-gold-500 text-white shadow-md ring-2 ring-gold-400/50 scale-[1.02]'
-                                  : 'bg-ivory-100 text-charcoal-700 hover:bg-ivory-200 border border-ivory-200 active:scale-95'
-                              }`}
-                            >
-                              {cat}
-                            </button>
-                          );
-                        })}
-                      </div>
-                    </div>
 
                     {/* Request */}
                     <div>
@@ -328,7 +306,7 @@ export default function PrayerRequest() {
                         value={form.request}
                         onChange={handleChange}
                         className="w-full bg-white border border-ivory-200 rounded-xl px-4 py-3 text-charcoal-900 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition-all resize-none placeholder:text-charcoal-300"
-                        placeholder="Enter your prayer request here..."
+                        placeholder="Please enter your prayer request and include your name and location if you would like us to know where you are praying from..."
                       />
                     </div>
                     

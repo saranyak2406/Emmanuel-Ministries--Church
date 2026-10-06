@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import QuickLinks from './QuickLinks';
 
-// The user will manually add photos to public/images/home-slideshow/
-// Add the exact filenames here once you have uploaded them.
+// Home Hero background slideshow images (Desktop & Mobile)
 const DESKTOP_SLIDES = [
-  '/images/home-slideshow/gospel1.png',
-  '/images/home-slideshow/gospel2.png',
-  '/images/home-slideshow/gospel3.png',
+  '/images/home-slideshow/desktop1.png',
+  '/images/home-slideshow/desktop2.png',
+  '/images/home-slideshow/desktop3.png',
 ];
 
 const MOBILE_SLIDES = [
-  '/images/home-slideshow/mobile1.png.png',
-  '/images/home-slideshow/mobile2.png.png',
-  '/images/home-slideshow/mobile3.png.png',
+  '/images/home-slideshow/mobile1.png',
+  '/images/home-slideshow/mobile2.png',
+  '/images/home-slideshow/mobile3.png',
 ];
 
 export default function Hero() {

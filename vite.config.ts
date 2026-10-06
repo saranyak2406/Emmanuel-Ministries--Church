@@ -5,8 +5,7 @@ import { fileURLToPath, URL } from 'node:url';
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  if (env.EMAIL_USER) process.env.EMAIL_USER = env.EMAIL_USER;
-  if (env.EMAIL_PASS) process.env.EMAIL_PASS = env.EMAIL_PASS;
+  Object.assign(process.env, env);
 
   return {
     plugins: [
@@ -31,6 +30,9 @@ export default defineConfig(({ mode }) => {
 
             req.on('end', async () => {
               try {
+                const latestEnv = loadEnv(mode, process.cwd(), '');
+                Object.assign(process.env, latestEnv);
+
                 let data: any = {};
                 try {
                   data = JSON.parse(body || '{}');
