@@ -66,17 +66,45 @@ export const sendContactEmail = async (contactData: { name: string; email: strin
   const transporter = createTransporter(user, pass);
   
   const mailOptions = {
-    from: `"${contactData.name}" <${user}>`,
+    from: `"${contactData.name} (Contact)" <${user}>`,
     replyTo: contactData.email,   
     to: user,   
-    subject: `New Contact Request: ${contactData.subject}`,
+    subject: `New Contact Request: ${contactData.subject || 'General Inquiry'} - ${contactData.name}`,
     text: `
       Name: ${contactData.name}
       Email: ${contactData.email}
-      Phone: ${contactData.phone}
+      Phone: ${contactData.phone || 'Not provided'}
+      Subject: ${contactData.subject || 'General Inquiry'}
       
       Message:
       ${contactData.message}
+    `,
+    html: `
+      <div style="font-family: Arial, sans-serif; padding: 24px; color: #1e293b; max-width: 600px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;">
+        <h2 style="color: #c2912e; margin-top: 0; padding-bottom: 12px; border-bottom: 2px solid #c2912e;">New Contact Message</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; width: 170px; color: #475569;">Name:</td>
+            <td style="padding: 8px 0; color: #0f172a;">${contactData.name}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #475569;">Email:</td>
+            <td style="padding: 8px 0; color: #0f172a;"><a href="mailto:${contactData.email}">${contactData.email}</a></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #475569;">Phone / WhatsApp:</td>
+            <td style="padding: 8px 0; color: #0f172a;">${contactData.phone || 'Not provided'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #475569;">Subject:</td>
+            <td style="padding: 8px 0; color: #c2912e; font-weight: bold;">${contactData.subject || 'General Inquiry'}</td>
+          </tr>
+        </table>
+        <div style="margin-top: 20px; padding: 16px; background-color: #fdfbf7; border-left: 4px solid #c2912e; border-radius: 6px;">
+          <strong style="color: #0f172a; display: block; margin-bottom: 8px;">Message:</strong>
+          <p style="white-space: pre-wrap; margin: 0; color: #334155; line-height: 1.6;">${contactData.message}</p>
+        </div>
+      </div>
     `,
   };
 
@@ -160,18 +188,54 @@ export const sendPartnershipEmail = async (partnerData: { name: string; email: s
     from: `"${partnerData.name} (Partnership)" <${user}>`,
     replyTo: partnerData.email,
     to: user,
-    subject: `New Partnership Request: ${partnerData.partnershipType}`,
+    subject: `New Partnership Request: ${partnerData.partnershipType} - ${partnerData.name}`,
     text: `
       Name: ${partnerData.name}
       Email: ${partnerData.email}
       Phone: ${partnerData.phone}
-      Address: ${partnerData.address}
-      
-      Partnership Type: ${partnerData.partnershipType}
-      Pledged Amount: ${partnerData.amount}
-      
+      Partnership Area: ${partnerData.partnershipType}
+      ${partnerData.address && partnerData.address !== 'Not provided' ? `Address: ${partnerData.address}\n` : ''}${partnerData.amount && partnerData.amount !== 'Not provided' ? `Pledged Amount: ${partnerData.amount}\n` : ''}
       Message:
-      ${partnerData.message}
+      ${partnerData.message || 'No additional message provided.'}
+    `,
+    html: `
+      <div style="font-family: Arial, sans-serif; padding: 24px; color: #1e293b; max-width: 600px; border: 1px solid #e2e8f0; border-radius: 12px; background-color: #ffffff;">
+        <h2 style="color: #c2912e; margin-top: 0; padding-bottom: 12px; border-bottom: 2px solid #c2912e;">New Partnership Request</h2>
+        <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; width: 170px; color: #475569;">Name:</td>
+            <td style="padding: 8px 0; color: #0f172a;">${partnerData.name}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #475569;">Email:</td>
+            <td style="padding: 8px 0; color: #0f172a;"><a href="mailto:${partnerData.email}">${partnerData.email}</a></td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #475569;">Phone / WhatsApp:</td>
+            <td style="padding: 8px 0; color: #0f172a;">${partnerData.phone}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #475569;">Partnership Area:</td>
+            <td style="padding: 8px 0; color: #c2912e; font-weight: bold;">${partnerData.partnershipType}</td>
+          </tr>
+          ${partnerData.address && partnerData.address !== 'Not provided' ? `
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #475569;">Address:</td>
+            <td style="padding: 8px 0; color: #0f172a;">${partnerData.address}</td>
+          </tr>
+          ` : ''}
+          ${partnerData.amount && partnerData.amount !== 'Not provided' ? `
+          <tr>
+            <td style="padding: 8px 0; font-weight: bold; color: #475569;">Pledged Amount:</td>
+            <td style="padding: 8px 0; color: #0f172a;">${partnerData.amount}</td>
+          </tr>
+          ` : ''}
+        </table>
+        <div style="margin-top: 20px; padding: 16px; background-color: #fdfbf7; border-left: 4px solid #c2912e; border-radius: 6px;">
+          <strong style="color: #0f172a; display: block; margin-bottom: 8px;">Message / Note:</strong>
+          <p style="white-space: pre-wrap; margin: 0; color: #334155; line-height: 1.6;">${partnerData.message || 'No additional message provided.'}</p>
+        </div>
+      </div>
     `,
   };
 
